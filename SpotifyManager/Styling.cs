@@ -1,16 +1,95 @@
-﻿namespace SpotifyManager
+﻿using System.Drawing;
+using System.Windows.Forms;
+
+namespace SpotifyManager
 {
-    public class Styling
+    public static class Styling
     {
 
-        public const string Black = "#0D0000";
-        public const string Background = "#D8E6F2";
-        public const string Dark = "#023859";
-        public const string Shade = "#B0C6D9";
-        public const string Gray = "#6D7E8C";
+        public static ColorConverter ColorConverter = new ColorConverter();
 
+        public class Colors
+        {
+            public static Color Black {
+                get
+                {
+                    return (Color) ColorConverter.ConvertFromString(HexCodes.Black);
+                }
 
+            }
+            public static Color Background
+            {
+                get
+                {
+                    return (Color)ColorConverter.ConvertFromString(HexCodes.Background);
+                }
 
+            }
+            public static Color Dark
+            {
+                get
+                {
+                    return (Color)ColorConverter.ConvertFromString(HexCodes.Dark);
+                }
+
+            }
+            public static Color Shade
+            {
+                get
+                {
+                    return (Color)ColorConverter.ConvertFromString(HexCodes.Shade);
+                }
+
+            }
+            public static Color Gray
+            {
+                get
+                {
+                    return (Color)ColorConverter.ConvertFromString(HexCodes.Gray);
+                }
+
+            }
+
+            public struct HexCodes
+            {
+                public const string Black = "#0D0000";
+                public const string Background = "#D8E6F2";
+                public const string Dark = "#023859";
+                public const string Shade = "#B0C6D9";
+                public const string Gray = "#6D7E8C";
+            }
+        }
+        
+        public static void SetScheme(Control control)
+        {
+            control.BackColor = Colors.Background;
+            control.ForeColor = Colors.Black;
+
+            if(control is ContainerControl)
+            {
+                foreach(Control childControl in control.Controls)
+                {
+                    if (BlackListStyleCheckPassed(childControl))
+                    {
+                        control.BackColor = Colors.Background;
+                        control.ForeColor = Colors.Black;
+
+                        if (control is ContainerControl)
+                        {
+                            SetScheme(childControl);
+                        }
+                    }
+                }
+            }
+        }
+
+        public static bool BlackListStyleCheckPassed(Control control)
+        {
+            if (control is MenuStrip || control is MenuItem)
+                return false;
+
+            return true;
+        }
 
         /*
         color scheme:

@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using SpotifyManager.Forms;
+﻿using SpotifyManager.Forms;
 using SpotifyManager.Forms.MainForms.Tabs;
 using System;
 using System.Collections.Generic;
@@ -10,9 +9,6 @@ namespace SpotifyManager
 {
     public partial class MainForm : Form
     {
-
-        
-        
         public List<iTabForm> TabForms { get; set; } = new List<iTabForm>();
 
         public MainForm()
@@ -27,67 +23,68 @@ namespace SpotifyManager
 
         public async Task ConnectToSpotify()
         {
-
-            //i don't even remember
-            //but you are here
-
-            Globals.LoadAppData(); 
-
-            if (Globals.Connected == false)
+            if(Globals.Connected == false)
             {
-                //use saved token:
-                if (Globals.AccessToken.access_token != null && Globals.AccessToken.access_token != "")
-                {
-                    //test token
-                    Globals.Connected = await SpotifyRequester.TestGet();
+                if(Globals.AccessToken.IsSet)
+                {           //  using saved access token
 
-                    //if saved token is invalid, start over
-                    if (Globals.Connected == false)
-                    {
-                        Globals.ResetAccessToken();
+                    //tests access code
+                    bool testGet = await Globals.Requester.TestGet();
+
+                            //  TESTING:
+                    if(testGet)
+                    {//test succeed, continue
+
+                        InitTabs();
+
+                    }
+                    else
+                    {//test failed, reset token and start over
+
+                        Globals.AccessToken.ResetAccessToken();
                         await ConnectToSpotify();
                     }
-                }
 
-                //generate new token:
+                }//end saved token IF
                 else
-                {
-                    Forms.ConnectSplashForm splashForm = new Forms.ConnectSplashForm();
-                    splashForm.ShowDialog();
-                    splashForm.Close();
+                {           //  generating new access token
 
-                    //test token
-                    Globals.Connected = await SpotifyRequester.TestGet();
+                    //opens splash form to login
+                    ConnectSplashForm connectSplashForm = new ConnectSplashForm();
 
-                    if (Globals.Connected == false)
-                    {
-                        MessageBox.Show("er 1");
+                    connectSplashForm.ShowDialog();
+                    connectSplashForm.Close();
+
+                    //test access token
+                    bool testGet = await Globals.Requester.TestGet();
+
+                            //  TESTING:
+                    if (testGet)
+                    {//test succeed, continue
+
+                        InitTabs();
+
+                    }
+                    else
+                    {//splash login failed, alert user and do not continute
+
+                        
                     }
 
-                //
-                //connect success
-                if (Globals.Connected)
-                {
-                    connectToolStripMenuItem.Text = "Log out";
 
-                    InitTabs();
+                }//end generate new access token IF
 
-                    await RefreshTabs();
+            }//end main log in/out IF
 
-                }
-                else if (Globals.Connected == false)
-                {
-                    //connect failure
-                }
-
-            }
-            else if (Globals.Connected == true)
+            if(Globals.Connected)
             {
-                //logout button
+                connectToolStripMenuItem.Text = "Log Out";
+            }else
+            {
+                connectToolStripMenuItem.Text = "Connect to Spotify";
             }
-        }
 
-
+        }//end ConnectToSpotify() 
 
 
         private async void connectToolStripMenuItem_Click(object sender, EventArgs e)
@@ -102,7 +99,7 @@ namespace SpotifyManager
 
         public async Task RefreshTabs()
         {
-            foreach(iTabForm tabform in TabForms)
+            foreach (iTabForm tabform in TabForms)
             {
                 tabform.RefreshTabForm();
             }
@@ -111,7 +108,7 @@ namespace SpotifyManager
         //loads in tabs initially then calls Refresh()
         public void InitTabs()
         {
-
+            //place child tabforms in each tab:
             ProfileTabForm profileTabForm = new ProfileTabForm();
             InitTab(tabProfile, profileTabForm);
             TabForms.Add(profileTabForm);
@@ -123,6 +120,10 @@ namespace SpotifyManager
             StatsTabForm statsTabForm = new StatsTabForm();
             InitTab(tabStats, statsTabForm);
             TabForms.Add(statsTabForm);
+
+            //refresh all the tabs:
+
+
 
 
             //puts child form into tab
@@ -143,4 +144,6 @@ namespace SpotifyManager
             Styling.SetScheme(this);
         }
     }
+
+
 }

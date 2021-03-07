@@ -20,18 +20,15 @@ namespace SpotifyManager
 
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-            if(Globals.AccessToken != null)
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Globals.AccessToken.access_token);
-
         }
 
-        public static async Task<bool> TestGet()
+        public async Task<bool> TestGet()
         {
-            HttpClient client = new HttpClient();
-
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            if (Globals.AccessToken != null)
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Globals.AccessToken.access_token);
 
             HttpResponseMessage response = await client.GetAsync("https://api.spotify.com/v1/me");
 
@@ -40,28 +37,34 @@ namespace SpotifyManager
                 return true;
             }else
             {
+                Console.WriteLine($"Test get error - {response.StatusCode}");
                 return false;
             }
         }
 
         public async Task<string> MakeRequestAsync(string url, string parameters = "")
         {
+            if(Globals.AccessToken != null   &&   client.DefaultRequestHeaders.Authorization.Parameter != Globals.AccessToken.access_token)
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Globals.AccessToken.access_token);
+
+            // Console.WriteLine(url);
 
             HttpResponseMessage response = await client.GetAsync(url);
 
-            if(response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            if (response.IsSuccessStatusCode)
             {
-                Globals.AccessToken.access_token = null;
-                Globals.Connected = false;
-                Globals.SaveAppData();
-                MessageBox.Show("Invalid access token. Please login again.");
+                //
+            }
+            else
+            {
+                MessageBox.Show($"Error -  {response.StatusCode}");
             }
 
-            // Console.WriteLine(url);
 
             string responseString = await response.Content.ReadAsStringAsync();
 
             return responseString;
+
         }
 
         

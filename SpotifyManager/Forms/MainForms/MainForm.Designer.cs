@@ -78,7 +78,7 @@ namespace SpotifyManager
             // setSecretIDToolStripMenuItem
             // 
             this.setSecretIDToolStripMenuItem.Name = "setSecretIDToolStripMenuItem";
-            this.setSecretIDToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.setSecretIDToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.setSecretIDToolStripMenuItem.Text = "Set secret ID";
             // 
             // miscToolStripMenuItem
@@ -92,7 +92,7 @@ namespace SpotifyManager
             // creditsToolStripMenuItem
             // 
             this.creditsToolStripMenuItem.Name = "creditsToolStripMenuItem";
-            this.creditsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.creditsToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
             this.creditsToolStripMenuItem.Text = "Credits";
             // 
             // debugToolStripMenuItem
@@ -106,7 +106,7 @@ namespace SpotifyManager
             // boopToolStripMenuItem
             // 
             this.boopToolStripMenuItem.Name = "boopToolStripMenuItem";
-            this.boopToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.boopToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.boopToolStripMenuItem.Text = "Beep Boop";
             // 
             // tabControl

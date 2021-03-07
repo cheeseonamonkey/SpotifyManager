@@ -30,12 +30,6 @@ namespace SpotifyManager
         {
             Globals.AccessToken = JsonConvert.DeserializeObject<AccessToken>( Properties.Settings.Default.AccessToken.ToString() );
         }
-
-        public static void ResetAccessToken()
-        {
-            AccessToken.access_token = null;
-            SaveAppData();
-        }
     }
 }
 

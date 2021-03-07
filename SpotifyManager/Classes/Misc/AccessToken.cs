@@ -14,5 +14,23 @@ namespace SpotifyManager
 
         //list of scopes - https://developer.spotify.com/documentation/general/guides/scopes/
         public string scope { get; set; }
+
+        public bool IsSet
+        {
+            get{
+                if (access_token == null || access_token == "")
+                    return false;
+                else
+                    return true;
+            }
+        }
+
+        public void ResetAccessToken()
+        {
+            Globals.Connected = false;
+            access_token = null;
+            Globals.SaveAppData();
+        }
+
     }
 }

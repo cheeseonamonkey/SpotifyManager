@@ -22,7 +22,7 @@ namespace SpotifyManager.Forms
 
         private void btnConnect_Click(object sender, EventArgs e)
         {
-            lblSplash.Text = "All credentials are only handled by Spotify's servers, and Spotify will let you specify which information is released on the next page. All code is open source and available for review.";
+            lblSplash.Text = "All credentials are handled only by Spotify's servers and are never visible to this application. Spotify will let you specify which information is released on the next page. All code is open source and available for review.";
 
             string authorizationUrl = $"https://accounts.spotify.com/authorize?client_id={Globals.spotifyClient}&redirect_uri=http://localhost/&response_type=code";
 
@@ -47,14 +47,12 @@ namespace SpotifyManager.Forms
                 lblSplash.Text = "Received authorization code.\nRequesting access token...";
 
                 Globals.AccessToken = await SpotifyRequester.GetAccessTokenAsync(code);
-
                 lblSplash.Text += "\nAccess token received!";
-
                 Globals.SaveAppData();
 
-                Properties.Settings.Default.AccessToken = JsonConvert.SerializeObject(Globals.AccessToken);
-
                 Globals.Connected = true;
+
+                
 
                 this.Close();
 

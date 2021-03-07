@@ -27,6 +27,10 @@ namespace SpotifyManager
 
         public async Task ConnectToSpotify()
         {
+
+            //i don't even remember
+            //but you are here
+
             Globals.LoadAppData(); 
 
             if (Globals.Connected == false)

@@ -108,7 +108,6 @@ namespace SpotifyManager
             this.boopToolStripMenuItem.Name = "boopToolStripMenuItem";
             this.boopToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.boopToolStripMenuItem.Text = "Beep Boop";
-            this.boopToolStripMenuItem.Click += new System.EventHandler(this.boopToolStripMenuItem_Click);
             // 
             // tabControl
             // 

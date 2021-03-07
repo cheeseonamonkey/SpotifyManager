@@ -34,27 +34,31 @@ namespace SpotifyManager
                 //use saved token:
                 if (Globals.AccessToken.access_token != null && Globals.AccessToken.access_token != "")
                 {
-                    dynamic ProfileObj = JsonConvert.DeserializeObject(await Globals.Requester.MakeRequestAsync("https://api.spotify.com/v1/me"));
+                    //test token
+                    Globals.Connected = await SpotifyRequester.TestGet();
 
                     //if saved token is invalid, start over
                     if (Globals.Connected == false)
                     {
-                        Globals.AccessToken.access_token = null;
-                        Globals.SaveAppData();
+                        Globals.ResetAccessToken();
                         await ConnectToSpotify();
                     }
                 }
 
                 //generate new token:
-                else //if access token set
+                else
                 {
                     Forms.ConnectSplashForm splashForm = new Forms.ConnectSplashForm();
                     splashForm.ShowDialog();
                     splashForm.Close();
 
-                    await ConnectToSpotify();
+                    //test token
+                    Globals.Connected = await SpotifyRequester.TestGet();
 
-                }
+                    if (Globals.Connected == false)
+                    {
+                        MessageBox.Show("er 1");
+                    }
 
                 //
                 //connect success
@@ -75,7 +79,7 @@ namespace SpotifyManager
             }
             else if (Globals.Connected == true)
             {
-                //logout
+                //logout button
             }
         }
 

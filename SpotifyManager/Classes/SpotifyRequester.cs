@@ -26,6 +26,24 @@ namespace SpotifyManager
 
         }
 
+        public static async Task<bool> TestGet()
+        {
+            HttpClient client = new HttpClient();
+
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            HttpResponseMessage response = await client.GetAsync("https://api.spotify.com/v1/me");
+
+            if(response.IsSuccessStatusCode)
+            {
+                return true;
+            }else
+            {
+                return false;
+            }
+        }
+
         public async Task<string> MakeRequestAsync(string url, string parameters = "")
         {
 
@@ -40,7 +58,6 @@ namespace SpotifyManager
             }
 
             // Console.WriteLine(url);
-
 
             string responseString = await response.Content.ReadAsStringAsync();
 

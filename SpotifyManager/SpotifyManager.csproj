@@ -49,7 +49,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccessToken.cs" />
+    <Compile Include="Classes\Misc\AccessToken.cs" />
+    <Compile Include="Forms\MainForms\Tabs\PlaylistsTabForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainForms\Tabs\PlaylistsTabForm.Designer.cs">
+      <DependentUpon>PlaylistsTabForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MainForms\Tabs\ProfileTabForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainForms\Tabs\ProfileTabForm.Designer.cs">
+      <DependentUpon>ProfileTabForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MainForms\Tabs\StatsTabForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainForms\Tabs\StatsTabForm.Designer.cs">
+      <DependentUpon>StatsTabForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MiscForms\ConnectSplashForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,11 +80,21 @@
     <Compile Include="Forms\MainForms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Globals.cs" />
+    <Compile Include="Classes\Globals.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SpotifyRequester.cs" />
-    <Compile Include="Styling.cs" />
+    <Compile Include="Classes\SpotifyRequester.cs" />
+    <Compile Include="Classes\Styling.cs" />
+    <Compile Include="Classes\Misc\iTabForm.cs" />
+    <EmbeddedResource Include="Forms\MainForms\Tabs\PlaylistsTabForm.resx">
+      <DependentUpon>PlaylistsTabForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainForms\Tabs\ProfileTabForm.resx">
+      <DependentUpon>ProfileTabForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainForms\Tabs\StatsTabForm.resx">
+      <DependentUpon>StatsTabForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\MiscForms\ConnectSplashForm.resx">
       <DependentUpon>ConnectSplashForm.cs</DependentUpon>
     </EmbeddedResource>

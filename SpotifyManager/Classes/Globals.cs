@@ -13,6 +13,8 @@ namespace SpotifyManager
         public static string spotifySecret = "1142189b8c504c07a1ddfc088eeb361b";
         //obfuscate secret key?
 
+        public static SpotifyRequester Requester { get; set; } = new SpotifyRequester();
+
         public static bool Connected { get; set; } = false;
 
         public static AccessToken AccessToken { get; set; }

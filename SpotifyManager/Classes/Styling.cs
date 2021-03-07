@@ -60,35 +60,32 @@ namespace SpotifyManager
             }
         }
         
-        public static void SetScheme(Control control)
+        public static bool SetScheme(Control control)
         {
             control.BackColor = Colors.Background;
             control.ForeColor = Colors.Black;
 
             if(control is ContainerControl)
             {
+                //each control:
                 foreach(Control childControl in control.Controls)
                 {
-                    if (BlackListStyleCheckPassed(childControl))
-                    {
-                        control.BackColor = Colors.Background;
-                        control.ForeColor = Colors.Black;
+                    
+                    control.BackColor = Colors.Background;
+                    control.ForeColor = Colors.Black;
 
-                        if (control is ContainerControl)
-                        {
-                            SetScheme(childControl);
-                        }
+                    if (control is ContainerControl)
+                    {
+                        SetScheme(childControl);
+                    }
+
+                    
                     }
                 }
-            }
-        }
 
-        public static bool BlackListStyleCheckPassed(Control control)
-        {
-            if (control is MenuStrip || control is MenuItem)
-                return false;
 
             return true;
+            }
         }
 
         /*
@@ -111,4 +108,3 @@ namespace SpotifyManager
 
          */
     }
-}

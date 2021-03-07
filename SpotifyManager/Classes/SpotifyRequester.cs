@@ -6,10 +6,11 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace SpotifyManager
 {
-    class SpotifyRequester
+    public class SpotifyRequester
     {
         HttpClient client;
 
@@ -27,17 +28,26 @@ namespace SpotifyManager
 
         public async Task<string> MakeRequestAsync(string url, string parameters = "")
         {
-            if (Globals.AccessToken == null)
-                Globals.LoadAppData();
 
-                HttpResponseMessage response = await client.GetAsync(url);
+            HttpResponseMessage response = await client.GetAsync(url);
 
-            response.EnsureSuccessStatusCode();
+            if(response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                Globals.AccessToken.access_token = null;
+                Globals.Connected = false;
+                Globals.SaveAppData();
+                MessageBox.Show("Invalid access token. Please login again.");
+            }
+
+            // Console.WriteLine(url);
+
 
             string responseString = await response.Content.ReadAsStringAsync();
 
             return responseString;
         }
+
+        
 
         public static async Task<AccessToken> GetAccessTokenAsync(string authCode)
         {

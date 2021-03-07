@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -50,6 +51,9 @@ namespace SpotifyManager.Forms
                 lblSplash.Text += "\nAccess token received!";
 
                 Globals.SaveAppData();
+
+                Properties.Settings.Default.AccessToken = JsonConvert.SerializeObject(Globals.AccessToken);
+
                 Globals.Connected = true;
 
                 this.Close();

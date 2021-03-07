@@ -19,6 +19,10 @@ namespace SpotifyManager
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            //load globals here to avoid null exceptions
+            Globals.LoadAppData();
+
             Application.Run(new MainForm());
         }
     }

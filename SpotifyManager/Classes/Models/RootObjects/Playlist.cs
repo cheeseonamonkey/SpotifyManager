@@ -7,7 +7,7 @@ using SpotifyManager.Classes.Models.SubObjects;
 
 namespace SpotifyManager.Classes.Models.RootObjects
 {
-    public class Playlists
+    public class Playlist
     {
         public string href { get; set; }
         public List<Item> items { get; set; }

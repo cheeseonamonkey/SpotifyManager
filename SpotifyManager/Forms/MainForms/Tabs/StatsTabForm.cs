@@ -21,5 +21,10 @@ namespace SpotifyManager.Forms.MainForms.Tabs
         {
             
         }
+
+        private void StatsTabForm_Load(object sender, EventArgs e)
+        {
+            Styling.SetFormScheme(this);
+        }
     }
 }

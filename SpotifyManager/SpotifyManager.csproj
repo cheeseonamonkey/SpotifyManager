@@ -38,6 +38,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,7 +52,8 @@
   <ItemGroup>
     <Compile Include="Classes\Global\DataStore.cs" />
     <Compile Include="Classes\Models\AccessToken.cs" />
-    <Compile Include="Classes\Models\RootObjects\Playlists.cs" />
+    <Compile Include="Classes\Models\RootObjects\Playlist.cs" />
+    <Compile Include="Classes\Models\RootObjects\PlaylistList.cs" />
     <Compile Include="Classes\Models\RootObjects\Profile.cs" />
     <Compile Include="Classes\Models\SubObjects\ExternalUrls.cs" />
     <Compile Include="Classes\Models\SubObjects\Followers.cs" />

@@ -29,58 +29,28 @@ namespace SpotifyManager.Forms.MainForms.Tabs
         /// </summary>
         private void InitializeComponent()
         {
-            this.profilePanel = new System.Windows.Forms.Panel();
-            this.lblDisplayName = new System.Windows.Forms.Label();
-            this.picProfile = new System.Windows.Forms.PictureBox();
-            this.lblNumFollowers = new System.Windows.Forms.Label();
+            this.pnlProfile = new System.Windows.Forms.Panel();
             this.lblNumPlaylists = new System.Windows.Forms.Label();
-            this.profilePanel.SuspendLayout();
+            this.lblNumFollowers = new System.Windows.Forms.Label();
+            this.picProfile = new System.Windows.Forms.PictureBox();
+            this.lblDisplayName = new System.Windows.Forms.Label();
+            this.pnlProfile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picProfile)).BeginInit();
             this.SuspendLayout();
             // 
-            // profilePanel
+            // pnlProfile
             // 
-            this.profilePanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.profilePanel.Controls.Add(this.lblNumPlaylists);
-            this.profilePanel.Controls.Add(this.lblNumFollowers);
-            this.profilePanel.Controls.Add(this.picProfile);
-            this.profilePanel.Controls.Add(this.lblDisplayName);
-            this.profilePanel.Location = new System.Drawing.Point(12, 12);
-            this.profilePanel.Name = "profilePanel";
-            this.profilePanel.Size = new System.Drawing.Size(716, 162);
-            this.profilePanel.TabIndex = 0;
-            this.profilePanel.Tag = "shade";
-            this.profilePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            // 
-            // lblDisplayName
-            // 
-            this.lblDisplayName.AutoSize = true;
-            this.lblDisplayName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDisplayName.Location = new System.Drawing.Point(11, 9);
-            this.lblDisplayName.Name = "lblDisplayName";
-            this.lblDisplayName.Size = new System.Drawing.Size(87, 17);
-            this.lblDisplayName.TabIndex = 0;
-            this.lblDisplayName.Text = "displayname";
-            // 
-            // picProfile
-            // 
-            this.picProfile.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picProfile.Location = new System.Drawing.Point(14, 29);
-            this.picProfile.Name = "picProfile";
-            this.picProfile.Size = new System.Drawing.Size(110, 110);
-            this.picProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picProfile.TabIndex = 1;
-            this.picProfile.TabStop = false;
-            // 
-            // lblNumFollowers
-            // 
-            this.lblNumFollowers.AutoSize = true;
-            this.lblNumFollowers.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumFollowers.Location = new System.Drawing.Point(144, 29);
-            this.lblNumFollowers.Name = "lblNumFollowers";
-            this.lblNumFollowers.Size = new System.Drawing.Size(79, 17);
-            this.lblNumFollowers.TabIndex = 3;
-            this.lblNumFollowers.Text = "0 Followers";
+            this.pnlProfile.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlProfile.Controls.Add(this.lblNumPlaylists);
+            this.pnlProfile.Controls.Add(this.lblNumFollowers);
+            this.pnlProfile.Controls.Add(this.picProfile);
+            this.pnlProfile.Controls.Add(this.lblDisplayName);
+            this.pnlProfile.Location = new System.Drawing.Point(12, 12);
+            this.pnlProfile.Name = "pnlProfile";
+            this.pnlProfile.Size = new System.Drawing.Size(716, 162);
+            this.pnlProfile.TabIndex = 0;
+            this.pnlProfile.Tag = "shade";
+            this.pnlProfile.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // lblNumPlaylists
             // 
@@ -92,17 +62,47 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             this.lblNumPlaylists.TabIndex = 4;
             this.lblNumPlaylists.Text = "0 Playlists";
             // 
+            // lblNumFollowers
+            // 
+            this.lblNumFollowers.AutoSize = true;
+            this.lblNumFollowers.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumFollowers.Location = new System.Drawing.Point(144, 29);
+            this.lblNumFollowers.Name = "lblNumFollowers";
+            this.lblNumFollowers.Size = new System.Drawing.Size(79, 17);
+            this.lblNumFollowers.TabIndex = 3;
+            this.lblNumFollowers.Text = "0 Followers";
+            // 
+            // picProfile
+            // 
+            this.picProfile.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picProfile.Location = new System.Drawing.Point(14, 29);
+            this.picProfile.Name = "picProfile";
+            this.picProfile.Size = new System.Drawing.Size(110, 110);
+            this.picProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picProfile.TabIndex = 1;
+            this.picProfile.TabStop = false;
+            // 
+            // lblDisplayName
+            // 
+            this.lblDisplayName.AutoSize = true;
+            this.lblDisplayName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDisplayName.Location = new System.Drawing.Point(11, 9);
+            this.lblDisplayName.Name = "lblDisplayName";
+            this.lblDisplayName.Size = new System.Drawing.Size(87, 17);
+            this.lblDisplayName.TabIndex = 0;
+            this.lblDisplayName.Text = "displayname";
+            // 
             // ProfileTabForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(740, 475);
-            this.Controls.Add(this.profilePanel);
+            this.Controls.Add(this.pnlProfile);
             this.Name = "ProfileTabForm";
             this.Text = "ProfileTabForm";
             this.Load += new System.EventHandler(this.ProfileTabForm_Load);
-            this.profilePanel.ResumeLayout(false);
-            this.profilePanel.PerformLayout();
+            this.pnlProfile.ResumeLayout(false);
+            this.pnlProfile.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picProfile)).EndInit();
             this.ResumeLayout(false);
 
@@ -110,7 +110,7 @@ namespace SpotifyManager.Forms.MainForms.Tabs
 
         #endregion
 
-        private System.Windows.Forms.Panel profilePanel;
+        private System.Windows.Forms.Panel pnlProfile;
         private System.Windows.Forms.Label lblDisplayName;
         private System.Windows.Forms.PictureBox picProfile;
         private System.Windows.Forms.Label lblNumFollowers;

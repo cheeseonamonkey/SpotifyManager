@@ -26,7 +26,7 @@ namespace SpotifyManager.Forms.MainForms.Tabs
 
             picProfile.LoadAsync(myProfile.images.FirstOrDefault().url.ToString());
 
-            Playlists myPlaylists = Globals.DataStore.MyPlaylists;
+            PlaylistList myPlaylists = Globals.DataStore.MyPlaylistList;
             lblNumFollowers.Text = $"{myProfile.followers.total.ToString(), 3} followers";
             lblNumPlaylists.Text = $"{myPlaylists.total, 3} playlists";
 

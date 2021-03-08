@@ -47,7 +47,8 @@ namespace SpotifyManager
             if(Globals.AccessToken != null   &&   client.DefaultRequestHeaders.Authorization.Parameter != Globals.AccessToken.access_token)
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Globals.AccessToken.access_token);
 
-            // Console.WriteLine(url);
+            Console.WriteLine(url);
+            Console.WriteLine($"Auth:  {client.DefaultRequestHeaders.Authorization}");
 
             HttpResponseMessage response = await client.GetAsync(url);
 
@@ -57,7 +58,7 @@ namespace SpotifyManager
             }
             else
             {
-                MessageBox.Show($"Error -  {response.StatusCode}");
+                MessageBox.Show($"HTTP error -  {response.StatusCode}");
             }
 
 

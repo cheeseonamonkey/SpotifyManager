@@ -29,7 +29,7 @@ namespace SpotifyManager
         /// </summary>
         private void InitializeComponent()
         {
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.menuStripMain = new System.Windows.Forms.MenuStrip();
             this.connectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setSecretIDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,29 +42,29 @@ namespace SpotifyManager
             this.tabProfile = new System.Windows.Forms.TabPage();
             this.tabPlaylists = new System.Windows.Forms.TabPage();
             this.tabStats = new System.Windows.Forms.TabPage();
-            this.menuStrip1.SuspendLayout();
+            this.menuStripMain.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.SuspendLayout();
             // 
-            // menuStrip1
+            // menuStripMain
             // 
-            this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuStripMain.Font = new System.Drawing.Font("Segoe UI", 9.5F);
+            this.menuStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.connectToolStripMenuItem,
             this.settingsToolStripMenuItem,
             this.miscToolStripMenuItem,
             this.debugToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(889, 25);
-            this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
+            this.menuStripMain.Location = new System.Drawing.Point(0, 0);
+            this.menuStripMain.Name = "menuStripMain";
+            this.menuStripMain.Size = new System.Drawing.Size(889, 25);
+            this.menuStripMain.TabIndex = 1;
+            this.menuStripMain.Text = "menuStrip1";
             // 
             // connectToolStripMenuItem
             // 
             this.connectToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.connectToolStripMenuItem.Name = "connectToolStripMenuItem";
-            this.connectToolStripMenuItem.Size = new System.Drawing.Size(123, 20);
+            this.connectToolStripMenuItem.Size = new System.Drawing.Size(123, 21);
             this.connectToolStripMenuItem.Text = "Connect to Spotify";
             this.connectToolStripMenuItem.Click += new System.EventHandler(this.connectToolStripMenuItem_Click);
             // 
@@ -73,13 +73,13 @@ namespace SpotifyManager
             this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.setSecretIDToolStripMenuItem});
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(66, 21);
             this.settingsToolStripMenuItem.Text = "Settings";
             // 
             // setSecretIDToolStripMenuItem
             // 
             this.setSecretIDToolStripMenuItem.Name = "setSecretIDToolStripMenuItem";
-            this.setSecretIDToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.setSecretIDToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.setSecretIDToolStripMenuItem.Text = "Set secret ID";
             // 
             // miscToolStripMenuItem
@@ -87,13 +87,13 @@ namespace SpotifyManager
             this.miscToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.creditsToolStripMenuItem});
             this.miscToolStripMenuItem.Name = "miscToolStripMenuItem";
-            this.miscToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.miscToolStripMenuItem.Size = new System.Drawing.Size(47, 21);
             this.miscToolStripMenuItem.Text = "Misc";
             // 
             // creditsToolStripMenuItem
             // 
             this.creditsToolStripMenuItem.Name = "creditsToolStripMenuItem";
-            this.creditsToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
+            this.creditsToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.creditsToolStripMenuItem.Text = "Credits";
             // 
             // debugToolStripMenuItem
@@ -102,19 +102,19 @@ namespace SpotifyManager
             this.boopToolStripMenuItem,
             this.copyAcessTokenToolStripMenuItem});
             this.debugToolStripMenuItem.Name = "debugToolStripMenuItem";
-            this.debugToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
+            this.debugToolStripMenuItem.Size = new System.Drawing.Size(59, 21);
             this.debugToolStripMenuItem.Text = "Debug";
             // 
             // boopToolStripMenuItem
             // 
             this.boopToolStripMenuItem.Name = "boopToolStripMenuItem";
-            this.boopToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.boopToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.boopToolStripMenuItem.Text = "Beep Boop";
             // 
             // copyAcessTokenToolStripMenuItem
             // 
             this.copyAcessTokenToolStripMenuItem.Name = "copyAcessTokenToolStripMenuItem";
-            this.copyAcessTokenToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.copyAcessTokenToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.copyAcessTokenToolStripMenuItem.Text = "Copy acess token";
             this.copyAcessTokenToolStripMenuItem.Click += new System.EventHandler(this.copyAcessTokenToolStripMenuItem_Click);
             // 
@@ -142,19 +142,19 @@ namespace SpotifyManager
             // 
             // tabPlaylists
             // 
-            this.tabPlaylists.Location = new System.Drawing.Point(4, 24);
+            this.tabPlaylists.Location = new System.Drawing.Point(4, 25);
             this.tabPlaylists.Name = "tabPlaylists";
             this.tabPlaylists.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPlaylists.Size = new System.Drawing.Size(862, 514);
+            this.tabPlaylists.Size = new System.Drawing.Size(862, 513);
             this.tabPlaylists.TabIndex = 1;
             this.tabPlaylists.Text = "Playlists";
             this.tabPlaylists.UseVisualStyleBackColor = true;
             // 
             // tabStats
             // 
-            this.tabStats.Location = new System.Drawing.Point(4, 24);
+            this.tabStats.Location = new System.Drawing.Point(4, 25);
             this.tabStats.Name = "tabStats";
-            this.tabStats.Size = new System.Drawing.Size(862, 514);
+            this.tabStats.Size = new System.Drawing.Size(862, 513);
             this.tabStats.TabIndex = 2;
             this.tabStats.Text = "Stats";
             this.tabStats.UseVisualStyleBackColor = true;
@@ -165,12 +165,12 @@ namespace SpotifyManager
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(889, 579);
             this.Controls.Add(this.tabControl);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.menuStripMain);
             this.Name = "MainForm";
             this.Tag = "main";
             this.Text = "SpotifyManager";
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.menuStripMain.ResumeLayout(false);
+            this.menuStripMain.PerformLayout();
             this.tabControl.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -178,7 +178,7 @@ namespace SpotifyManager
         }
 
         #endregion
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip menuStripMain;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem miscToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem connectToolStripMenuItem;

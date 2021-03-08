@@ -28,7 +28,7 @@ namespace SpotifyManager
         public void ResetAccessToken()
         {
             Globals.Connected = false;
-            access_token = null;
+            access_token = "";
             Globals.SaveAppData();
         }
 

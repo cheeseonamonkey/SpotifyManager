@@ -32,6 +32,11 @@ namespace SpotifyManager.Forms
 
         private async void authBrowser_Navigated(object sender, WebBrowserNavigatedEventArgs e)
         {
+            //todo: access token bug
+            //to reprdouce, log out and back in
+            //console output shows access token not present
+
+
             //String rootDirectory = Path.Substring(0, LastIndexOf("/"));
             string url = authBrowser.Url.AbsoluteUri.ToString() ;
             
@@ -45,21 +50,25 @@ namespace SpotifyManager.Forms
                 authBrowser.Visible = false;
 
                 lblSplash.Text = "Received authorization code.\nRequesting access token...";
-
+                
                 Globals.AccessToken = await SpotifyRequester.GetAccessTokenAsync(code);
+
                 lblSplash.Text += "\nAccess token received!";
+
                 Globals.SaveAppData();
 
                 Globals.Connected = true;
 
-                
-
                 this.Close();
-
 
             }
 
+        }
 
+        private void lnkClearCookies_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if(authBrowser.Document != null)
+                authBrowser.Document.Cookie.Remove(0, authBrowser.Document.Cookie.Length);
         }
     }
 }

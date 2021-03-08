@@ -25,8 +25,7 @@ namespace SpotifyManager
 
         public async Task ConnectToSpotify()
         {
-            //TODO:
-            //logging out
+            
 
             if (Globals.Connected == false)
             {
@@ -38,13 +37,14 @@ namespace SpotifyManager
 
                             //  TESTING:
                     if(testGet)
-                    {//test succeed, continue
+                    {//test succeed, continue!
 
+                        Globals.Connected = true;
                         InitTabs();
 
                     }
                     else
-                    {//test failed, reset token and start over
+                    {//test failed, reset token and start authorization over
 
                         Globals.AccessToken.ResetAccessToken();
                         await ConnectToSpotify();
@@ -65,8 +65,9 @@ namespace SpotifyManager
 
                             //  TESTING:
                     if (testGet)
-                    {//test succeed, continue
+                    {//test succeed, continue!
 
+                        Globals.Connected = true;
                         InitTabs();
 
                     }
@@ -79,27 +80,42 @@ namespace SpotifyManager
 
                 }//end generate new access token IF
 
-            }//end main log in/out IF
+                if (Globals.Connected)
+                    connectToolStripMenuItem.Text = "Log Out";
+                else
+                    connectToolStripMenuItem.Text = "Connect to Spotify";
 
-            if(Globals.Connected)
-            {
-                connectToolStripMenuItem.Text = "Log Out";
-            }else
-            {
+
+
+            }//end main log in IF
+            else//connected is true
+            {           //  logging out:
+
                 connectToolStripMenuItem.Text = "Connect to Spotify";
+
+                Globals.AccessToken.ResetAccessToken();
+
+
+
+                DeInitTabs();
+
+                
             }
 
-        }//end ConnectToSpotify() 
+            
+
+        }//end ConnectToSpotify() method
 
 
         private async void connectToolStripMenuItem_Click(object sender, EventArgs e)
         {
             await ConnectToSpotify();
+            
         }
 
         private void boopToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Console.WriteLine(Globals.AccessToken.access_token);
+            //debug button
         }
 
         public async Task LoadTabs()
@@ -144,6 +160,24 @@ namespace SpotifyManager
                 childForm.Visible = true;
             }
 
+        }
+
+        //unloads tab init
+        public void DeInitTabs()
+        {
+            foreach(iTabForm tabForm in TabForms)
+            {
+                DeInitTab(tabForm);
+            }
+
+            void DeInitTab(iTabForm itabForm)
+            {
+                Form tabForm = itabForm as Form;
+
+                tabForm.Close();
+                tabForm.Dispose();
+
+            }
         }
 
         private void MainForm_Load_1(object sender, EventArgs e)

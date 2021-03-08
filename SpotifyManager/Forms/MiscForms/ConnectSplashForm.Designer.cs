@@ -32,6 +32,7 @@ namespace SpotifyManager.Forms
             this.btnConnect = new System.Windows.Forms.Button();
             this.authBrowser = new System.Windows.Forms.WebBrowser();
             this.lblSplash = new System.Windows.Forms.Label();
+            this.lnkClearCookies = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // btnConnect
@@ -63,17 +64,30 @@ namespace SpotifyManager.Forms
             this.lblSplash.TabIndex = 2;
             this.lblSplash.Text = "Log into your spotify account here.\r\n";
             // 
+            // lnkClearCookies
+            // 
+            this.lnkClearCookies.AutoSize = true;
+            this.lnkClearCookies.Location = new System.Drawing.Point(434, 556);
+            this.lnkClearCookies.Name = "lnkClearCookies";
+            this.lnkClearCookies.Size = new System.Drawing.Size(95, 13);
+            this.lnkClearCookies.TabIndex = 3;
+            this.lnkClearCookies.TabStop = true;
+            this.lnkClearCookies.Text = "Clear browser data";
+            this.lnkClearCookies.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkClearCookies_LinkClicked);
+            // 
             // ConnectSplashForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(542, 575);
+            this.Controls.Add(this.lnkClearCookies);
             this.Controls.Add(this.lblSplash);
             this.Controls.Add(this.authBrowser);
             this.Controls.Add(this.btnConnect);
             this.Name = "ConnectSplashForm";
             this.Text = "Connect";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -82,5 +96,6 @@ namespace SpotifyManager.Forms
         private System.Windows.Forms.Button btnConnect;
         private System.Windows.Forms.WebBrowser authBrowser;
         private System.Windows.Forms.Label lblSplash;
+        private System.Windows.Forms.LinkLabel lnkClearCookies;
     }
 }

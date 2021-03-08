@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using SpotifyManager.Classes.Models.RootObjects;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,14 +19,27 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             InitializeComponent();
         }
 
-        public async void RefreshTabForm()
+        public async Task LoadTabForm()
         {
-            dynamic ProfileObj = JsonConvert.DeserializeObject( await Globals.Requester.MakeRequestAsync("https://api.spotify.com/v1/me"));
+            Profile myProfile = Globals.DataStore.MyProfile;
+            lblDisplayName.Text = myProfile.display_name;
+
+            picProfile.LoadAsync(myProfile.images.FirstOrDefault().url.ToString());
+
+            Playlists myPlaylists = Globals.DataStore.MyPlaylists;
+            lblNumFollowers.Text = $"{myProfile.followers.total.ToString(), 3} followers";
+            lblNumPlaylists.Text = $"{myPlaylists.total, 3} playlists";
+
         }
 
         private void ProfileTabForm_Load(object sender, EventArgs e)
         {
-            Styling.SetScheme(this);
+            Styling.SetFormScheme(this);
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+            
         }
     }
 }

@@ -14,16 +14,21 @@ namespace SpotifyManager
         public MainForm()
         {
             InitializeComponent();
+
+            Styling.SetFormScheme(this);
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            Styling.SetScheme(this);
+            
         }
 
         public async Task ConnectToSpotify()
         {
-            if(Globals.Connected == false)
+            //TODO:
+            //logging out
+
+            if (Globals.Connected == false)
             {
                 if(Globals.AccessToken.IsSet)
                 {           //  using saved access token
@@ -68,7 +73,7 @@ namespace SpotifyManager
                     else
                     {//splash login failed, alert user and do not continute
 
-                        
+                        MessageBox.Show("Error logging into Spotify.");
                     }
 
 
@@ -97,16 +102,18 @@ namespace SpotifyManager
             Console.WriteLine(Globals.AccessToken.access_token);
         }
 
-        public async Task RefreshTabs()
+        public async Task LoadTabs()
         {
+            await Globals.DataStore.RefreshDataStore();
+
             foreach (iTabForm tabform in TabForms)
             {
-                tabform.RefreshTabForm();
+                tabform.LoadTabForm();
             }
         }
 
         //loads in tabs initially then calls Refresh()
-        public void InitTabs()
+        public async void InitTabs()
         {
             //place child tabforms in each tab:
             ProfileTabForm profileTabForm = new ProfileTabForm();
@@ -122,8 +129,8 @@ namespace SpotifyManager
             TabForms.Add(statsTabForm);
 
             //refresh all the tabs:
-
-
+            await LoadTabs();
+            
 
 
             //puts child form into tab
@@ -141,7 +148,12 @@ namespace SpotifyManager
 
         private void MainForm_Load_1(object sender, EventArgs e)
         {
-            Styling.SetScheme(this);
+            Styling.SetFormScheme(this);
+        }
+
+        private void copyAcessTokenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(Globals.AccessToken.access_token);
         }
     }
 

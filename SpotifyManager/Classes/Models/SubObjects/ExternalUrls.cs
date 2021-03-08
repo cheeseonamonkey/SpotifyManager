@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SpotifyManager
+namespace SpotifyManager.Classes.Models.Objects
 {
-    public interface iTabForm
+    public class ExternalUrls
     {
-        Task LoadTabForm();
+        public string spotify { get; set; }
     }
 }

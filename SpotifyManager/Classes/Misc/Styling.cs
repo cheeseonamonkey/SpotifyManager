@@ -60,28 +60,44 @@ namespace SpotifyManager
             }
         }
         
-        public static bool SetScheme(Control control)
+        public static bool SetFormScheme(Control control)
         {
+
             control.BackColor = Colors.Background;
             control.ForeColor = Colors.Black;
 
-            if(control is ContainerControl)
+            if (control is ContainerControl)
             {
                 //each control:
-                foreach(Control childControl in control.Controls)
+                foreach (Control childControl in control.Controls)
                 {
-                    
+
                     control.BackColor = Colors.Background;
                     control.ForeColor = Colors.Black;
 
+
                     if (control is ContainerControl)
                     {
-                        SetScheme(childControl);
-                    }
-
-                    
+                        SetFormScheme(childControl);
                     }
                 }
+            }
+
+            if (control.Tag != null && control.Tag.ToString() == "main")
+            {
+                control.BackColor = Colors.Dark;
+            }
+
+            if (control.Tag != null  &&  control.Tag.ToString() == "shade")
+            {
+                control.BackColor = Colors.Shade;
+            }
+
+            if(control != null  &&  control is MenuStrip)
+            {
+            }
+
+
 
 
             return true;

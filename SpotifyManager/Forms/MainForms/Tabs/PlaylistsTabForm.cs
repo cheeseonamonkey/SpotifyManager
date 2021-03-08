@@ -17,7 +17,7 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             InitializeComponent();
         }
 
-        public void RefreshTabForm()
+        public async Task LoadTabForm()
         {
             
         }

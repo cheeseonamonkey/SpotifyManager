@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using SpotifyManager.Classes.Global;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,11 +14,14 @@ namespace SpotifyManager
         public static string spotifySecret = "1142189b8c504c07a1ddfc088eeb361b";
         //obfuscate secret key?
 
+        public static AccessToken AccessToken { get; set; }
+
         public static SpotifyRequester Requester { get; set; } = new SpotifyRequester();
+        public static DataStore DataStore { get; set; } = new DataStore();
 
         public static bool Connected { get; set; } = false;
 
-        public static AccessToken AccessToken { get; set; }
+        
 
         public static void SaveAppData()
         {

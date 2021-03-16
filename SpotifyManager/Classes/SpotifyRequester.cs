@@ -48,8 +48,11 @@ namespace SpotifyManager
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Globals.AccessToken.access_token);
 
             //todo: access token bug debug output:
-            //Console.WriteLine(url);
-            //Console.WriteLine($"Auth:  {client.DefaultRequestHeaders.Authorization}");
+
+            Console.WriteLine(url);
+            Console.WriteLine($"\tAuth:  {client.DefaultRequestHeaders.Authorization}");
+
+            
 
             HttpResponseMessage response = await client.GetAsync(url);
 

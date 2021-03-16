@@ -38,12 +38,15 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             }
         }
 
-        public void LoadPlaylist()
+        public async void LoadPlaylist()
         {
-
+            foreach( in Globals.DataStore.SelectedPlaylist)
+            {
+                
+            }
         }
 
-        private void cmbPlaylistSelect_SelectedIndexChanged(object sender, EventArgs e)
+        private async void cmbPlaylistSelect_SelectedIndexChanged(object sender, EventArgs e)
         {
             int index = cmbPlaylistSelect.SelectedIndex;
 
@@ -51,9 +54,11 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             //selecting playlist to fill out datagrid
             //
 
-            string playlistid = Globals.DataStore.MyPlaylistList.items[0].name;
+            string playlistid = Globals.DataStore.MyPlaylistList.items[index].id;
 
-            Globals.DataStore.SetPlaylist($"");
+            await Globals.DataStore.SetPlaylist($"{playlistid}");
+
+            LoadPlaylist();
         }
     }
 }

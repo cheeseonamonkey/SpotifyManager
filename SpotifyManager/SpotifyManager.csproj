@@ -55,12 +55,18 @@
     <Compile Include="Classes\Models\RootObjects\Playlist.cs" />
     <Compile Include="Classes\Models\RootObjects\PlaylistList.cs" />
     <Compile Include="Classes\Models\RootObjects\Profile.cs" />
+    <Compile Include="Classes\Models\SubObjects\AddedBy.cs" />
+    <Compile Include="Classes\Models\SubObjects\Album.cs" />
+    <Compile Include="Classes\Models\SubObjects\Artist.cs" />
+    <Compile Include="Classes\Models\SubObjects\ExternalIds.cs" />
     <Compile Include="Classes\Models\SubObjects\ExternalUrls.cs" />
     <Compile Include="Classes\Models\SubObjects\Followers.cs" />
     <Compile Include="Classes\Models\SubObjects\Image.cs" />
     <Compile Include="Classes\Models\SubObjects\Item.cs" />
     <Compile Include="Classes\Models\SubObjects\Owner.cs" />
+    <Compile Include="Classes\Models\SubObjects\Track.cs" />
     <Compile Include="Classes\Models\SubObjects\Tracks.cs" />
+    <Compile Include="Classes\Models\SubObjects\VideoThumbnail.cs" />
     <Compile Include="Forms\MainForms\Tabs\PlaylistsTabForm.cs">
       <SubType>Form</SubType>
     </Compile>

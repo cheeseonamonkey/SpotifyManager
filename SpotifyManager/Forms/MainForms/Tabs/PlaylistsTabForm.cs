@@ -40,10 +40,7 @@ namespace SpotifyManager.Forms.MainForms.Tabs
 
         public async void LoadPlaylist()
         {
-            foreach( in Globals.DataStore.SelectedPlaylist)
-            {
-                
-            }
+
         }
 
         private async void cmbPlaylistSelect_SelectedIndexChanged(object sender, EventArgs e)
@@ -56,7 +53,7 @@ namespace SpotifyManager.Forms.MainForms.Tabs
 
             string playlistid = Globals.DataStore.MyPlaylistList.items[index].id;
 
-            await Globals.DataStore.SetPlaylist($"{playlistid}");
+            await Globals.DataStore.GetPlaylist($"{playlistid}");
 
             LoadPlaylist();
         }

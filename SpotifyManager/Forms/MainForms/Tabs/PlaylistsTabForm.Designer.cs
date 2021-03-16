@@ -30,13 +30,13 @@ namespace SpotifyManager.Forms.MainForms.Tabs
         private void InitializeComponent()
         {
             this.dgvPlaylist = new System.Windows.Forms.DataGridView();
-            this.pnlPlaylist = new System.Windows.Forms.Panel();
             this.colPlaylistDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPlaylistCollab = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.colPlaylistName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPlaylistNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmbPlaylistSelect = new System.Windows.Forms.ComboBox();
+            this.pnlPlaylist = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.cmbPlaylistSelect = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlaylist)).BeginInit();
             this.pnlPlaylist.SuspendLayout();
             this.SuspendLayout();
@@ -58,17 +58,6 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             this.dgvPlaylist.ReadOnly = true;
             this.dgvPlaylist.Size = new System.Drawing.Size(716, 378);
             this.dgvPlaylist.TabIndex = 0;
-            // 
-            // pnlPlaylist
-            // 
-            this.pnlPlaylist.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pnlPlaylist.Controls.Add(this.label1);
-            this.pnlPlaylist.Controls.Add(this.cmbPlaylistSelect);
-            this.pnlPlaylist.Location = new System.Drawing.Point(12, 13);
-            this.pnlPlaylist.Name = "pnlPlaylist";
-            this.pnlPlaylist.Size = new System.Drawing.Size(705, 53);
-            this.pnlPlaylist.TabIndex = 1;
-            this.pnlPlaylist.Tag = "shade";
             // 
             // colPlaylistDate
             // 
@@ -96,6 +85,27 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             this.colPlaylistNum.Name = "colPlaylistNum";
             this.colPlaylistNum.ReadOnly = true;
             // 
+            // pnlPlaylist
+            // 
+            this.pnlPlaylist.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlPlaylist.Controls.Add(this.label1);
+            this.pnlPlaylist.Controls.Add(this.cmbPlaylistSelect);
+            this.pnlPlaylist.Location = new System.Drawing.Point(12, 13);
+            this.pnlPlaylist.Name = "pnlPlaylist";
+            this.pnlPlaylist.Size = new System.Drawing.Size(705, 53);
+            this.pnlPlaylist.TabIndex = 1;
+            this.pnlPlaylist.Tag = "shade";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(4, 3);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(51, 17);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Select:";
+            // 
             // cmbPlaylistSelect
             // 
             this.cmbPlaylistSelect.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
@@ -107,16 +117,6 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             this.cmbPlaylistSelect.Size = new System.Drawing.Size(219, 23);
             this.cmbPlaylistSelect.TabIndex = 0;
             this.cmbPlaylistSelect.SelectedIndexChanged += new System.EventHandler(this.cmbPlaylistSelect_SelectedIndexChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(4, 3);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 17);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Select:";
             // 
             // PlaylistsTabForm
             // 

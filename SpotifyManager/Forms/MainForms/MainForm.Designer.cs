@@ -42,6 +42,7 @@ namespace SpotifyManager
             this.tabProfile = new System.Windows.Forms.TabPage();
             this.tabPlaylists = new System.Windows.Forms.TabPage();
             this.tabStats = new System.Windows.Forms.TabPage();
+            this.resetAccessTokenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripMain.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.SuspendLayout();
@@ -100,7 +101,8 @@ namespace SpotifyManager
             // 
             this.debugToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.boopToolStripMenuItem,
-            this.copyAcessTokenToolStripMenuItem});
+            this.copyAcessTokenToolStripMenuItem,
+            this.resetAccessTokenToolStripMenuItem});
             this.debugToolStripMenuItem.Name = "debugToolStripMenuItem";
             this.debugToolStripMenuItem.Size = new System.Drawing.Size(59, 21);
             this.debugToolStripMenuItem.Text = "Debug";
@@ -108,13 +110,13 @@ namespace SpotifyManager
             // boopToolStripMenuItem
             // 
             this.boopToolStripMenuItem.Name = "boopToolStripMenuItem";
-            this.boopToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.boopToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.boopToolStripMenuItem.Text = "Beep Boop";
             // 
             // copyAcessTokenToolStripMenuItem
             // 
             this.copyAcessTokenToolStripMenuItem.Name = "copyAcessTokenToolStripMenuItem";
-            this.copyAcessTokenToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.copyAcessTokenToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.copyAcessTokenToolStripMenuItem.Text = "Copy acess token";
             this.copyAcessTokenToolStripMenuItem.Click += new System.EventHandler(this.copyAcessTokenToolStripMenuItem_Click);
             // 
@@ -159,6 +161,13 @@ namespace SpotifyManager
             this.tabStats.Text = "Stats";
             this.tabStats.UseVisualStyleBackColor = true;
             // 
+            // resetAccessTokenToolStripMenuItem
+            // 
+            this.resetAccessTokenToolStripMenuItem.Name = "resetAccessTokenToolStripMenuItem";
+            this.resetAccessTokenToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.resetAccessTokenToolStripMenuItem.Text = "Reset access token";
+            this.resetAccessTokenToolStripMenuItem.Click += new System.EventHandler(this.resetAccessTokenToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -191,6 +200,7 @@ namespace SpotifyManager
         private System.Windows.Forms.TabPage tabPlaylists;
         private System.Windows.Forms.TabPage tabStats;
         private System.Windows.Forms.ToolStripMenuItem copyAcessTokenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem resetAccessTokenToolStripMenuItem;
     }
 }
 

@@ -54,6 +54,7 @@
     <Compile Include="Classes\Models\AccessToken.cs" />
     <Compile Include="Classes\Models\RootObjects\Playlist.cs" />
     <Compile Include="Classes\Models\RootObjects\PlaylistList.cs" />
+    <Compile Include="Classes\Models\RootObjects\PlaylistTracks.cs" />
     <Compile Include="Classes\Models\RootObjects\Profile.cs" />
     <Compile Include="Classes\Models\SubObjects\AddedBy.cs" />
     <Compile Include="Classes\Models\SubObjects\Album.cs" />

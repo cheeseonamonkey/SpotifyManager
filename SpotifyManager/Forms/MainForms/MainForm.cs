@@ -189,6 +189,11 @@ namespace SpotifyManager
         {
             Clipboard.SetText(Globals.AccessToken.access_token);
         }
+
+        private void resetAccessTokenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Globals.AccessToken.ResetAccessToken();
+        }
     }
 
 

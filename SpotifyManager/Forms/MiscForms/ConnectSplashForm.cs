@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,8 +37,6 @@ namespace SpotifyManager.Forms
             //to reprdouce, log out and back in
             //console output shows access token not present
 
-
-            //String rootDirectory = Path.Substring(0, LastIndexOf("/"));
             string url = authBrowser.Url.AbsoluteUri.ToString() ;
             
             string rootUrl = url.Substring(0, url.LastIndexOf('/')+1);
@@ -69,6 +68,43 @@ namespace SpotifyManager.Forms
         {
             if(authBrowser.Document != null)
                 authBrowser.Document.Cookie.Remove(0, authBrowser.Document.Cookie.Length);
+
+            string[] theCookies = System.IO.Directory.GetFiles(Environment.GetFolderPath(Environment.SpecialFolder.Cookies));
+            foreach (string currentFile in theCookies)
+            {
+                try
+                {
+                    System.IO.File.Delete(currentFile);
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+
+            ClearFolder(new DirectoryInfo(Environment.GetFolderPath
+      (Environment.SpecialFolder.InternetCache)));
+
+            void ClearFolder(DirectoryInfo folder)
+            {
+
+                foreach (FileInfo file in folder.GetFiles())
+                {
+                    try
+                    {
+                        file.Delete();
+                    }
+                    catch (Exception ex) // files used by another process exception
+                    {
+
+                    }
+                }
+                foreach (DirectoryInfo subfolder in folder.GetDirectories())
+                {
+                    ClearFolder(subfolder);
+                }
+
+            }
+
         }
     }
 }

@@ -23,7 +23,6 @@ namespace SpotifyManager.Forms.MainForms.Tabs
         {
             PlaylistList myPlayListList = Globals.DataStore.MyPlaylistList;
 
-
         } 
 
         private void PlaylistsTabForm_Load(object sender, EventArgs e)
@@ -38,8 +37,45 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             }
         }
 
-        public async void LoadPlaylist()
+        public void LoadPlaylist()
         {
+            //playlist:
+
+            Playlist playlist = Globals.DataStore.SelectedPlaylist;
+
+            lblPlaylistName.Text = playlist.name;
+            //lblCreatedOn.Text = $"Created on: ";
+            lblPlaylistFollowers.Text = $"{playlist.followers.total.ToString()} followers";
+
+            lblAuthor.Text = $"By: {playlist.owner.display_name.ToString()}";
+
+            if (playlist.collaborative)
+                ckbCollab.Checked = true;
+            else
+                ckbCollab.Checked = false;
+
+            if (playlist.@public)
+                ckbPublic.Checked = true;
+            else
+                ckbPublic.Checked = false;
+
+
+            //playlist tracks:
+
+            PlaylistTracks playlistTracks = Globals.DataStore.SelectedPlaylistTracks;
+
+            foreach(Item item in playlistTracks.items)
+            {
+
+                dgvPlaylist.Rows.Add(item.track.name, "asdf", item.track.id);
+            }
+
+            
+
+            
+            
+
+
 
         }
 
@@ -47,15 +83,20 @@ namespace SpotifyManager.Forms.MainForms.Tabs
         {
             int index = cmbPlaylistSelect.SelectedIndex;
 
-            //you are here!
-            //selecting playlist to fill out datagrid
-            //
-
             string playlistid = Globals.DataStore.MyPlaylistList.items[index].id;
 
             await Globals.DataStore.GetPlaylist($"{playlistid}");
 
             LoadPlaylist();
+        }
+
+        private void dgvPlaylist_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //go to song button
+            if(dgvPlaylist.CurrentCell.ColumnIndex == 1)
+            {
+                MessageBox.Show("Boop");
+            }
         }
     }
 }

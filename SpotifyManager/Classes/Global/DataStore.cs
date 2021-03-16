@@ -14,6 +14,7 @@ namespace SpotifyManager.Classes.Global
         public Profile MyProfile { get; set; }
         public PlaylistList MyPlaylistList { get; set; }
         public Playlist SelectedPlaylist { get; set; }
+        public PlaylistTracks SelectedPlaylistTracks { get; set; }
 
         public async Task<bool> RefreshDataStore()
         {
@@ -49,10 +50,34 @@ namespace SpotifyManager.Classes.Global
 
         public async Task GetPlaylist(string playlistId)
         {
+            //sets selected playlist
             string playlistJson = await Globals.Requester.MakeRequestAsync($"https://api.spotify.com/v1/playlists/{playlistId}?limit=999");
             Playlist playlist = JsonConvert.DeserializeObject<Playlist>(playlistJson);
-            
+
             SelectedPlaylist = playlist;
+
+
+            //gets playlist items
+            string playlistTracksJson = await Globals.Requester.MakeRequestAsync($"https://api.spotify.com/v1/playlists/{playlistId}/tracks?limit=99");
+            PlaylistTracks playlistTracks = JsonConvert.DeserializeObject<PlaylistTracks>(playlistTracksJson);
+
+            if (playlistTracks.total > 99)
+            {
+                int numLoops = (int)Math.Ceiling(Convert.ToDouble(playlistTracks.total) / 99.0);
+
+                for (int i = 1; i < numLoops; i++)
+                {
+                    playlistTracksJson = await Globals.Requester.MakeRequestAsync($"https://api.spotify.com/v1/playlists/{playlistId}/tracks?limit=99&offset={99*i}");
+                    PlaylistList playlistTracksOffset = JsonConvert.DeserializeObject<PlaylistList>(playlistTracksJson);
+
+
+                    playlistTracks.items.AddRange(playlistTracksOffset.items.ToArray());
+                }
+            }
+
+            SelectedPlaylistTracks = playlistTracks;
+
+            
 
         }
     }

@@ -34,11 +34,14 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             this.lblNumFollowers = new System.Windows.Forms.Label();
             this.picProfile = new System.Windows.Forms.PictureBox();
             this.lblDisplayName = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvRecentlyPlayed = new System.Windows.Forms.DataGridView();
             this.lblRecentlyPLayed = new System.Windows.Forms.Label();
+            this.colTrack = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colArtist = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colGoToTrack = new System.Windows.Forms.DataGridViewLinkColumn();
             this.pnlProfile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picProfile)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRecentlyPlayed)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlProfile
@@ -95,13 +98,22 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             this.lblDisplayName.TabIndex = 0;
             this.lblDisplayName.Text = "displayname";
             // 
-            // dataGridView1
+            // dgvRecentlyPlayed
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(28, 208);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(199, 109);
-            this.dataGridView1.TabIndex = 5;
+            this.dgvRecentlyPlayed.AllowUserToAddRows = false;
+            this.dgvRecentlyPlayed.AllowUserToDeleteRows = false;
+            this.dgvRecentlyPlayed.AllowUserToResizeRows = false;
+            this.dgvRecentlyPlayed.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvRecentlyPlayed.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRecentlyPlayed.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colTrack,
+            this.colArtist,
+            this.colGoToTrack});
+            this.dgvRecentlyPlayed.Location = new System.Drawing.Point(28, 208);
+            this.dgvRecentlyPlayed.Name = "dgvRecentlyPlayed";
+            this.dgvRecentlyPlayed.ReadOnly = true;
+            this.dgvRecentlyPlayed.Size = new System.Drawing.Size(376, 109);
+            this.dgvRecentlyPlayed.TabIndex = 5;
             // 
             // lblRecentlyPLayed
             // 
@@ -113,13 +125,33 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             this.lblRecentlyPLayed.TabIndex = 6;
             this.lblRecentlyPLayed.Text = "Recently played";
             // 
+            // colTrack
+            // 
+            this.colTrack.HeaderText = "Track";
+            this.colTrack.Name = "colTrack";
+            this.colTrack.ReadOnly = true;
+            // 
+            // colArtist
+            // 
+            this.colArtist.HeaderText = "Artist";
+            this.colArtist.Name = "colArtist";
+            this.colArtist.ReadOnly = true;
+            // 
+            // colGoToTrack
+            // 
+            this.colGoToTrack.HeaderText = "Go to track";
+            this.colGoToTrack.Name = "colGoToTrack";
+            this.colGoToTrack.ReadOnly = true;
+            this.colGoToTrack.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colGoToTrack.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
             // ProfileTabForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(740, 475);
             this.Controls.Add(this.lblRecentlyPLayed);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvRecentlyPlayed);
             this.Controls.Add(this.pnlProfile);
             this.Name = "ProfileTabForm";
             this.Text = "ProfileTabForm";
@@ -127,7 +159,7 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             this.pnlProfile.ResumeLayout(false);
             this.pnlProfile.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picProfile)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRecentlyPlayed)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -140,7 +172,10 @@ namespace SpotifyManager.Forms.MainForms.Tabs
         private System.Windows.Forms.PictureBox picProfile;
         private System.Windows.Forms.Label lblNumFollowers;
         private System.Windows.Forms.Label lblNumPlaylists;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvRecentlyPlayed;
         private System.Windows.Forms.Label lblRecentlyPLayed;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTrack;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colArtist;
+        private System.Windows.Forms.DataGridViewLinkColumn colGoToTrack;
     }
 }

@@ -1,5 +1,7 @@
 ﻿using Newtonsoft.Json;
 using SpotifyManager.Classes.Models.RootObjects;
+using SpotifyManager.Classes.Models.Objects;
+using SpotifyManager.Classes.Models.SubObjects;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,6 +31,11 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             PlaylistList myPlaylists = Globals.DataStore.MyPlaylistList;
             lblNumFollowers.Text = $"{myProfile.followers.total.ToString(), 3} followers";
             lblNumPlaylists.Text = $"{myPlaylists.total, 3} playlists";
+
+            foreach(Item item in Globals.DataStore.MyRecentlyPlayed.items)
+            {
+                dgvRecentlyPlayed.Rows.Add($"{item.track.name}", $"{item.track.artists.FirstOrDefault().name}", "Go to track");
+            }
 
         }
 

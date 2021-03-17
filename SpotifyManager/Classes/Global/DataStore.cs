@@ -15,6 +15,7 @@ namespace SpotifyManager.Classes.Global
         public PlaylistList MyPlaylistList { get; set; }
         public Playlist SelectedPlaylist { get; set; }
         public PlaylistTracks SelectedPlaylistTracks { get; set; }
+        public RecentlyPlayed MyRecentlyPlayed { get; set; }
 
         public async Task<bool> RefreshDataStore()
         {
@@ -45,9 +46,10 @@ namespace SpotifyManager.Classes.Global
                 }
             }
 
-            //ProfileRecentlyPlayed:
-            
 
+            //ProfileRecentlyPlayed:
+            string myRecentlyPlayedJson = await Globals.Requester.MakeRequestAsync($"https://api.spotify.com/v1/me/player/recently-played?limit=10");
+            MyRecentlyPlayed = JsonConvert.DeserializeObject<RecentlyPlayed>(myRecentlyPlayedJson);
 
 
             //returns success

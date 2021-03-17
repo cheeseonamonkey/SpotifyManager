@@ -67,15 +67,10 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             foreach(Item item in playlistTracks.items)
             {
 
-                dgvPlaylist.Rows.Add(item.track.name, "asdf", item.track.id);
+                dgvPlaylist.Rows.Add(item.track.name, item.added_at , item.added_by,  item.track.id);
             }
 
             
-
-            
-            
-
-
 
         }
 
@@ -93,7 +88,7 @@ namespace SpotifyManager.Forms.MainForms.Tabs
         private void dgvPlaylist_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             //go to song button
-            if(dgvPlaylist.CurrentCell.ColumnIndex == 1)
+            if(dgvPlaylist.CurrentCell.ColumnIndex == 2)
             {
                 MessageBox.Show("Boop");
             }

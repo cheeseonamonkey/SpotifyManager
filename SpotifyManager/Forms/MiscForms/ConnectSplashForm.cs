@@ -25,7 +25,7 @@ namespace SpotifyManager.Forms
         {
             lblSplash.Text = "All credentials are handled only by Spotify's servers and are never visible to this application. Spotify will let you specify which information is released on the next page. All code is open source and available for review.";
 
-            string authorizationUrl = $"https://accounts.spotify.com/authorize?client_id={Globals.spotifyClient}&redirect_uri=http://localhost/&response_type=code";
+            string authorizationUrl = $"https://accounts.spotify.com/authorize?client_id={Globals.spotifyClient}&redirect_uri=http://localhost/&response_type=code&scope=user-read-recently-played";
 
             authBrowser.Navigate(authorizationUrl);
 

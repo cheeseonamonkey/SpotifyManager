@@ -35,6 +35,10 @@ namespace SpotifyManager.Classes.Models.SubObjects
         public Track track { get; set; }
         public VideoThumbnail video_thumbnail { get; set; }
 
+        //recently played items
+        public DateTime played_at { get; set; }
+        public Context context { get; set; }
+
 
     }
 }

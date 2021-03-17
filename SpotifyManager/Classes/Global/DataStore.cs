@@ -21,11 +21,12 @@ namespace SpotifyManager.Classes.Global
                 //todo: async webcalls
             // List<Task> webCalls = new List<Task>();
 
-            //MyProfile
+            //MyProfile:
             string myProfileJson = await Globals.Requester.MakeRequestAsync("https://api.spotify.com/v1/me");
             MyProfile = JsonConvert.DeserializeObject<Profile>(myProfileJson);
 
-            //MyPlaylists
+
+            //MyPlaylists:
             string myPlaylistsJson = await Globals.Requester.MakeRequestAsync("https://api.spotify.com/v1/me/playlists/?limit=49");
             MyPlaylistList = JsonConvert.DeserializeObject<PlaylistList>(myPlaylistsJson);
 
@@ -43,6 +44,11 @@ namespace SpotifyManager.Classes.Global
                     MyPlaylistList.items.AddRange(playlistOffset.items.ToArray());
                 }
             }
+
+            //ProfileRecentlyPlayed:
+            
+
+
 
             //returns success
             return true;

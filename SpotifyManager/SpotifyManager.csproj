@@ -56,9 +56,12 @@
     <Compile Include="Classes\Models\RootObjects\PlaylistList.cs" />
     <Compile Include="Classes\Models\RootObjects\PlaylistTracks.cs" />
     <Compile Include="Classes\Models\RootObjects\Profile.cs" />
+    <Compile Include="Classes\Models\RootObjects\RecentlyPlayed.cs" />
     <Compile Include="Classes\Models\SubObjects\AddedBy.cs" />
     <Compile Include="Classes\Models\SubObjects\Album.cs" />
     <Compile Include="Classes\Models\SubObjects\Artist.cs" />
+    <Compile Include="Classes\Models\SubObjects\Context.cs" />
+    <Compile Include="Classes\Models\SubObjects\Cursors.cs" />
     <Compile Include="Classes\Models\SubObjects\ExternalIds.cs" />
     <Compile Include="Classes\Models\SubObjects\ExternalUrls.cs" />
     <Compile Include="Classes\Models\SubObjects\Followers.cs" />

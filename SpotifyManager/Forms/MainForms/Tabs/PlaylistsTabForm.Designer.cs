@@ -31,15 +31,17 @@ namespace SpotifyManager.Forms.MainForms.Tabs
         {
             this.dgvPlaylist = new System.Windows.Forms.DataGridView();
             this.pnlPlaylist = new System.Windows.Forms.Panel();
+            this.lblAuthor = new System.Windows.Forms.Label();
+            this.lblPlaylistFollowers = new System.Windows.Forms.Label();
+            this.ckbPublic = new System.Windows.Forms.CheckBox();
+            this.ckbCollab = new System.Windows.Forms.CheckBox();
+            this.lblCreatedOn = new System.Windows.Forms.Label();
+            this.lblPlaylistName = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbPlaylistSelect = new System.Windows.Forms.ComboBox();
-            this.lblPlaylistName = new System.Windows.Forms.Label();
-            this.lblCreatedOn = new System.Windows.Forms.Label();
-            this.ckbCollab = new System.Windows.Forms.CheckBox();
-            this.ckbPublic = new System.Windows.Forms.CheckBox();
-            this.lblPlaylistFollowers = new System.Windows.Forms.Label();
-            this.lblAuthor = new System.Windows.Forms.Label();
             this.colSong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colAddedOn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colAddedBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colBtnGoToSong = new System.Windows.Forms.DataGridViewButtonColumn();
             this.colTrackId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlaylist)).BeginInit();
@@ -55,6 +57,8 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             this.dgvPlaylist.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPlaylist.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colSong,
+            this.colAddedOn,
+            this.colAddedBy,
             this.colBtnGoToSong,
             this.colTrackId});
             this.dgvPlaylist.Location = new System.Drawing.Point(12, 85);
@@ -81,6 +85,70 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             this.pnlPlaylist.TabIndex = 1;
             this.pnlPlaylist.Tag = "shade";
             // 
+            // lblAuthor
+            // 
+            this.lblAuthor.AutoSize = true;
+            this.lblAuthor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAuthor.Location = new System.Drawing.Point(240, 26);
+            this.lblAuthor.Name = "lblAuthor";
+            this.lblAuthor.Size = new System.Drawing.Size(25, 13);
+            this.lblAuthor.TabIndex = 7;
+            this.lblAuthor.Text = "By: ";
+            // 
+            // lblPlaylistFollowers
+            // 
+            this.lblPlaylistFollowers.AutoSize = true;
+            this.lblPlaylistFollowers.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPlaylistFollowers.Location = new System.Drawing.Point(419, 22);
+            this.lblPlaylistFollowers.Name = "lblPlaylistFollowers";
+            this.lblPlaylistFollowers.Size = new System.Drawing.Size(66, 15);
+            this.lblPlaylistFollowers.TabIndex = 6;
+            this.lblPlaylistFollowers.Text = "0 followers";
+            // 
+            // ckbPublic
+            // 
+            this.ckbPublic.AutoSize = true;
+            this.ckbPublic.Enabled = false;
+            this.ckbPublic.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ckbPublic.Location = new System.Drawing.Point(498, 3);
+            this.ckbPublic.Name = "ckbPublic";
+            this.ckbPublic.Size = new System.Drawing.Size(60, 19);
+            this.ckbPublic.TabIndex = 5;
+            this.ckbPublic.Text = "Public";
+            this.ckbPublic.UseVisualStyleBackColor = true;
+            // 
+            // ckbCollab
+            // 
+            this.ckbCollab.AutoSize = true;
+            this.ckbCollab.Enabled = false;
+            this.ckbCollab.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ckbCollab.Location = new System.Drawing.Point(498, 24);
+            this.ckbCollab.Name = "ckbCollab";
+            this.ckbCollab.Size = new System.Drawing.Size(97, 19);
+            this.ckbCollab.TabIndex = 4;
+            this.ckbCollab.Text = "Collaborative";
+            this.ckbCollab.UseVisualStyleBackColor = true;
+            // 
+            // lblCreatedOn
+            // 
+            this.lblCreatedOn.AutoSize = true;
+            this.lblCreatedOn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCreatedOn.Location = new System.Drawing.Point(419, 5);
+            this.lblCreatedOn.Name = "lblCreatedOn";
+            this.lblCreatedOn.Size = new System.Drawing.Size(73, 15);
+            this.lblCreatedOn.TabIndex = 3;
+            this.lblCreatedOn.Text = "Created on: ";
+            // 
+            // lblPlaylistName
+            // 
+            this.lblPlaylistName.AutoSize = true;
+            this.lblPlaylistName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPlaylistName.Location = new System.Drawing.Point(268, 3);
+            this.lblPlaylistName.Name = "lblPlaylistName";
+            this.lblPlaylistName.Size = new System.Drawing.Size(100, 17);
+            this.lblPlaylistName.TabIndex = 2;
+            this.lblPlaylistName.Text = "playlistName";
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -103,75 +171,23 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             this.cmbPlaylistSelect.TabIndex = 0;
             this.cmbPlaylistSelect.SelectedIndexChanged += new System.EventHandler(this.cmbPlaylistSelect_SelectedIndexChanged);
             // 
-            // lblPlaylistName
-            // 
-            this.lblPlaylistName.AutoSize = true;
-            this.lblPlaylistName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPlaylistName.Location = new System.Drawing.Point(268, 3);
-            this.lblPlaylistName.Name = "lblPlaylistName";
-            this.lblPlaylistName.Size = new System.Drawing.Size(100, 17);
-            this.lblPlaylistName.TabIndex = 2;
-            this.lblPlaylistName.Text = "playlistName";
-            // 
-            // lblCreatedOn
-            // 
-            this.lblCreatedOn.AutoSize = true;
-            this.lblCreatedOn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCreatedOn.Location = new System.Drawing.Point(419, 5);
-            this.lblCreatedOn.Name = "lblCreatedOn";
-            this.lblCreatedOn.Size = new System.Drawing.Size(73, 15);
-            this.lblCreatedOn.TabIndex = 3;
-            this.lblCreatedOn.Text = "Created on: ";
-            // 
-            // ckbCollab
-            // 
-            this.ckbCollab.AutoSize = true;
-            this.ckbCollab.Enabled = false;
-            this.ckbCollab.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ckbCollab.Location = new System.Drawing.Point(498, 24);
-            this.ckbCollab.Name = "ckbCollab";
-            this.ckbCollab.Size = new System.Drawing.Size(97, 19);
-            this.ckbCollab.TabIndex = 4;
-            this.ckbCollab.Text = "Collaborative";
-            this.ckbCollab.UseVisualStyleBackColor = true;
-            // 
-            // ckbPublic
-            // 
-            this.ckbPublic.AutoSize = true;
-            this.ckbPublic.Enabled = false;
-            this.ckbPublic.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ckbPublic.Location = new System.Drawing.Point(498, 3);
-            this.ckbPublic.Name = "ckbPublic";
-            this.ckbPublic.Size = new System.Drawing.Size(60, 19);
-            this.ckbPublic.TabIndex = 5;
-            this.ckbPublic.Text = "Public";
-            this.ckbPublic.UseVisualStyleBackColor = true;
-            // 
-            // lblPlaylistFollowers
-            // 
-            this.lblPlaylistFollowers.AutoSize = true;
-            this.lblPlaylistFollowers.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPlaylistFollowers.Location = new System.Drawing.Point(419, 22);
-            this.lblPlaylistFollowers.Name = "lblPlaylistFollowers";
-            this.lblPlaylistFollowers.Size = new System.Drawing.Size(66, 15);
-            this.lblPlaylistFollowers.TabIndex = 6;
-            this.lblPlaylistFollowers.Text = "0 followers";
-            // 
-            // lblAuthor
-            // 
-            this.lblAuthor.AutoSize = true;
-            this.lblAuthor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAuthor.Location = new System.Drawing.Point(240, 26);
-            this.lblAuthor.Name = "lblAuthor";
-            this.lblAuthor.Size = new System.Drawing.Size(25, 13);
-            this.lblAuthor.TabIndex = 7;
-            this.lblAuthor.Text = "By: ";
-            // 
             // colSong
             // 
             this.colSong.HeaderText = "Song name";
             this.colSong.Name = "colSong";
             this.colSong.ReadOnly = true;
+            // 
+            // colAddedOn
+            // 
+            this.colAddedOn.HeaderText = "Added on";
+            this.colAddedOn.Name = "colAddedOn";
+            this.colAddedOn.ReadOnly = true;
+            // 
+            // colAddedBy
+            // 
+            this.colAddedBy.HeaderText = "Added by";
+            this.colAddedBy.Name = "colAddedBy";
+            this.colAddedBy.ReadOnly = true;
             // 
             // colBtnGoToSong
             // 
@@ -216,6 +232,8 @@ namespace SpotifyManager.Forms.MainForms.Tabs
         private System.Windows.Forms.Label lblPlaylistFollowers;
         private System.Windows.Forms.Label lblAuthor;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSong;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colAddedOn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colAddedBy;
         private System.Windows.Forms.DataGridViewButtonColumn colBtnGoToSong;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTrackId;
     }

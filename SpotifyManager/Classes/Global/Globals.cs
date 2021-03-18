@@ -28,6 +28,8 @@ namespace SpotifyManager
             Properties.Settings.Default.AccessToken = JsonConvert.SerializeObject(AccessToken);
 
             Properties.Settings.Default.Save();
+
+            
         }
 
         public static void LoadAppData()

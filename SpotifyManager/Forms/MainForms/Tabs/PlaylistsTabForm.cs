@@ -66,7 +66,6 @@ namespace SpotifyManager.Forms.MainForms.Tabs
 
             foreach(Item item in playlistTracks.items)
             {
-
                 dgvPlaylist.Rows.Add(item.track.name, item.added_at , item.added_by,  item.track.id);
             }
 

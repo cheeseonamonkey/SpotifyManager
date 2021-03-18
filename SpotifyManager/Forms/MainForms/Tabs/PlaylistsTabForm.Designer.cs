@@ -44,6 +44,10 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             this.lblPlaylistName = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbPlaylistSelect = new System.Windows.Forms.ComboBox();
+            this.lnkExportPlaylist = new System.Windows.Forms.LinkLabel();
+            this.lnkGenerateSimilar = new System.Windows.Forms.LinkLabel();
+            this.lnkGenerateObscure = new System.Windows.Forms.LinkLabel();
+            this.lnkGenerateArtists = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlaylist)).BeginInit();
             this.pnlPlaylist.SuspendLayout();
             this.SuspendLayout();
@@ -102,6 +106,10 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             // pnlPlaylist
             // 
             this.pnlPlaylist.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlPlaylist.Controls.Add(this.lnkGenerateArtists);
+            this.pnlPlaylist.Controls.Add(this.lnkGenerateObscure);
+            this.pnlPlaylist.Controls.Add(this.lnkGenerateSimilar);
+            this.pnlPlaylist.Controls.Add(this.lnkExportPlaylist);
             this.pnlPlaylist.Controls.Add(this.lblAuthor);
             this.pnlPlaylist.Controls.Add(this.lblPlaylistFollowers);
             this.pnlPlaylist.Controls.Add(this.ckbPublic);
@@ -202,6 +210,46 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             this.cmbPlaylistSelect.TabIndex = 0;
             this.cmbPlaylistSelect.SelectedIndexChanged += new System.EventHandler(this.cmbPlaylistSelect_SelectedIndexChanged);
             // 
+            // lnkExportPlaylist
+            // 
+            this.lnkExportPlaylist.AutoSize = true;
+            this.lnkExportPlaylist.Location = new System.Drawing.Point(3, 61);
+            this.lnkExportPlaylist.Name = "lnkExportPlaylist";
+            this.lnkExportPlaylist.Size = new System.Drawing.Size(71, 13);
+            this.lnkExportPlaylist.TabIndex = 8;
+            this.lnkExportPlaylist.TabStop = true;
+            this.lnkExportPlaylist.Text = "Export playlist";
+            // 
+            // lnkGenerateSimilar
+            // 
+            this.lnkGenerateSimilar.AutoSize = true;
+            this.lnkGenerateSimilar.Location = new System.Drawing.Point(80, 61);
+            this.lnkGenerateSimilar.Name = "lnkGenerateSimilar";
+            this.lnkGenerateSimilar.Size = new System.Drawing.Size(82, 13);
+            this.lnkGenerateSimilar.TabIndex = 9;
+            this.lnkGenerateSimilar.TabStop = true;
+            this.lnkGenerateSimilar.Text = "Generate similar";
+            // 
+            // lnkGenerateObscure
+            // 
+            this.lnkGenerateObscure.AutoSize = true;
+            this.lnkGenerateObscure.Location = new System.Drawing.Point(168, 61);
+            this.lnkGenerateObscure.Name = "lnkGenerateObscure";
+            this.lnkGenerateObscure.Size = new System.Drawing.Size(92, 13);
+            this.lnkGenerateObscure.TabIndex = 10;
+            this.lnkGenerateObscure.TabStop = true;
+            this.lnkGenerateObscure.Text = "Generate obscure";
+            // 
+            // lnkGenerateArtists
+            // 
+            this.lnkGenerateArtists.AutoSize = true;
+            this.lnkGenerateArtists.Location = new System.Drawing.Point(266, 61);
+            this.lnkGenerateArtists.Name = "lnkGenerateArtists";
+            this.lnkGenerateArtists.Size = new System.Drawing.Size(120, 13);
+            this.lnkGenerateArtists.TabIndex = 11;
+            this.lnkGenerateArtists.TabStop = true;
+            this.lnkGenerateArtists.Text = "Generate w/ artist swap";
+            // 
             // PlaylistsTabForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -236,5 +284,9 @@ namespace SpotifyManager.Forms.MainForms.Tabs
         private System.Windows.Forms.DataGridViewTextBoxColumn colAddedBy;
         private System.Windows.Forms.DataGridViewButtonColumn colBtnGoToSong;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTrackId;
+        private System.Windows.Forms.LinkLabel lnkGenerateObscure;
+        private System.Windows.Forms.LinkLabel lnkGenerateSimilar;
+        private System.Windows.Forms.LinkLabel lnkExportPlaylist;
+        private System.Windows.Forms.LinkLabel lnkGenerateArtists;
     }
 }

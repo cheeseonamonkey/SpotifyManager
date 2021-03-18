@@ -51,14 +51,20 @@ namespace SpotifyManager.Forms.MainForms.Tabs
         {
             if(e.KeyChar == (char)(Keys.Enter))
             {
+                //todo: profile search
+
+                /*
                 ProfileSearchForm profileSearchForm = new ProfileSearchForm("asdfasdfasdf");
                 profileSearchForm.ShowDialog();
+                */
+
+                // ^ query fed through the constructor
             }
         }
 
         private void lblGoToPlaylists_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            //go to my playlists
+            //todo: go to playlists
         }
     }
 }

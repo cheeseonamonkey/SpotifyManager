@@ -30,6 +30,11 @@ namespace SpotifyManager.Forms.MainForms.Tabs
         private void InitializeComponent()
         {
             this.dgvPlaylist = new System.Windows.Forms.DataGridView();
+            this.colSong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colAddedOn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colAddedBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colBtnGoToSong = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.colTrackId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlPlaylist = new System.Windows.Forms.Panel();
             this.lblAuthor = new System.Windows.Forms.Label();
             this.lblPlaylistFollowers = new System.Windows.Forms.Label();
@@ -39,11 +44,6 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             this.lblPlaylistName = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbPlaylistSelect = new System.Windows.Forms.ComboBox();
-            this.colSong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colAddedOn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colAddedBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colBtnGoToSong = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.colTrackId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlaylist)).BeginInit();
             this.pnlPlaylist.SuspendLayout();
             this.SuspendLayout();
@@ -61,12 +61,43 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             this.colAddedBy,
             this.colBtnGoToSong,
             this.colTrackId});
-            this.dgvPlaylist.Location = new System.Drawing.Point(12, 85);
+            this.dgvPlaylist.Location = new System.Drawing.Point(12, 106);
             this.dgvPlaylist.Name = "dgvPlaylist";
             this.dgvPlaylist.ReadOnly = true;
-            this.dgvPlaylist.Size = new System.Drawing.Size(705, 378);
+            this.dgvPlaylist.Size = new System.Drawing.Size(705, 357);
             this.dgvPlaylist.TabIndex = 0;
             this.dgvPlaylist.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlaylist_CellContentClick);
+            // 
+            // colSong
+            // 
+            this.colSong.HeaderText = "Song name";
+            this.colSong.Name = "colSong";
+            this.colSong.ReadOnly = true;
+            // 
+            // colAddedOn
+            // 
+            this.colAddedOn.HeaderText = "Added on";
+            this.colAddedOn.Name = "colAddedOn";
+            this.colAddedOn.ReadOnly = true;
+            // 
+            // colAddedBy
+            // 
+            this.colAddedBy.HeaderText = "Added by";
+            this.colAddedBy.Name = "colAddedBy";
+            this.colAddedBy.ReadOnly = true;
+            // 
+            // colBtnGoToSong
+            // 
+            this.colBtnGoToSong.HeaderText = "Go to song";
+            this.colBtnGoToSong.Name = "colBtnGoToSong";
+            this.colBtnGoToSong.ReadOnly = true;
+            // 
+            // colTrackId
+            // 
+            this.colTrackId.HeaderText = "trackId";
+            this.colTrackId.Name = "colTrackId";
+            this.colTrackId.ReadOnly = true;
+            this.colTrackId.Visible = false;
             // 
             // pnlPlaylist
             // 
@@ -81,7 +112,7 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             this.pnlPlaylist.Controls.Add(this.cmbPlaylistSelect);
             this.pnlPlaylist.Location = new System.Drawing.Point(12, 13);
             this.pnlPlaylist.Name = "pnlPlaylist";
-            this.pnlPlaylist.Size = new System.Drawing.Size(705, 53);
+            this.pnlPlaylist.Size = new System.Drawing.Size(705, 87);
             this.pnlPlaylist.TabIndex = 1;
             this.pnlPlaylist.Tag = "shade";
             // 
@@ -170,37 +201,6 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             this.cmbPlaylistSelect.Size = new System.Drawing.Size(219, 23);
             this.cmbPlaylistSelect.TabIndex = 0;
             this.cmbPlaylistSelect.SelectedIndexChanged += new System.EventHandler(this.cmbPlaylistSelect_SelectedIndexChanged);
-            // 
-            // colSong
-            // 
-            this.colSong.HeaderText = "Song name";
-            this.colSong.Name = "colSong";
-            this.colSong.ReadOnly = true;
-            // 
-            // colAddedOn
-            // 
-            this.colAddedOn.HeaderText = "Added on";
-            this.colAddedOn.Name = "colAddedOn";
-            this.colAddedOn.ReadOnly = true;
-            // 
-            // colAddedBy
-            // 
-            this.colAddedBy.HeaderText = "Added by";
-            this.colAddedBy.Name = "colAddedBy";
-            this.colAddedBy.ReadOnly = true;
-            // 
-            // colBtnGoToSong
-            // 
-            this.colBtnGoToSong.HeaderText = "Go to song";
-            this.colBtnGoToSong.Name = "colBtnGoToSong";
-            this.colBtnGoToSong.ReadOnly = true;
-            // 
-            // colTrackId
-            // 
-            this.colTrackId.HeaderText = "trackId";
-            this.colTrackId.Name = "colTrackId";
-            this.colTrackId.ReadOnly = true;
-            this.colTrackId.Visible = false;
             // 
             // PlaylistsTabForm
             // 

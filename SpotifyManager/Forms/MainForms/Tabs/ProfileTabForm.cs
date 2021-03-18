@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SpotifyManager.Forms.MiscForms;
 
 namespace SpotifyManager.Forms.MainForms.Tabs
 {
@@ -47,6 +48,15 @@ namespace SpotifyManager.Forms.MainForms.Tabs
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
             
+        }
+
+        private void txtSearchProfiles_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == (char)(Keys.Enter))
+            {
+                ProfileSearchForm profileSearchForm = new ProfileSearchForm("asdfasdfasdf");
+                profileSearchForm.ShowDialog();
+            }
         }
     }
 }

@@ -35,10 +35,12 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             this.picProfile = new System.Windows.Forms.PictureBox();
             this.lblDisplayName = new System.Windows.Forms.Label();
             this.dgvRecentlyPlayed = new System.Windows.Forms.DataGridView();
-            this.lblRecentlyPLayed = new System.Windows.Forms.Label();
             this.colTrack = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colArtist = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colGoToTrack = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.lblRecentlyPLayed = new System.Windows.Forms.Label();
+            this.txtSearchProfiles = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.pnlProfile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRecentlyPlayed)).BeginInit();
@@ -47,7 +49,9 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             // pnlProfile
             // 
             this.pnlProfile.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlProfile.Controls.Add(this.txtSearchProfiles);
             this.pnlProfile.Controls.Add(this.lblNumPlaylists);
+            this.pnlProfile.Controls.Add(this.label2);
             this.pnlProfile.Controls.Add(this.lblNumFollowers);
             this.pnlProfile.Controls.Add(this.picProfile);
             this.pnlProfile.Controls.Add(this.lblDisplayName);
@@ -115,16 +119,6 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             this.dgvRecentlyPlayed.Size = new System.Drawing.Size(376, 109);
             this.dgvRecentlyPlayed.TabIndex = 5;
             // 
-            // lblRecentlyPLayed
-            // 
-            this.lblRecentlyPLayed.AutoSize = true;
-            this.lblRecentlyPLayed.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRecentlyPLayed.Location = new System.Drawing.Point(25, 188);
-            this.lblRecentlyPLayed.Name = "lblRecentlyPLayed";
-            this.lblRecentlyPLayed.Size = new System.Drawing.Size(109, 17);
-            this.lblRecentlyPLayed.TabIndex = 6;
-            this.lblRecentlyPLayed.Text = "Recently played";
-            // 
             // colTrack
             // 
             this.colTrack.HeaderText = "Track";
@@ -144,6 +138,35 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             this.colGoToTrack.ReadOnly = true;
             this.colGoToTrack.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.colGoToTrack.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // lblRecentlyPLayed
+            // 
+            this.lblRecentlyPLayed.AutoSize = true;
+            this.lblRecentlyPLayed.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRecentlyPLayed.Location = new System.Drawing.Point(25, 188);
+            this.lblRecentlyPLayed.Name = "lblRecentlyPLayed";
+            this.lblRecentlyPLayed.Size = new System.Drawing.Size(109, 17);
+            this.lblRecentlyPLayed.TabIndex = 6;
+            this.lblRecentlyPLayed.Text = "Recently played";
+            // 
+            // txtSearchProfiles
+            // 
+            this.txtSearchProfiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearchProfiles.Location = new System.Drawing.Point(490, 25);
+            this.txtSearchProfiles.Name = "txtSearchProfiles";
+            this.txtSearchProfiles.Size = new System.Drawing.Size(219, 21);
+            this.txtSearchProfiles.TabIndex = 10;
+            this.txtSearchProfiles.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearchProfiles_KeyPress);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(491, 11);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(80, 13);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Search profiles:";
             // 
             // ProfileTabForm
             // 
@@ -177,5 +200,7 @@ namespace SpotifyManager.Forms.MainForms.Tabs
         private System.Windows.Forms.DataGridViewTextBoxColumn colTrack;
         private System.Windows.Forms.DataGridViewTextBoxColumn colArtist;
         private System.Windows.Forms.DataGridViewLinkColumn colGoToTrack;
+        private System.Windows.Forms.TextBox txtSearchProfiles;
+        private System.Windows.Forms.Label label2;
     }
 }

@@ -45,10 +45,7 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             Styling.SetFormScheme(this);
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-            
-        }
+        
 
         private void txtSearchProfiles_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -57,6 +54,11 @@ namespace SpotifyManager.Forms.MainForms.Tabs
                 ProfileSearchForm profileSearchForm = new ProfileSearchForm("asdfasdfasdf");
                 profileSearchForm.ShowDialog();
             }
+        }
+
+        private void lblGoToPlaylists_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            //go to my playlists
         }
     }
 }

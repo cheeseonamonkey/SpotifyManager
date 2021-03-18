@@ -30,7 +30,9 @@ namespace SpotifyManager.Forms.MainForms.Tabs
         private void InitializeComponent()
         {
             this.pnlProfile = new System.Windows.Forms.Panel();
+            this.txtSearchProfiles = new System.Windows.Forms.TextBox();
             this.lblNumPlaylists = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.lblNumFollowers = new System.Windows.Forms.Label();
             this.picProfile = new System.Windows.Forms.PictureBox();
             this.lblDisplayName = new System.Windows.Forms.Label();
@@ -39,8 +41,8 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             this.colArtist = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colGoToTrack = new System.Windows.Forms.DataGridViewLinkColumn();
             this.lblRecentlyPLayed = new System.Windows.Forms.Label();
-            this.txtSearchProfiles = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblGoToPlaylists = new System.Windows.Forms.LinkLabel();
+            this.lblGoToFollowers = new System.Windows.Forms.LinkLabel();
             this.pnlProfile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRecentlyPlayed)).BeginInit();
@@ -49,6 +51,8 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             // pnlProfile
             // 
             this.pnlProfile.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlProfile.Controls.Add(this.lblGoToFollowers);
+            this.pnlProfile.Controls.Add(this.lblGoToPlaylists);
             this.pnlProfile.Controls.Add(this.txtSearchProfiles);
             this.pnlProfile.Controls.Add(this.lblNumPlaylists);
             this.pnlProfile.Controls.Add(this.label2);
@@ -60,7 +64,15 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             this.pnlProfile.Size = new System.Drawing.Size(716, 162);
             this.pnlProfile.TabIndex = 0;
             this.pnlProfile.Tag = "shade";
-            this.pnlProfile.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // txtSearchProfiles
+            // 
+            this.txtSearchProfiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearchProfiles.Location = new System.Drawing.Point(490, 25);
+            this.txtSearchProfiles.Name = "txtSearchProfiles";
+            this.txtSearchProfiles.Size = new System.Drawing.Size(219, 21);
+            this.txtSearchProfiles.TabIndex = 10;
+            this.txtSearchProfiles.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearchProfiles_KeyPress);
             // 
             // lblNumPlaylists
             // 
@@ -71,6 +83,16 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             this.lblNumPlaylists.Size = new System.Drawing.Size(71, 17);
             this.lblNumPlaylists.TabIndex = 4;
             this.lblNumPlaylists.Text = "0 Playlists";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(491, 11);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(80, 13);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Search profiles:";
             // 
             // lblNumFollowers
             // 
@@ -149,24 +171,26 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             this.lblRecentlyPLayed.TabIndex = 6;
             this.lblRecentlyPLayed.Text = "Recently played";
             // 
-            // txtSearchProfiles
+            // lblGoToPlaylists
             // 
-            this.txtSearchProfiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearchProfiles.Location = new System.Drawing.Point(490, 25);
-            this.txtSearchProfiles.Name = "txtSearchProfiles";
-            this.txtSearchProfiles.Size = new System.Drawing.Size(219, 21);
-            this.txtSearchProfiles.TabIndex = 10;
-            this.txtSearchProfiles.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearchProfiles_KeyPress);
+            this.lblGoToPlaylists.AutoSize = true;
+            this.lblGoToPlaylists.Location = new System.Drawing.Point(229, 50);
+            this.lblGoToPlaylists.Name = "lblGoToPlaylists";
+            this.lblGoToPlaylists.Size = new System.Drawing.Size(33, 13);
+            this.lblGoToPlaylists.TabIndex = 12;
+            this.lblGoToPlaylists.TabStop = true;
+            this.lblGoToPlaylists.Text = "Go to";
+            this.lblGoToPlaylists.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblGoToPlaylists_LinkClicked);
             // 
-            // label2
+            // lblGoToFollowers
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(491, 11);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(80, 13);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "Search profiles:";
+            this.lblGoToFollowers.AutoSize = true;
+            this.lblGoToFollowers.Location = new System.Drawing.Point(229, 33);
+            this.lblGoToFollowers.Name = "lblGoToFollowers";
+            this.lblGoToFollowers.Size = new System.Drawing.Size(33, 13);
+            this.lblGoToFollowers.TabIndex = 13;
+            this.lblGoToFollowers.TabStop = true;
+            this.lblGoToFollowers.Text = "Go to";
             // 
             // ProfileTabForm
             // 
@@ -202,5 +226,7 @@ namespace SpotifyManager.Forms.MainForms.Tabs
         private System.Windows.Forms.DataGridViewLinkColumn colGoToTrack;
         private System.Windows.Forms.TextBox txtSearchProfiles;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.LinkLabel lblGoToFollowers;
+        private System.Windows.Forms.LinkLabel lblGoToPlaylists;
     }
 }

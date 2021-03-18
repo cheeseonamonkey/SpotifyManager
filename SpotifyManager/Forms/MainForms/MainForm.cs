@@ -193,6 +193,14 @@ namespace SpotifyManager
         private void resetAccessTokenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Globals.AccessToken.ResetAccessToken();
+            
+        }
+
+        public void ChangeTab(int num)
+        {
+            //todo:
+            //make sure is loading our playlists if necessary, not leaving whatever is possibly already loaded there
+            tabControl.SelectedTab = tabControl.TabPages[num];
         }
     }
 

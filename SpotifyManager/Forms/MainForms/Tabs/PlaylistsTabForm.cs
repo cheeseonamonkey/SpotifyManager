@@ -21,7 +21,14 @@ namespace SpotifyManager.Forms.MainForms.Tabs
 
         public async Task LoadTabForm()
         {
-            PlaylistList myPlayListList = Globals.DataStore.MyPlaylistList;
+            PlaylistList myPlayListList = Globals.DataStore.PlaylistList;
+
+            cmbPlaylistSelect.Items.Clear();
+
+            foreach (Item i in Globals.DataStore.PlaylistList.items)
+            {
+                cmbPlaylistSelect.Items.Add(i.name);
+            }
 
         } 
 
@@ -29,12 +36,7 @@ namespace SpotifyManager.Forms.MainForms.Tabs
         {
             Styling.SetFormScheme(this);
 
-            cmbPlaylistSelect.Items.Clear();
-
-            foreach (Item i in Globals.DataStore.MyPlaylistList.items)
-            {
-                cmbPlaylistSelect.Items.Add(i.name);
-            }
+            
         }
 
         public void LoadPlaylist()
@@ -77,7 +79,7 @@ namespace SpotifyManager.Forms.MainForms.Tabs
 
             int index = cmbPlaylistSelect.SelectedIndex;
 
-            string playlistid = Globals.DataStore.MyPlaylistList.items[index].id;
+            string playlistid = Globals.DataStore.PlaylistList.items[index].id;
 
             await Globals.DataStore.GetPlaylist($"{playlistid}");
 
@@ -89,15 +91,19 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             //go to song button
             if(dgvPlaylist.CurrentCell.ColumnIndex == 2)
             {
-                await Globals.DataStore.GetProfile($"{dgvPlaylist.Rows[e.RowIndex].Cells[5].Value.ToString()}");
+                string userId = dgvPlaylist.Rows[e.RowIndex].Cells[5].Value.ToString();
+                await Globals.DataStore.GetProfile(userId);
+                await Globals.DataStore.GetPlaylistList(userId);
+
+
+                await Globals.TabForms[0].LoadTabForm();
+                await Globals.TabForms[1].LoadTabForm();
+
             }
 
+            
 
-            await Globals.TabForms[0].LoadTabForm();
-
-            //you are here!
-            //
-            //maybe just load all tabs with the new selected profile?
+            
 
             
         }

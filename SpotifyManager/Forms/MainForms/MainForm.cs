@@ -118,7 +118,7 @@ namespace SpotifyManager
             //debug button
         }
 
-        public async Task LoadTabs()
+        public static async Task LoadTabs()
         {
             await Globals.DataStore.RefreshDataStore();
 

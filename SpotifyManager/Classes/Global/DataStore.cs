@@ -12,7 +12,7 @@ namespace SpotifyManager.Classes.Global
     public class DataStore
     {
         public Profile SelectedProfile { get; set; }
-        public PlaylistList MyPlaylistList { get; set; }
+        public PlaylistList PlaylistList { get; set; }
         public Playlist SelectedPlaylist { get; set; }
         public PlaylistTracks SelectedPlaylistTracks { get; set; }
         public RecentlyPlayed SelectedRecentlyPlayed { get; set; }
@@ -30,12 +30,12 @@ namespace SpotifyManager.Classes.Global
 
             //MyPlaylists:
             string myPlaylistsJson = await Globals.Requester.MakeRequestAsync("https://api.spotify.com/v1/me/playlists/?limit=49");
-            MyPlaylistList = JsonConvert.DeserializeObject<PlaylistList>(myPlaylistsJson);
+            PlaylistList = JsonConvert.DeserializeObject<PlaylistList>(myPlaylistsJson);
 
             //because max limit is 50, must loop
-            if(MyPlaylistList.total > 49)
+            if(PlaylistList.total > 49)
             {
-                int numLoops = (int) Math.Ceiling(Convert.ToDouble( MyPlaylistList.total ) / 49.0);
+                int numLoops = (int) Math.Ceiling(Convert.ToDouble( PlaylistList.total ) / 49.0);
 
                 for (int i = 1; i < numLoops; i++)
                 {
@@ -43,7 +43,7 @@ namespace SpotifyManager.Classes.Global
                     PlaylistList playlistOffset = JsonConvert.DeserializeObject<PlaylistList>(myPlaylistsJson);
 
 
-                    MyPlaylistList.items.AddRange(playlistOffset.items.ToArray());
+                    PlaylistList.items.AddRange(playlistOffset.items.ToArray());
                 }
             }
 
@@ -55,6 +55,29 @@ namespace SpotifyManager.Classes.Global
 
             //returns success
             return true;
+        }
+
+
+        public async Task GetPlaylistList(string userId)
+        {
+            //MyPlaylists:
+            string myPlaylistsJson = await Globals.Requester.MakeRequestAsync($"https://api.spotify.com/v1/users/{userId}/playlists/");
+            PlaylistList = JsonConvert.DeserializeObject<PlaylistList>(myPlaylistsJson);
+
+            //because max limit is 50, must loop
+            if (PlaylistList.total > 49)
+            {
+                int numLoops = (int)Math.Ceiling(Convert.ToDouble(PlaylistList.total) / 49.0);
+
+                for (int i = 1; i < numLoops; i++)
+                {
+                    myPlaylistsJson = await Globals.Requester.MakeRequestAsync($"https://api.spotify.com/v1/me/playlists/?limit=49&offset={49 * i}");
+                    PlaylistList playlistOffset = JsonConvert.DeserializeObject<PlaylistList>(myPlaylistsJson);
+
+
+                    PlaylistList.items.AddRange(playlistOffset.items.ToArray());
+                }
+            }
         }
 
         public async Task GetPlaylist(string playlistId)
@@ -94,6 +117,8 @@ namespace SpotifyManager.Classes.Global
         {
             string myProfileJson = await Globals.Requester.MakeRequestAsync($"https://api.spotify.com/v1/users/{userId}");
             SelectedProfile = JsonConvert.DeserializeObject<Profile>(myProfileJson);
+
+
         }
 
         

@@ -11,11 +11,12 @@ namespace SpotifyManager.Classes.Global
 {
     public class DataStore
     {
-        public Profile MyProfile { get; set; }
+        public Profile SelectedProfile { get; set; }
         public PlaylistList MyPlaylistList { get; set; }
         public Playlist SelectedPlaylist { get; set; }
         public PlaylistTracks SelectedPlaylistTracks { get; set; }
-        public RecentlyPlayed MyRecentlyPlayed { get; set; }
+        public RecentlyPlayed SelectedRecentlyPlayed { get; set; }
+
 
         public async Task<bool> RefreshDataStore()
         {
@@ -24,7 +25,7 @@ namespace SpotifyManager.Classes.Global
 
             //MyProfile:
             string myProfileJson = await Globals.Requester.MakeRequestAsync("https://api.spotify.com/v1/me");
-            MyProfile = JsonConvert.DeserializeObject<Profile>(myProfileJson);
+            SelectedProfile = JsonConvert.DeserializeObject<Profile>(myProfileJson);
 
 
             //MyPlaylists:
@@ -49,7 +50,7 @@ namespace SpotifyManager.Classes.Global
 
             //ProfileRecentlyPlayed:
             string myRecentlyPlayedJson = await Globals.Requester.MakeRequestAsync($"https://api.spotify.com/v1/me/player/recently-played?limit=10");
-            MyRecentlyPlayed = JsonConvert.DeserializeObject<RecentlyPlayed>(myRecentlyPlayedJson);
+            SelectedRecentlyPlayed = JsonConvert.DeserializeObject<RecentlyPlayed>(myRecentlyPlayedJson);
 
 
             //returns success
@@ -88,5 +89,14 @@ namespace SpotifyManager.Classes.Global
             
 
         }
+
+        public async Task GetProfile(string userId)
+        {
+            string myProfileJson = await Globals.Requester.MakeRequestAsync($"https://api.spotify.com/v1/users/{userId}");
+            SelectedProfile = JsonConvert.DeserializeObject<Profile>(myProfileJson);
+        }
+
+        
+        
     }
 }

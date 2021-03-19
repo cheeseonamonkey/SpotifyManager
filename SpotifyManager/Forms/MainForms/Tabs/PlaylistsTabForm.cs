@@ -69,12 +69,12 @@ namespace SpotifyManager.Forms.MainForms.Tabs
                 dgvPlaylist.Rows.Add(item.track.name, item.added_at , item.added_by.id, "Go to",  item.track.id, item.added_by.id);
             }
 
-            
-
         }
 
         private async void cmbPlaylistSelect_SelectedIndexChanged(object sender, EventArgs e)
         {
+            dgvPlaylist.Rows.Clear();
+
             int index = cmbPlaylistSelect.SelectedIndex;
 
             string playlistid = Globals.DataStore.MyPlaylistList.items[index].id;
@@ -84,13 +84,22 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             LoadPlaylist();
         }
 
-        private void dgvPlaylist_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private async void dgvPlaylist_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             //go to song button
             if(dgvPlaylist.CurrentCell.ColumnIndex == 2)
             {
-                MessageBox.Show("Boop");
+                await Globals.DataStore.GetProfile($"{dgvPlaylist.Rows[e.RowIndex].Cells[5].Value.ToString()}");
             }
+
+
+            await Globals.TabForms[0].LoadTabForm();
+
+            //you are here!
+            //
+            //maybe just load all tabs with the new selected profile?
+
+            
         }
     }
 }

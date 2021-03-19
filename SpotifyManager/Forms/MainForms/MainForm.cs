@@ -5,11 +5,12 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace SpotifyManager
 {
     public partial class MainForm : Form
     {
-        public List<iTabForm> TabForms { get; set; } = new List<iTabForm>();
+        
 
         public MainForm()
         {
@@ -96,7 +97,6 @@ namespace SpotifyManager
                 Globals.AccessToken.ResetAccessToken();
 
 
-
                 DeInitTabs();
 
                 
@@ -122,7 +122,7 @@ namespace SpotifyManager
         {
             await Globals.DataStore.RefreshDataStore();
 
-            foreach (iTabForm tabform in TabForms)
+            foreach (iTabForm tabform in Globals.TabForms)
             {
                 tabform.LoadTabForm();
             }
@@ -131,18 +131,23 @@ namespace SpotifyManager
         //loads in tabs initially then calls Refresh()
         public async void InitTabs()
         {
+
+            Globals.TabForms = new List<iTabForm>();
+
             //place child tabforms in each tab:
             ProfileTabForm profileTabForm = new ProfileTabForm();
             InitTab(tabProfile, profileTabForm);
-            TabForms.Add(profileTabForm);
+            Globals.TabForms.Add(profileTabForm);
+            
+            
 
             PlaylistsTabForm playlistTabForm = new PlaylistsTabForm();
             InitTab(tabPlaylists, playlistTabForm);
-            TabForms.Add(playlistTabForm);
+            Globals.TabForms.Add(playlistTabForm);
 
             StatsTabForm statsTabForm = new StatsTabForm();
             InitTab(tabStats, statsTabForm);
-            TabForms.Add(statsTabForm);
+            Globals.TabForms.Add(statsTabForm);
 
             //refresh all the tabs:
             await LoadTabs();
@@ -165,7 +170,7 @@ namespace SpotifyManager
         //unloads tab init
         public void DeInitTabs()
         {
-            foreach(iTabForm tabForm in TabForms)
+            foreach(iTabForm tabForm in Globals.TabForms)
             {
                 DeInitTab(tabForm);
             }

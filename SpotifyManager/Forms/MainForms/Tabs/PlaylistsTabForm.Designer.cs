@@ -30,12 +30,11 @@ namespace SpotifyManager.Forms.MainForms.Tabs
         private void InitializeComponent()
         {
             this.dgvPlaylist = new System.Windows.Forms.DataGridView();
-            this.colSong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colAddedOn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colAddedBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colBtnGoToSong = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.colTrackId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlPlaylist = new System.Windows.Forms.Panel();
+            this.lnkGenerateArtists = new System.Windows.Forms.LinkLabel();
+            this.lnkGenerateObscure = new System.Windows.Forms.LinkLabel();
+            this.lnkGenerateSimilar = new System.Windows.Forms.LinkLabel();
+            this.lnkExportPlaylist = new System.Windows.Forms.LinkLabel();
             this.lblAuthor = new System.Windows.Forms.Label();
             this.lblPlaylistFollowers = new System.Windows.Forms.Label();
             this.ckbPublic = new System.Windows.Forms.CheckBox();
@@ -44,10 +43,12 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             this.lblPlaylistName = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbPlaylistSelect = new System.Windows.Forms.ComboBox();
-            this.lnkExportPlaylist = new System.Windows.Forms.LinkLabel();
-            this.lnkGenerateSimilar = new System.Windows.Forms.LinkLabel();
-            this.lnkGenerateObscure = new System.Windows.Forms.LinkLabel();
-            this.lnkGenerateArtists = new System.Windows.Forms.LinkLabel();
+            this.colSong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colAddedOn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colAddedBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colBtnGoToSong = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.colTrackId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colAddedById = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlaylist)).BeginInit();
             this.pnlPlaylist.SuspendLayout();
             this.SuspendLayout();
@@ -64,44 +65,14 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             this.colAddedOn,
             this.colAddedBy,
             this.colBtnGoToSong,
-            this.colTrackId});
+            this.colTrackId,
+            this.colAddedById});
             this.dgvPlaylist.Location = new System.Drawing.Point(12, 106);
             this.dgvPlaylist.Name = "dgvPlaylist";
             this.dgvPlaylist.ReadOnly = true;
             this.dgvPlaylist.Size = new System.Drawing.Size(705, 357);
             this.dgvPlaylist.TabIndex = 0;
             this.dgvPlaylist.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlaylist_CellContentClick);
-            // 
-            // colSong
-            // 
-            this.colSong.HeaderText = "Song name";
-            this.colSong.Name = "colSong";
-            this.colSong.ReadOnly = true;
-            // 
-            // colAddedOn
-            // 
-            this.colAddedOn.HeaderText = "Added on";
-            this.colAddedOn.Name = "colAddedOn";
-            this.colAddedOn.ReadOnly = true;
-            // 
-            // colAddedBy
-            // 
-            this.colAddedBy.HeaderText = "Added by";
-            this.colAddedBy.Name = "colAddedBy";
-            this.colAddedBy.ReadOnly = true;
-            // 
-            // colBtnGoToSong
-            // 
-            this.colBtnGoToSong.HeaderText = "Go to song";
-            this.colBtnGoToSong.Name = "colBtnGoToSong";
-            this.colBtnGoToSong.ReadOnly = true;
-            // 
-            // colTrackId
-            // 
-            this.colTrackId.HeaderText = "trackId";
-            this.colTrackId.Name = "colTrackId";
-            this.colTrackId.ReadOnly = true;
-            this.colTrackId.Visible = false;
             // 
             // pnlPlaylist
             // 
@@ -123,6 +94,46 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             this.pnlPlaylist.Size = new System.Drawing.Size(705, 87);
             this.pnlPlaylist.TabIndex = 1;
             this.pnlPlaylist.Tag = "shade";
+            // 
+            // lnkGenerateArtists
+            // 
+            this.lnkGenerateArtists.AutoSize = true;
+            this.lnkGenerateArtists.Location = new System.Drawing.Point(266, 61);
+            this.lnkGenerateArtists.Name = "lnkGenerateArtists";
+            this.lnkGenerateArtists.Size = new System.Drawing.Size(120, 13);
+            this.lnkGenerateArtists.TabIndex = 11;
+            this.lnkGenerateArtists.TabStop = true;
+            this.lnkGenerateArtists.Text = "Generate w/ artist swap";
+            // 
+            // lnkGenerateObscure
+            // 
+            this.lnkGenerateObscure.AutoSize = true;
+            this.lnkGenerateObscure.Location = new System.Drawing.Point(168, 61);
+            this.lnkGenerateObscure.Name = "lnkGenerateObscure";
+            this.lnkGenerateObscure.Size = new System.Drawing.Size(92, 13);
+            this.lnkGenerateObscure.TabIndex = 10;
+            this.lnkGenerateObscure.TabStop = true;
+            this.lnkGenerateObscure.Text = "Generate obscure";
+            // 
+            // lnkGenerateSimilar
+            // 
+            this.lnkGenerateSimilar.AutoSize = true;
+            this.lnkGenerateSimilar.Location = new System.Drawing.Point(80, 61);
+            this.lnkGenerateSimilar.Name = "lnkGenerateSimilar";
+            this.lnkGenerateSimilar.Size = new System.Drawing.Size(82, 13);
+            this.lnkGenerateSimilar.TabIndex = 9;
+            this.lnkGenerateSimilar.TabStop = true;
+            this.lnkGenerateSimilar.Text = "Generate similar";
+            // 
+            // lnkExportPlaylist
+            // 
+            this.lnkExportPlaylist.AutoSize = true;
+            this.lnkExportPlaylist.Location = new System.Drawing.Point(3, 61);
+            this.lnkExportPlaylist.Name = "lnkExportPlaylist";
+            this.lnkExportPlaylist.Size = new System.Drawing.Size(71, 13);
+            this.lnkExportPlaylist.TabIndex = 8;
+            this.lnkExportPlaylist.TabStop = true;
+            this.lnkExportPlaylist.Text = "Export playlist";
             // 
             // lblAuthor
             // 
@@ -210,45 +221,43 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             this.cmbPlaylistSelect.TabIndex = 0;
             this.cmbPlaylistSelect.SelectedIndexChanged += new System.EventHandler(this.cmbPlaylistSelect_SelectedIndexChanged);
             // 
-            // lnkExportPlaylist
+            // colSong
             // 
-            this.lnkExportPlaylist.AutoSize = true;
-            this.lnkExportPlaylist.Location = new System.Drawing.Point(3, 61);
-            this.lnkExportPlaylist.Name = "lnkExportPlaylist";
-            this.lnkExportPlaylist.Size = new System.Drawing.Size(71, 13);
-            this.lnkExportPlaylist.TabIndex = 8;
-            this.lnkExportPlaylist.TabStop = true;
-            this.lnkExportPlaylist.Text = "Export playlist";
+            this.colSong.HeaderText = "Song name";
+            this.colSong.Name = "colSong";
+            this.colSong.ReadOnly = true;
             // 
-            // lnkGenerateSimilar
+            // colAddedOn
             // 
-            this.lnkGenerateSimilar.AutoSize = true;
-            this.lnkGenerateSimilar.Location = new System.Drawing.Point(80, 61);
-            this.lnkGenerateSimilar.Name = "lnkGenerateSimilar";
-            this.lnkGenerateSimilar.Size = new System.Drawing.Size(82, 13);
-            this.lnkGenerateSimilar.TabIndex = 9;
-            this.lnkGenerateSimilar.TabStop = true;
-            this.lnkGenerateSimilar.Text = "Generate similar";
+            this.colAddedOn.HeaderText = "Added on";
+            this.colAddedOn.Name = "colAddedOn";
+            this.colAddedOn.ReadOnly = true;
             // 
-            // lnkGenerateObscure
+            // colAddedBy
             // 
-            this.lnkGenerateObscure.AutoSize = true;
-            this.lnkGenerateObscure.Location = new System.Drawing.Point(168, 61);
-            this.lnkGenerateObscure.Name = "lnkGenerateObscure";
-            this.lnkGenerateObscure.Size = new System.Drawing.Size(92, 13);
-            this.lnkGenerateObscure.TabIndex = 10;
-            this.lnkGenerateObscure.TabStop = true;
-            this.lnkGenerateObscure.Text = "Generate obscure";
+            this.colAddedBy.HeaderText = "Added by";
+            this.colAddedBy.Name = "colAddedBy";
+            this.colAddedBy.ReadOnly = true;
             // 
-            // lnkGenerateArtists
+            // colBtnGoToSong
             // 
-            this.lnkGenerateArtists.AutoSize = true;
-            this.lnkGenerateArtists.Location = new System.Drawing.Point(266, 61);
-            this.lnkGenerateArtists.Name = "lnkGenerateArtists";
-            this.lnkGenerateArtists.Size = new System.Drawing.Size(120, 13);
-            this.lnkGenerateArtists.TabIndex = 11;
-            this.lnkGenerateArtists.TabStop = true;
-            this.lnkGenerateArtists.Text = "Generate w/ artist swap";
+            this.colBtnGoToSong.HeaderText = "Go to song";
+            this.colBtnGoToSong.Name = "colBtnGoToSong";
+            this.colBtnGoToSong.ReadOnly = true;
+            // 
+            // colTrackId
+            // 
+            this.colTrackId.HeaderText = "trackId";
+            this.colTrackId.Name = "colTrackId";
+            this.colTrackId.ReadOnly = true;
+            this.colTrackId.Visible = false;
+            // 
+            // colAddedById
+            // 
+            this.colAddedById.HeaderText = "addedById";
+            this.colAddedById.Name = "colAddedById";
+            this.colAddedById.ReadOnly = true;
+            this.colAddedById.Visible = false;
             // 
             // PlaylistsTabForm
             // 
@@ -279,14 +288,15 @@ namespace SpotifyManager.Forms.MainForms.Tabs
         private System.Windows.Forms.CheckBox ckbPublic;
         private System.Windows.Forms.Label lblPlaylistFollowers;
         private System.Windows.Forms.Label lblAuthor;
+        private System.Windows.Forms.LinkLabel lnkGenerateObscure;
+        private System.Windows.Forms.LinkLabel lnkGenerateSimilar;
+        private System.Windows.Forms.LinkLabel lnkExportPlaylist;
+        private System.Windows.Forms.LinkLabel lnkGenerateArtists;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSong;
         private System.Windows.Forms.DataGridViewTextBoxColumn colAddedOn;
         private System.Windows.Forms.DataGridViewTextBoxColumn colAddedBy;
         private System.Windows.Forms.DataGridViewButtonColumn colBtnGoToSong;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTrackId;
-        private System.Windows.Forms.LinkLabel lnkGenerateObscure;
-        private System.Windows.Forms.LinkLabel lnkGenerateSimilar;
-        private System.Windows.Forms.LinkLabel lnkExportPlaylist;
-        private System.Windows.Forms.LinkLabel lnkGenerateArtists;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colAddedById;
     }
 }

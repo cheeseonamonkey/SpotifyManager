@@ -22,23 +22,27 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             InitializeComponent();
         }
 
+        //load me
         public async Task LoadTabForm()
         {
-            Profile myProfile = Globals.DataStore.MyProfile;
+            Profile myProfile = Globals.DataStore.SelectedProfile;
             lblDisplayName.Text = myProfile.display_name;
 
             picProfile.LoadAsync(myProfile.images.FirstOrDefault().url.ToString());
 
-            PlaylistList myPlaylists = Globals.DataStore.MyPlaylistList;
+            PlaylistList myPlaylists = Globals.DataStore.PlaylistList;
             lblNumFollowers.Text = $"{myProfile.followers.total.ToString(), 3} followers";
             lblNumPlaylists.Text = $"{myPlaylists.total, 3} playlists";
 
-            foreach(Item item in Globals.DataStore.MyRecentlyPlayed.items)
+            dgvRecentlyPlayed.Rows.Clear();
+            
+            foreach(Item item in Globals.DataStore.SelectedRecentlyPlayed.items)
             {
                 dgvRecentlyPlayed.Rows.Add($"{item.track.name}", $"{item.track.artists.FirstOrDefault().name}", "Go to track");
             }
 
         }
+
 
         private void ProfileTabForm_Load(object sender, EventArgs e)
         {

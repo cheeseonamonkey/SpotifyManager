@@ -19,6 +19,8 @@ namespace SpotifyManager
         public static SpotifyRequester Requester { get; set; } = new SpotifyRequester();
         public static DataStore DataStore { get; set; } = new DataStore();
 
+        public static List<iTabForm> TabForms { get; set; }
+
         public static bool Connected { get; set; } = false;
 
         

@@ -17,7 +17,8 @@ namespace SpotifyManager.Classes.Global
         public PlaylistTracks SelectedPlaylistTracks { get; set; }
         public RecentlyPlayed SelectedRecentlyPlayed { get; set; }
 
-        public bool IsMe { get; set; } = true;
+        public string MyId { get; set; }
+        public bool IsMe { get; set; }
 
 
         public async Task<bool> RefreshDataStore()
@@ -28,7 +29,8 @@ namespace SpotifyManager.Classes.Global
             //MyProfile:
             string myProfileJson = await Globals.Requester.MakeRequestAsync("https://api.spotify.com/v1/me");
             SelectedProfile = JsonConvert.DeserializeObject<Profile>(myProfileJson);
-
+            
+            MyId = SelectedProfile.id;
 
             //MyPlaylists:
             string myPlaylistsJson = await Globals.Requester.MakeRequestAsync("https://api.spotify.com/v1/me/playlists/?limit=49");
@@ -119,7 +121,6 @@ namespace SpotifyManager.Classes.Global
         {
             string myProfileJson = await Globals.Requester.MakeRequestAsync($"https://api.spotify.com/v1/users/{userId}");
             SelectedProfile = JsonConvert.DeserializeObject<Profile>(myProfileJson);
-
 
         }
 

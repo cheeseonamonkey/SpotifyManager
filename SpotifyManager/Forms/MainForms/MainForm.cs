@@ -126,11 +126,14 @@ namespace SpotifyManager
             {
                 tabform.LoadTabForm();
             }
+
+            Globals.DataStore.MyId = Globals.DataStore.SelectedProfile.id;
         }
 
         //loads in tabs initially then calls Refresh()
         public async void InitTabs()
         {
+            
 
             Globals.TabForms = new List<iTabForm>();
 
@@ -138,7 +141,6 @@ namespace SpotifyManager
             ProfileTabForm profileTabForm = new ProfileTabForm();
             InitTab(tabProfile, profileTabForm);
             Globals.TabForms.Add(profileTabForm);
-            
             
 
             PlaylistsTabForm playlistTabForm = new PlaylistsTabForm();

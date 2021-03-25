@@ -88,7 +88,7 @@ namespace SpotifyManager.Forms.MainForms.Tabs
 
         private async void dgvPlaylist_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            //go to song button
+            //go to user button
             if(dgvPlaylist.CurrentCell.ColumnIndex == 2)
             {
                 string userId = dgvPlaylist.Rows[e.RowIndex].Cells[5].Value.ToString();

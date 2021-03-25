@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -116,6 +117,29 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             
 
             
+        }
+
+        private async void lnkExportPlaylist_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (cmbPlaylistSelect.SelectedIndex != -1)
+            {
+                fileDialogExportPlaylist.ShowDialog();
+
+                string savePath = fileDialogExportPlaylist.FileName;
+
+                string saveData = "{\"uris\":[\n";
+
+                foreach (Item item in Globals.DataStore.SelectedPlaylistTracks.items)
+                {
+                    saveData += $"\t\"{item.track.uri}\",\n";
+                }
+
+                saveData += "\n]}";
+
+                saveData = saveData.Remove(saveData.LastIndexOf(','), 1);
+
+                File.WriteAllText(savePath, saveData);
+            }
         }
     }
 }

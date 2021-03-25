@@ -17,6 +17,8 @@ namespace SpotifyManager.Classes.Global
         public PlaylistTracks SelectedPlaylistTracks { get; set; }
         public RecentlyPlayed SelectedRecentlyPlayed { get; set; }
 
+        public bool IsMe { get; set; } = true;
+
 
         public async Task<bool> RefreshDataStore()
         {

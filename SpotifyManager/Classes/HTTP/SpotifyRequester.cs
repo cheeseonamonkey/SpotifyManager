@@ -42,8 +42,10 @@ namespace SpotifyManager
             }
         }
 
-        public async Task<string> MakeRequestAsync(string url, string parameters = "")
+        public async Task<string> GetAsync(string url, string parameters = "")
         {
+            
+
             if(Globals.AccessToken != null   &&   client.DefaultRequestHeaders.Authorization.Parameter != Globals.AccessToken.access_token)
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Globals.AccessToken.access_token);
 

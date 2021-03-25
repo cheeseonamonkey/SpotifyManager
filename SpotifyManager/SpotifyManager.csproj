@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Classes\Global\DataStore.cs" />
     <Compile Include="Classes\Models\AccessToken.cs" />
+    <Compile Include="Classes\Models\RootObjects\TrackFeatures.cs" />
     <Compile Include="Classes\Models\RootObjects\Playlist.cs" />
     <Compile Include="Classes\Models\RootObjects\PlaylistList.cs" />
     <Compile Include="Classes\Models\RootObjects\PlaylistTracks.cs" />
@@ -89,6 +90,12 @@
     <Compile Include="Forms\MainForms\Tabs\StatsTabForm.Designer.cs">
       <DependentUpon>StatsTabForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\MainForms\Tabs\TrackTabForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainForms\Tabs\TrackTabForm.Designer.cs">
+      <DependentUpon>TrackTabForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MiscForms\ConnectSplashForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,6 +128,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForms\Tabs\StatsTabForm.resx">
       <DependentUpon>StatsTabForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainForms\Tabs\TrackTabForm.resx">
+      <DependentUpon>TrackTabForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MiscForms\ConnectSplashForm.resx">
       <DependentUpon>ConnectSplashForm.cs</DependentUpon>

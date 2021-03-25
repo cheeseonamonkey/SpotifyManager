@@ -68,7 +68,7 @@ namespace SpotifyManager.Forms.MainForms.Tabs
 
             foreach(Item item in playlistTracks.items)
             {
-                dgvPlaylist.Rows.Add(item.track.name, item.added_at , item.added_by.id, "Go to",  item.track.id, item.added_by.id);
+                dgvPlaylist.Rows.Add(item.track.name, item.added_at , item.added_by.id,  item.track.id, item.added_by.id);
             }
 
         }
@@ -91,7 +91,7 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             //go to user button
             if(dgvPlaylist.CurrentCell.ColumnIndex == 2)
             {
-                string userId = dgvPlaylist.Rows[e.RowIndex].Cells[5].Value.ToString();
+                string userId = dgvPlaylist.Rows[e.RowIndex].Cells[4].Value.ToString();
                 await Globals.DataStore.GetProfile(userId);
                 await Globals.DataStore.GetPlaylistList(userId);
 
@@ -99,6 +99,13 @@ namespace SpotifyManager.Forms.MainForms.Tabs
                 await Globals.TabForms[0].LoadTabForm();
                 await Globals.TabForms[1].LoadTabForm();
 
+            }else if(dgvPlaylist.CurrentCell.ColumnIndex == 0)
+            {
+                string trackId = dgvPlaylist.Rows[e.RowIndex].Cells[3].Value.ToString();
+                
+
+
+                
             }
 
             

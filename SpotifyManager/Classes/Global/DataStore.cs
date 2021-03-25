@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using SpotifyManager.Classes.Models.RootObjects;
+using SpotifyManager.Classes.Models.SubObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,9 @@ namespace SpotifyManager.Classes.Global
         public Playlist SelectedPlaylist { get; set; }
         public PlaylistTracks SelectedPlaylistTracks { get; set; }
         public RecentlyPlayed SelectedRecentlyPlayed { get; set; }
+
+        public Track SelectedTrack { get; set; }
+
 
         public string MyId { get; set; }
         public bool IsMe { get; set; }
@@ -124,7 +128,7 @@ namespace SpotifyManager.Classes.Global
 
         }
 
-        
-        
+
+
     }
 }

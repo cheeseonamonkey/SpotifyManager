@@ -142,10 +142,13 @@ namespace SpotifyManager
             InitTab(tabProfile, profileTabForm);
             Globals.TabForms.Add(profileTabForm);
             
-
             PlaylistsTabForm playlistTabForm = new PlaylistsTabForm();
             InitTab(tabPlaylists, playlistTabForm);
             Globals.TabForms.Add(playlistTabForm);
+
+            TrackTabForm trackTabForm = new TrackTabForm();
+            InitTab(tabTrack, trackTabForm);
+            Globals.TabForms.Add(trackTabForm);
 
             StatsTabForm statsTabForm = new StatsTabForm();
             InitTab(tabStats, statsTabForm);
@@ -208,6 +211,14 @@ namespace SpotifyManager
             //todo:
             //make sure is loading our playlists if necessary, not leaving whatever is possibly already loaded there
             tabControl.SelectedTab = tabControl.TabPages[num];
+        }
+
+        private void setAccessTokenMenuItem_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)(Keys.Enter))
+            {
+                Globals.AccessToken.SetAccessToken(setAccessTokenMenuItem.Text);
+            }
         }
     }
 

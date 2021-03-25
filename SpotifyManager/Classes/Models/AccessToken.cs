@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace SpotifyManager
 {
@@ -30,6 +31,14 @@ namespace SpotifyManager
             Globals.Connected = false;
             access_token = "";
             Globals.SaveAppData();
+        }
+
+        public void SetAccessToken(string token)
+        {
+            access_token = token;
+            Globals.SaveAppData();
+
+            MessageBox.Show("Access token set");
         }
 
     }

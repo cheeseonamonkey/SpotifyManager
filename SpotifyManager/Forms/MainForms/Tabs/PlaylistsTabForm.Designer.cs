@@ -43,10 +43,9 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             this.lblPlaylistName = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbPlaylistSelect = new System.Windows.Forms.ComboBox();
-            this.colSong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSong = new System.Windows.Forms.DataGridViewLinkColumn();
             this.colAddedOn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colAddedBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colBtnGoToSong = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.colAddedBy = new System.Windows.Forms.DataGridViewLinkColumn();
             this.colTrackId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colAddedById = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlaylist)).BeginInit();
@@ -64,7 +63,6 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             this.colSong,
             this.colAddedOn,
             this.colAddedBy,
-            this.colBtnGoToSong,
             this.colTrackId,
             this.colAddedById});
             this.dgvPlaylist.Location = new System.Drawing.Point(12, 106);
@@ -226,6 +224,8 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             this.colSong.HeaderText = "Song name";
             this.colSong.Name = "colSong";
             this.colSong.ReadOnly = true;
+            this.colSong.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colSong.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // colAddedOn
             // 
@@ -238,12 +238,8 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             this.colAddedBy.HeaderText = "Added by";
             this.colAddedBy.Name = "colAddedBy";
             this.colAddedBy.ReadOnly = true;
-            // 
-            // colBtnGoToSong
-            // 
-            this.colBtnGoToSong.HeaderText = "Go to song";
-            this.colBtnGoToSong.Name = "colBtnGoToSong";
-            this.colBtnGoToSong.ReadOnly = true;
+            this.colAddedBy.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colAddedBy.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // colTrackId
             // 
@@ -292,10 +288,9 @@ namespace SpotifyManager.Forms.MainForms.Tabs
         private System.Windows.Forms.LinkLabel lnkGenerateSimilar;
         private System.Windows.Forms.LinkLabel lnkExportPlaylist;
         private System.Windows.Forms.LinkLabel lnkGenerateArtists;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colSong;
+        private System.Windows.Forms.DataGridViewLinkColumn colSong;
         private System.Windows.Forms.DataGridViewTextBoxColumn colAddedOn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colAddedBy;
-        private System.Windows.Forms.DataGridViewButtonColumn colBtnGoToSong;
+        private System.Windows.Forms.DataGridViewLinkColumn colAddedBy;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTrackId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colAddedById;
     }

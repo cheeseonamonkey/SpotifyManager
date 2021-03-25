@@ -38,11 +38,14 @@ namespace SpotifyManager
             this.debugToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.boopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyAcessTokenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.resetAccessTokenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.manuallySetAccessTokenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setAccessTokenMenuItem = new System.Windows.Forms.ToolStripTextBox();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabProfile = new System.Windows.Forms.TabPage();
             this.tabPlaylists = new System.Windows.Forms.TabPage();
+            this.tabTrack = new System.Windows.Forms.TabPage();
             this.tabStats = new System.Windows.Forms.TabPage();
-            this.resetAccessTokenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripMain.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.SuspendLayout();
@@ -102,7 +105,8 @@ namespace SpotifyManager
             this.debugToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.boopToolStripMenuItem,
             this.copyAcessTokenToolStripMenuItem,
-            this.resetAccessTokenToolStripMenuItem});
+            this.resetAccessTokenToolStripMenuItem,
+            this.manuallySetAccessTokenToolStripMenuItem});
             this.debugToolStripMenuItem.Name = "debugToolStripMenuItem";
             this.debugToolStripMenuItem.Size = new System.Drawing.Size(59, 21);
             this.debugToolStripMenuItem.Text = "Debug";
@@ -110,20 +114,43 @@ namespace SpotifyManager
             // boopToolStripMenuItem
             // 
             this.boopToolStripMenuItem.Name = "boopToolStripMenuItem";
-            this.boopToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.boopToolStripMenuItem.Size = new System.Drawing.Size(227, 22);
             this.boopToolStripMenuItem.Text = "Beep Boop";
             // 
             // copyAcessTokenToolStripMenuItem
             // 
             this.copyAcessTokenToolStripMenuItem.Name = "copyAcessTokenToolStripMenuItem";
-            this.copyAcessTokenToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.copyAcessTokenToolStripMenuItem.Size = new System.Drawing.Size(227, 22);
             this.copyAcessTokenToolStripMenuItem.Text = "Copy acess token";
             this.copyAcessTokenToolStripMenuItem.Click += new System.EventHandler(this.copyAcessTokenToolStripMenuItem_Click);
+            // 
+            // resetAccessTokenToolStripMenuItem
+            // 
+            this.resetAccessTokenToolStripMenuItem.Name = "resetAccessTokenToolStripMenuItem";
+            this.resetAccessTokenToolStripMenuItem.Size = new System.Drawing.Size(227, 22);
+            this.resetAccessTokenToolStripMenuItem.Text = "Reset access token";
+            this.resetAccessTokenToolStripMenuItem.Click += new System.EventHandler(this.resetAccessTokenToolStripMenuItem_Click);
+            // 
+            // manuallySetAccessTokenToolStripMenuItem
+            // 
+            this.manuallySetAccessTokenToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.setAccessTokenMenuItem});
+            this.manuallySetAccessTokenToolStripMenuItem.Name = "manuallySetAccessTokenToolStripMenuItem";
+            this.manuallySetAccessTokenToolStripMenuItem.Size = new System.Drawing.Size(227, 22);
+            this.manuallySetAccessTokenToolStripMenuItem.Text = "Manually set access token";
+            // 
+            // setAccessTokenMenuItem
+            // 
+            this.setAccessTokenMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.setAccessTokenMenuItem.Name = "setAccessTokenMenuItem";
+            this.setAccessTokenMenuItem.Size = new System.Drawing.Size(100, 23);
+            this.setAccessTokenMenuItem.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.setAccessTokenMenuItem_KeyPress);
             // 
             // tabControl
             // 
             this.tabControl.Controls.Add(this.tabProfile);
             this.tabControl.Controls.Add(this.tabPlaylists);
+            this.tabControl.Controls.Add(this.tabTrack);
             this.tabControl.Controls.Add(this.tabStats);
             this.tabControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl.Location = new System.Drawing.Point(10, 25);
@@ -152,6 +179,15 @@ namespace SpotifyManager
             this.tabPlaylists.Text = "Playlists";
             this.tabPlaylists.UseVisualStyleBackColor = true;
             // 
+            // tabTrack
+            // 
+            this.tabTrack.Location = new System.Drawing.Point(4, 25);
+            this.tabTrack.Name = "tabTrack";
+            this.tabTrack.Size = new System.Drawing.Size(862, 513);
+            this.tabTrack.TabIndex = 3;
+            this.tabTrack.Text = "Track";
+            this.tabTrack.UseVisualStyleBackColor = true;
+            // 
             // tabStats
             // 
             this.tabStats.Location = new System.Drawing.Point(4, 25);
@@ -160,13 +196,6 @@ namespace SpotifyManager
             this.tabStats.TabIndex = 2;
             this.tabStats.Text = "Stats";
             this.tabStats.UseVisualStyleBackColor = true;
-            // 
-            // resetAccessTokenToolStripMenuItem
-            // 
-            this.resetAccessTokenToolStripMenuItem.Name = "resetAccessTokenToolStripMenuItem";
-            this.resetAccessTokenToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
-            this.resetAccessTokenToolStripMenuItem.Text = "Reset access token";
-            this.resetAccessTokenToolStripMenuItem.Click += new System.EventHandler(this.resetAccessTokenToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -201,6 +230,9 @@ namespace SpotifyManager
         private System.Windows.Forms.TabPage tabStats;
         private System.Windows.Forms.ToolStripMenuItem copyAcessTokenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem resetAccessTokenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem manuallySetAccessTokenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripTextBox setAccessTokenMenuItem;
+        private System.Windows.Forms.TabPage tabTrack;
     }
 }
 

@@ -141,5 +141,15 @@ namespace SpotifyManager.Forms.MainForms.Tabs
                 File.WriteAllText(savePath, saveData);
             }
         }
+
+        private void lnkImportPlaylist_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            fileDialogImportPlaylist.ShowDialog();
+
+            //you are here!
+            //not stuck, just lunchtime
+            //selects import file
+            //before anything else happens we need a POST method in the requester
+        }
     }
 }

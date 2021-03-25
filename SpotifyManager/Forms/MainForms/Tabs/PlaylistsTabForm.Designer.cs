@@ -50,6 +50,7 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             this.cmbPlaylistSelect = new System.Windows.Forms.ComboBox();
             this.fileDialogExportPlaylist = new System.Windows.Forms.SaveFileDialog();
             this.lnkImportPlaylist = new System.Windows.Forms.LinkLabel();
+            this.fileDialogImportPlaylist = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlaylist)).BeginInit();
             this.pnlPlaylist.SuspendLayout();
             this.SuspendLayout();
@@ -272,6 +273,11 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             this.lnkImportPlaylist.TabIndex = 12;
             this.lnkImportPlaylist.TabStop = true;
             this.lnkImportPlaylist.Text = "Import playlist";
+            this.lnkImportPlaylist.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkImportPlaylist_LinkClicked);
+            // 
+            // fileDialogImportPlaylist
+            // 
+            this.fileDialogImportPlaylist.DefaultExt = "playlist";
             // 
             // PlaylistsTabForm
             // 
@@ -313,5 +319,6 @@ namespace SpotifyManager.Forms.MainForms.Tabs
         private System.Windows.Forms.DataGridViewTextBoxColumn colAddedById;
         private System.Windows.Forms.SaveFileDialog fileDialogExportPlaylist;
         private System.Windows.Forms.LinkLabel lnkImportPlaylist;
+        private System.Windows.Forms.OpenFileDialog fileDialogImportPlaylist;
     }
 }

@@ -120,7 +120,7 @@ namespace SpotifyManager
 
         public static async Task LoadTabs()
         {
-            await Globals.DataStore.RefreshDataStore();
+            await Globals.DataStore.RefreshInitialDataStore();
 
             foreach (iTabForm tabform in Globals.TabForms)
             {

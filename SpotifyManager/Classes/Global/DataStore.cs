@@ -19,13 +19,14 @@ namespace SpotifyManager.Classes.Global
         public RecentlyPlayed SelectedRecentlyPlayed { get; set; }
 
         public Track SelectedTrack { get; set; }
+        public TrackFeatures SelectedTrackFeatures { get; set; }
 
 
         public string MyId { get; set; }
         public bool IsMe { get; set; }
 
 
-        public async Task<bool> RefreshDataStore()
+        public async Task<bool> RefreshInitialDataStore()
         {
                 //todo: async webcalls
             // List<Task> webCalls = new List<Task>();
@@ -60,6 +61,8 @@ namespace SpotifyManager.Classes.Global
             string myRecentlyPlayedJson = await Globals.Requester.MakeRequestAsync($"https://api.spotify.com/v1/me/player/recently-played?limit=10");
             SelectedRecentlyPlayed = JsonConvert.DeserializeObject<RecentlyPlayed>(myRecentlyPlayedJson);
 
+            //Track
+            await GetTrack(SelectedRecentlyPlayed.items.FirstOrDefault().track.id);
 
             //returns success
             return true;
@@ -128,7 +131,25 @@ namespace SpotifyManager.Classes.Global
 
         }
 
+        public async Task GetTrack(string trackId)
+        {
+            string trackJson = await Globals.Requester.MakeRequestAsync($"https://api.spotify.com/v1/tracks/{trackId}");
+            SelectedTrack = JsonConvert.DeserializeObject<Track>(trackJson);
 
+            await GetTrackDetails(SelectedTrack.id.ToString());
+
+        }
+
+
+        public async Task GetTrackDetails(string trackId)
+        {
+            string trackFeaturesJson = await Globals.Requester.MakeRequestAsync($"https://api.spotify.com/v1/audio-features/{trackId}");
+            SelectedTrackFeatures = JsonConvert.DeserializeObject<TrackFeatures>(trackFeaturesJson);
+
+            
+
+
+        }
 
     }
 }

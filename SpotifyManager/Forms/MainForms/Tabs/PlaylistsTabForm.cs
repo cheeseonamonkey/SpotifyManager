@@ -101,9 +101,12 @@ namespace SpotifyManager.Forms.MainForms.Tabs
 
             }else if(dgvPlaylist.CurrentCell.ColumnIndex == 0)
             {
-                string trackId = dgvPlaylist.Rows[e.RowIndex].Cells[3].Value.ToString();
-                
 
+                string trackId = dgvPlaylist.Rows[e.RowIndex].Cells[3].Value.ToString();
+
+                await Globals.DataStore.GetTrack(trackId);
+
+                Globals.TabForms[2].LoadTabForm();
 
                 
             }

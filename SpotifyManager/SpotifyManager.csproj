@@ -109,6 +109,12 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\Global\Globals.cs" />
+    <Compile Include="Forms\MiscForms\NewPlaylistForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MiscForms\NewPlaylistForm.Designer.cs">
+      <DependentUpon>NewPlaylistForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MiscForms\ProfileSearchForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,6 +143,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MiscForms\NewPlaylistForm.resx">
+      <DependentUpon>NewPlaylistForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MiscForms\ProfileSearchForm.resx">
       <DependentUpon>ProfileSearchForm.cs</DependentUpon>

@@ -1,10 +1,8 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -32,21 +30,54 @@ namespace SpotifyManager
 
             HttpResponseMessage response = await client.GetAsync("https://api.spotify.com/v1/me");
 
-            if(response.IsSuccessStatusCode)
+            if (response.IsSuccessStatusCode)
             {
                 return true;
-            }else
+            }
+            else
             {
                 Console.WriteLine($"Test get error - {response.StatusCode}");
                 return false;
             }
         }
 
+        public async Task<string> PostAsync(string url, string content, string parameters = "")
+        {
+
+
+            if (Globals.AccessToken != null && client.DefaultRequestHeaders.Authorization.Parameter != Globals.AccessToken.access_token)
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Globals.AccessToken.access_token);
+
+            //todo: access token bug
+
+            Console.WriteLine(url);
+            Console.WriteLine($"\tAuth:  {client.DefaultRequestHeaders.Authorization}");
+
+            HttpContent postContent = new StringContent(content);
+
+            HttpResponseMessage response = await client.PostAsync(url, postContent);
+
+            if (response.IsSuccessStatusCode)
+            {
+                //
+            }
+            else
+            {
+                MessageBox.Show($"HTTP error -  {response.StatusCode}");
+            }
+
+
+            string responseString = await response.Content.ReadAsStringAsync();
+
+            return responseString;
+
+        }
+
         public async Task<string> GetAsync(string url, string parameters = "")
         {
-            
 
-            if(Globals.AccessToken != null   &&   client.DefaultRequestHeaders.Authorization.Parameter != Globals.AccessToken.access_token)
+
+            if (Globals.AccessToken != null && client.DefaultRequestHeaders.Authorization.Parameter != Globals.AccessToken.access_token)
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Globals.AccessToken.access_token);
 
             //todo: access token bug debug output:
@@ -54,7 +85,7 @@ namespace SpotifyManager
             Console.WriteLine(url);
             Console.WriteLine($"\tAuth:  {client.DefaultRequestHeaders.Authorization}");
 
-            
+
 
             HttpResponseMessage response = await client.GetAsync(url);
 
@@ -74,7 +105,7 @@ namespace SpotifyManager
 
         }
 
-        
+
 
         public static async Task<AccessToken> GetAccessTokenAsync(string authCode)
         {
@@ -95,7 +126,7 @@ namespace SpotifyManager
             HttpResponseMessage response = await client.PostAsync("https://accounts.spotify.com/api/token", requestBody);
 
             string responseData = await response.Content.ReadAsStringAsync();
-            
+
             client.Dispose();
 
             //Console.WriteLine(responseData);

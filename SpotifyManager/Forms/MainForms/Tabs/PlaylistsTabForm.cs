@@ -1,5 +1,7 @@
-﻿using SpotifyManager.Classes.Models.RootObjects;
+﻿using Newtonsoft.Json;
+using SpotifyManager.Classes.Models.RootObjects;
 using SpotifyManager.Classes.Models.SubObjects;
+using SpotifyManager.Forms.MiscForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,13 +33,13 @@ namespace SpotifyManager.Forms.MainForms.Tabs
                 cmbPlaylistSelect.Items.Add(i.name);
             }
 
-        } 
+        }
 
         private void PlaylistsTabForm_Load(object sender, EventArgs e)
         {
             Styling.SetFormScheme(this);
 
-            
+
         }
 
         public void LoadPlaylist()
@@ -67,9 +69,9 @@ namespace SpotifyManager.Forms.MainForms.Tabs
 
             PlaylistTracks playlistTracks = Globals.DataStore.SelectedPlaylistTracks;
 
-            foreach(Item item in playlistTracks.items)
+            foreach (Item item in playlistTracks.items)
             {
-                dgvPlaylist.Rows.Add(item.track.name, item.added_at , item.added_by.id,  item.track.id, item.added_by.id);
+                dgvPlaylist.Rows.Add(item.track.name, item.added_at, item.added_by.id, item.track.id, item.added_by.id);
             }
 
         }
@@ -90,7 +92,7 @@ namespace SpotifyManager.Forms.MainForms.Tabs
         private async void dgvPlaylist_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             //go to user button
-            if(dgvPlaylist.CurrentCell.ColumnIndex == 2)
+            if (dgvPlaylist.CurrentCell.ColumnIndex == 2)
             {
                 string userId = dgvPlaylist.Rows[e.RowIndex].Cells[4].Value.ToString();
                 await Globals.DataStore.GetProfile(userId);
@@ -100,7 +102,8 @@ namespace SpotifyManager.Forms.MainForms.Tabs
                 await Globals.TabForms[0].LoadTabForm();
                 await Globals.TabForms[1].LoadTabForm();
 
-            }else if(dgvPlaylist.CurrentCell.ColumnIndex == 0)
+            }
+            else if (dgvPlaylist.CurrentCell.ColumnIndex == 0)
             {
 
                 string trackId = dgvPlaylist.Rows[e.RowIndex].Cells[3].Value.ToString();
@@ -109,14 +112,14 @@ namespace SpotifyManager.Forms.MainForms.Tabs
 
                 Globals.TabForms[2].LoadTabForm();
 
-                
+
             }
 
-            
 
-            
 
-            
+
+
+
         }
 
         private async void lnkExportPlaylist_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -142,14 +145,52 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             }
         }
 
-        private void lnkImportPlaylist_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        public async Task<Playlist> CreateNewPlaylist(string name, string description)
+        {
+            string playlistPostContent = "{\r\n  \"name\": \"" + name    + "\",\r\n  \"description\": \"" + description + "\",\r\n  \"public\": true\r\n}";
+
+            string responseJson = await Globals.Requester.PostAsync("https://api.spotify.com/v1/users/1226203341/playlists", playlistPostContent);
+
+            Playlist playlistCreated = JsonConvert.DeserializeObject<Playlist>(responseJson);
+
+            return playlistCreated;
+        }
+
+        public async void PopulatePlaylistTracks(string playlistId, string contentUris)
+        {
+            //response data is unnecessary spotify server stuff, we don't need it 
+            await Globals.Requester.PostAsync($"https://api.spotify.com/v1/playlists/{playlistId}", contentUris);
+        }
+
+        
+
+        private async void lnkImportPlaylist_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             fileDialogImportPlaylist.ShowDialog();
 
-            //you are here!
-            //not stuck, just lunchtime
-            //selects import file
-            //before anything else happens we need a POST method in the requester
+
+            string filePath = fileDialogImportPlaylist.FileName;
+            string fileDataJson = File.ReadAllText(filePath);
+            //dynamic fileData = JsonConvert.DeserializeObject(fileDataJson);
+
+            NewPlaylistForm newPlaylistForm = new NewPlaylistForm();
+
+            newPlaylistForm.ShowDialog();
+
+            string playlistName = newPlaylistForm.Name_;
+            string playlistDescription = newPlaylistForm.Description;
+
+            Playlist playlistCreated = await CreateNewPlaylist(playlistName, playlistDescription);
+
+            string targetId = playlistCreated.id;
+
+            //error 405 method not allowed?
+            PopulatePlaylistTracks(targetId, fileDataJson);
+
+            MessageBox.Show("Playlist imported!");
+
+
+
         }
     }
 }

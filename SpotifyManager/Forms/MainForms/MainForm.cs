@@ -220,6 +220,11 @@ namespace SpotifyManager
                 Globals.AccessToken.SetAccessToken(setAccessTokenMenuItem.Text);
             }
         }
+
+        private async void boopToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            
+        }
     }
 
 

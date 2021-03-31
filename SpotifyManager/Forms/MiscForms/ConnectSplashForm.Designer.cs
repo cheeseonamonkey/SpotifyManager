@@ -86,6 +86,7 @@ namespace SpotifyManager.Forms
             this.Controls.Add(this.btnConnect);
             this.Name = "ConnectSplashForm";
             this.Text = "Connect";
+            this.Load += new System.EventHandler(this.ConnectSplashForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

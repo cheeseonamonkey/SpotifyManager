@@ -52,6 +52,8 @@
   <ItemGroup>
     <Compile Include="Classes\Global\DataStore.cs" />
     <Compile Include="Classes\HTTP\AccessToken.cs" />
+    <Compile Include="Classes\Models\RootObjects\Recommendation.cs" />
+    <Compile Include="Classes\Models\SubObjects\Seed.cs" />
     <Compile Include="Classes\Models\RootObjects\TrackFeatures.cs" />
     <Compile Include="Classes\Models\RootObjects\Playlist.cs" />
     <Compile Include="Classes\Models\RootObjects\PlaylistList.cs" />

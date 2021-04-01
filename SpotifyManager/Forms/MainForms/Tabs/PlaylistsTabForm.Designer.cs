@@ -36,6 +36,7 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             this.colTrackId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colAddedById = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlPlaylist = new System.Windows.Forms.Panel();
+            this.lnkImportPlaylist = new System.Windows.Forms.LinkLabel();
             this.lnkGenerateArtists = new System.Windows.Forms.LinkLabel();
             this.lnkGenerateObscure = new System.Windows.Forms.LinkLabel();
             this.lnkGenerateSimilar = new System.Windows.Forms.LinkLabel();
@@ -49,8 +50,8 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             this.label1 = new System.Windows.Forms.Label();
             this.cmbPlaylistSelect = new System.Windows.Forms.ComboBox();
             this.fileDialogExportPlaylist = new System.Windows.Forms.SaveFileDialog();
-            this.lnkImportPlaylist = new System.Windows.Forms.LinkLabel();
             this.fileDialogImportPlaylist = new System.Windows.Forms.OpenFileDialog();
+            this.lnkLikeEveryTrack = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlaylist)).BeginInit();
             this.pnlPlaylist.SuspendLayout();
             this.SuspendLayout();
@@ -114,6 +115,7 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             // pnlPlaylist
             // 
             this.pnlPlaylist.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlPlaylist.Controls.Add(this.lnkLikeEveryTrack);
             this.pnlPlaylist.Controls.Add(this.lnkImportPlaylist);
             this.pnlPlaylist.Controls.Add(this.lnkGenerateArtists);
             this.pnlPlaylist.Controls.Add(this.lnkGenerateObscure);
@@ -133,10 +135,21 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             this.pnlPlaylist.TabIndex = 1;
             this.pnlPlaylist.Tag = "shade";
             // 
+            // lnkImportPlaylist
+            // 
+            this.lnkImportPlaylist.AutoSize = true;
+            this.lnkImportPlaylist.Location = new System.Drawing.Point(80, 61);
+            this.lnkImportPlaylist.Name = "lnkImportPlaylist";
+            this.lnkImportPlaylist.Size = new System.Drawing.Size(70, 13);
+            this.lnkImportPlaylist.TabIndex = 12;
+            this.lnkImportPlaylist.TabStop = true;
+            this.lnkImportPlaylist.Text = "Import playlist";
+            this.lnkImportPlaylist.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkImportPlaylist_LinkClicked);
+            // 
             // lnkGenerateArtists
             // 
             this.lnkGenerateArtists.AutoSize = true;
-            this.lnkGenerateArtists.Location = new System.Drawing.Point(342, 61);
+            this.lnkGenerateArtists.Location = new System.Drawing.Point(436, 61);
             this.lnkGenerateArtists.Name = "lnkGenerateArtists";
             this.lnkGenerateArtists.Size = new System.Drawing.Size(120, 13);
             this.lnkGenerateArtists.TabIndex = 11;
@@ -146,7 +159,7 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             // lnkGenerateObscure
             // 
             this.lnkGenerateObscure.AutoSize = true;
-            this.lnkGenerateObscure.Location = new System.Drawing.Point(244, 61);
+            this.lnkGenerateObscure.Location = new System.Drawing.Point(338, 61);
             this.lnkGenerateObscure.Name = "lnkGenerateObscure";
             this.lnkGenerateObscure.Size = new System.Drawing.Size(92, 13);
             this.lnkGenerateObscure.TabIndex = 10;
@@ -156,12 +169,13 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             // lnkGenerateSimilar
             // 
             this.lnkGenerateSimilar.AutoSize = true;
-            this.lnkGenerateSimilar.Location = new System.Drawing.Point(156, 61);
+            this.lnkGenerateSimilar.Location = new System.Drawing.Point(250, 61);
             this.lnkGenerateSimilar.Name = "lnkGenerateSimilar";
             this.lnkGenerateSimilar.Size = new System.Drawing.Size(82, 13);
             this.lnkGenerateSimilar.TabIndex = 9;
             this.lnkGenerateSimilar.TabStop = true;
             this.lnkGenerateSimilar.Text = "Generate similar";
+            this.lnkGenerateSimilar.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkGenerateSimilar_LinkClicked);
             // 
             // lnkExportPlaylist
             // 
@@ -264,20 +278,20 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             // 
             this.fileDialogExportPlaylist.DefaultExt = "playlist";
             // 
-            // lnkImportPlaylist
-            // 
-            this.lnkImportPlaylist.AutoSize = true;
-            this.lnkImportPlaylist.Location = new System.Drawing.Point(80, 61);
-            this.lnkImportPlaylist.Name = "lnkImportPlaylist";
-            this.lnkImportPlaylist.Size = new System.Drawing.Size(70, 13);
-            this.lnkImportPlaylist.TabIndex = 12;
-            this.lnkImportPlaylist.TabStop = true;
-            this.lnkImportPlaylist.Text = "Import playlist";
-            this.lnkImportPlaylist.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkImportPlaylist_LinkClicked);
-            // 
             // fileDialogImportPlaylist
             // 
             this.fileDialogImportPlaylist.DefaultExt = "playlist";
+            // 
+            // lnkLikeEveryTrack
+            // 
+            this.lnkLikeEveryTrack.AutoSize = true;
+            this.lnkLikeEveryTrack.Enabled = false;
+            this.lnkLikeEveryTrack.Location = new System.Drawing.Point(156, 61);
+            this.lnkLikeEveryTrack.Name = "lnkLikeEveryTrack";
+            this.lnkLikeEveryTrack.Size = new System.Drawing.Size(88, 13);
+            this.lnkLikeEveryTrack.TabIndex = 13;
+            this.lnkLikeEveryTrack.TabStop = true;
+            this.lnkLikeEveryTrack.Text = "Save every track";
             // 
             // PlaylistsTabForm
             // 
@@ -320,5 +334,6 @@ namespace SpotifyManager.Forms.MainForms.Tabs
         private System.Windows.Forms.SaveFileDialog fileDialogExportPlaylist;
         private System.Windows.Forms.LinkLabel lnkImportPlaylist;
         private System.Windows.Forms.OpenFileDialog fileDialogImportPlaylist;
+        private System.Windows.Forms.LinkLabel lnkLikeEveryTrack;
     }
 }

@@ -28,7 +28,14 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             Profile profile = Globals.DataStore.SelectedProfile;
             lblDisplayName.Text = profile.display_name;
 
-            picProfile.LoadAsync(profile.images.FirstOrDefault().url.ToString());
+            try
+            {
+                picProfile.LoadAsync(profile.images.FirstOrDefault().url.ToString());
+            }
+            catch (Exception miniE)
+            {
+                picProfile.Image = null;
+            }
 
             PlaylistList myPlaylists = Globals.DataStore.PlaylistList;
             lblNumFollowers.Text = $"{profile.followers.total.ToString(),3} followers";

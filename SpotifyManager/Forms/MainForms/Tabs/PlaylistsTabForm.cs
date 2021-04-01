@@ -91,7 +91,7 @@ namespace SpotifyManager.Forms.MainForms.Tabs
 
         private async void dgvPlaylist_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            //go to user button
+            //go to user link
             if (dgvPlaylist.CurrentCell.ColumnIndex == 2)
             {
                 string userId = dgvPlaylist.Rows[e.RowIndex].Cells[4].Value.ToString();
@@ -103,6 +103,7 @@ namespace SpotifyManager.Forms.MainForms.Tabs
                 await Globals.TabForms[1].LoadTabForm();
 
             }
+            //go to track link
             else if (dgvPlaylist.CurrentCell.ColumnIndex == 0)
             {
 
@@ -177,18 +178,20 @@ namespace SpotifyManager.Forms.MainForms.Tabs
 
             newPlaylistForm.ShowDialog();
 
-            string playlistName = newPlaylistForm.Name_;
-            string playlistDescription = newPlaylistForm.Description;
+            if (newPlaylistForm.DialogResult == DialogResult.OK)
+            {
+                string playlistName = newPlaylistForm.Name_;
+                string playlistDescription = newPlaylistForm.Description;
 
-            Playlist playlistCreated = await CreateNewPlaylist(playlistName, playlistDescription);
+                Playlist playlistCreated = await CreateNewPlaylist(playlistName, playlistDescription);
 
-            string targetId = playlistCreated.id;
+                string targetId = playlistCreated.id;
 
-            
-            PopulatePlaylistTracks(targetId, fileDataJson);
 
-            MessageBox.Show("Playlist imported!");
+                PopulatePlaylistTracks(targetId, fileDataJson);
 
+                MessageBox.Show("Playlist imported!");
+            }
 
 
         }

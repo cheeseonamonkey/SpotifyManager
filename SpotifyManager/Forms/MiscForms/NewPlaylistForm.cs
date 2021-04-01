@@ -15,6 +15,7 @@ namespace SpotifyManager.Forms.MiscForms
         public bool Okay { get; set; }
         public string Name_ { get; set; }
         public string Description { get; set; }
+        
 
         public NewPlaylistForm()
         {
@@ -23,11 +24,17 @@ namespace SpotifyManager.Forms.MiscForms
 
         private void btnOkay_Click(object sender, EventArgs e)
         {
-            
 
+            this.DialogResult = DialogResult.OK;
             this.Name_ = txtName.Text;
             this.Description = txtDescription.Text;
 
+            this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
     }

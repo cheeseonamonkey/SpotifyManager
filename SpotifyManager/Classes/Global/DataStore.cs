@@ -32,13 +32,13 @@ namespace SpotifyManager.Classes.Global
             // List<Task> webCalls = new List<Task>();
 
             //MyProfile:
-            string myProfileJson = await Globals.Requester.MakeRequestAsync("https://api.spotify.com/v1/me");
+            string myProfileJson = await Globals.Requester.GetAsync("https://api.spotify.com/v1/me");
             SelectedProfile = JsonConvert.DeserializeObject<Profile>(myProfileJson);
             
             MyId = SelectedProfile.id;
 
             //MyPlaylists:
-            string myPlaylistsJson = await Globals.Requester.MakeRequestAsync("https://api.spotify.com/v1/me/playlists/?limit=49");
+            string myPlaylistsJson = await Globals.Requester.GetAsync("https://api.spotify.com/v1/me/playlists/?limit=49");
             PlaylistList = JsonConvert.DeserializeObject<PlaylistList>(myPlaylistsJson);
 
             //because max limit is 50, must loop
@@ -48,7 +48,7 @@ namespace SpotifyManager.Classes.Global
 
                 for (int i = 1; i < numLoops; i++)
                 {
-                    myPlaylistsJson = await Globals.Requester.MakeRequestAsync($"https://api.spotify.com/v1/me/playlists/?limit=49&offset={49*i}");
+                    myPlaylistsJson = await Globals.Requester.GetAsync($"https://api.spotify.com/v1/me/playlists/?limit=49&offset={49*i}");
                     PlaylistList playlistOffset = JsonConvert.DeserializeObject<PlaylistList>(myPlaylistsJson);
 
 
@@ -58,7 +58,7 @@ namespace SpotifyManager.Classes.Global
 
 
             //ProfileRecentlyPlayed:
-            string myRecentlyPlayedJson = await Globals.Requester.MakeRequestAsync($"https://api.spotify.com/v1/me/player/recently-played?limit=10");
+            string myRecentlyPlayedJson = await Globals.Requester.GetAsync($"https://api.spotify.com/v1/me/player/recently-played?limit=10");
             SelectedRecentlyPlayed = JsonConvert.DeserializeObject<RecentlyPlayed>(myRecentlyPlayedJson);
 
             //Track
@@ -72,7 +72,7 @@ namespace SpotifyManager.Classes.Global
         public async Task GetPlaylistList(string userId)
         {
             //MyPlaylists:
-            string myPlaylistsJson = await Globals.Requester.MakeRequestAsync($"https://api.spotify.com/v1/users/{userId}/playlists/");
+            string myPlaylistsJson = await Globals.Requester.GetAsync($"https://api.spotify.com/v1/users/{userId}/playlists/");
             PlaylistList = JsonConvert.DeserializeObject<PlaylistList>(myPlaylistsJson);
 
             //because max limit is 50, must loop
@@ -82,7 +82,7 @@ namespace SpotifyManager.Classes.Global
 
                 for (int i = 1; i < numLoops; i++)
                 {
-                    myPlaylistsJson = await Globals.Requester.MakeRequestAsync($"https://api.spotify.com/v1/me/playlists/?limit=49&offset={49 * i}");
+                    myPlaylistsJson = await Globals.Requester.GetAsync($"https://api.spotify.com/v1/me/playlists/?limit=49&offset={49 * i}");
                     PlaylistList playlistOffset = JsonConvert.DeserializeObject<PlaylistList>(myPlaylistsJson);
 
 
@@ -94,14 +94,14 @@ namespace SpotifyManager.Classes.Global
         public async Task GetPlaylist(string playlistId)
         {
             //sets selected playlist
-            string playlistJson = await Globals.Requester.MakeRequestAsync($"https://api.spotify.com/v1/playlists/{playlistId}?limit=999");
+            string playlistJson = await Globals.Requester.GetAsync($"https://api.spotify.com/v1/playlists/{playlistId}?limit=999");
             Playlist playlist = JsonConvert.DeserializeObject<Playlist>(playlistJson);
 
             SelectedPlaylist = playlist;
 
 
             //gets playlist items
-            string playlistTracksJson = await Globals.Requester.MakeRequestAsync($"https://api.spotify.com/v1/playlists/{playlistId}/tracks?limit=99");
+            string playlistTracksJson = await Globals.Requester.GetAsync($"https://api.spotify.com/v1/playlists/{playlistId}/tracks?limit=99");
             PlaylistTracks playlistTracks = JsonConvert.DeserializeObject<PlaylistTracks>(playlistTracksJson);
 
             if (playlistTracks.total > 99)
@@ -110,7 +110,7 @@ namespace SpotifyManager.Classes.Global
 
                 for (int i = 1; i < numLoops; i++)
                 {
-                    playlistTracksJson = await Globals.Requester.MakeRequestAsync($"https://api.spotify.com/v1/playlists/{playlistId}/tracks?limit=99&offset={99*i}");
+                    playlistTracksJson = await Globals.Requester.GetAsync($"https://api.spotify.com/v1/playlists/{playlistId}/tracks?limit=99&offset={99*i}");
                     PlaylistList playlistTracksOffset = JsonConvert.DeserializeObject<PlaylistList>(playlistTracksJson);
 
 
@@ -126,14 +126,14 @@ namespace SpotifyManager.Classes.Global
 
         public async Task GetProfile(string userId)
         {
-            string myProfileJson = await Globals.Requester.MakeRequestAsync($"https://api.spotify.com/v1/users/{userId}");
+            string myProfileJson = await Globals.Requester.GetAsync($"https://api.spotify.com/v1/users/{userId}");
             SelectedProfile = JsonConvert.DeserializeObject<Profile>(myProfileJson);
 
         }
 
         public async Task GetTrack(string trackId)
         {
-            string trackJson = await Globals.Requester.MakeRequestAsync($"https://api.spotify.com/v1/tracks/{trackId}");
+            string trackJson = await Globals.Requester.GetAsync($"https://api.spotify.com/v1/tracks/{trackId}");
             SelectedTrack = JsonConvert.DeserializeObject<Track>(trackJson);
 
             await GetTrackDetails(SelectedTrack.id.ToString());
@@ -143,7 +143,7 @@ namespace SpotifyManager.Classes.Global
 
         public async Task GetTrackDetails(string trackId)
         {
-            string trackFeaturesJson = await Globals.Requester.MakeRequestAsync($"https://api.spotify.com/v1/audio-features/{trackId}");
+            string trackFeaturesJson = await Globals.Requester.GetAsync($"https://api.spotify.com/v1/audio-features/{trackId}");
             SelectedTrackFeatures = JsonConvert.DeserializeObject<TrackFeatures>(trackFeaturesJson);
 
             

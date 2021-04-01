@@ -30,6 +30,11 @@ namespace SpotifyManager.Forms.MainForms.Tabs
         private void InitializeComponent()
         {
             this.dgvPlaylist = new System.Windows.Forms.DataGridView();
+            this.colSong = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.colAddedOn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colAddedBy = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.colTrackId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colAddedById = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlPlaylist = new System.Windows.Forms.Panel();
             this.lnkGenerateArtists = new System.Windows.Forms.LinkLabel();
             this.lnkGenerateObscure = new System.Windows.Forms.LinkLabel();
@@ -43,11 +48,9 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             this.lblPlaylistName = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbPlaylistSelect = new System.Windows.Forms.ComboBox();
-            this.colSong = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.colAddedOn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colAddedBy = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.colTrackId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colAddedById = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fileDialogExportPlaylist = new System.Windows.Forms.SaveFileDialog();
+            this.lnkImportPlaylist = new System.Windows.Forms.LinkLabel();
+            this.fileDialogImportPlaylist = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlaylist)).BeginInit();
             this.pnlPlaylist.SuspendLayout();
             this.SuspendLayout();
@@ -72,9 +75,46 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             this.dgvPlaylist.TabIndex = 0;
             this.dgvPlaylist.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlaylist_CellContentClick);
             // 
+            // colSong
+            // 
+            this.colSong.HeaderText = "Song name";
+            this.colSong.Name = "colSong";
+            this.colSong.ReadOnly = true;
+            this.colSong.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colSong.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // colAddedOn
+            // 
+            this.colAddedOn.HeaderText = "Added on";
+            this.colAddedOn.Name = "colAddedOn";
+            this.colAddedOn.ReadOnly = true;
+            // 
+            // colAddedBy
+            // 
+            this.colAddedBy.HeaderText = "Added by";
+            this.colAddedBy.Name = "colAddedBy";
+            this.colAddedBy.ReadOnly = true;
+            this.colAddedBy.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colAddedBy.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // colTrackId
+            // 
+            this.colTrackId.HeaderText = "trackId";
+            this.colTrackId.Name = "colTrackId";
+            this.colTrackId.ReadOnly = true;
+            this.colTrackId.Visible = false;
+            // 
+            // colAddedById
+            // 
+            this.colAddedById.HeaderText = "addedById";
+            this.colAddedById.Name = "colAddedById";
+            this.colAddedById.ReadOnly = true;
+            this.colAddedById.Visible = false;
+            // 
             // pnlPlaylist
             // 
             this.pnlPlaylist.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlPlaylist.Controls.Add(this.lnkImportPlaylist);
             this.pnlPlaylist.Controls.Add(this.lnkGenerateArtists);
             this.pnlPlaylist.Controls.Add(this.lnkGenerateObscure);
             this.pnlPlaylist.Controls.Add(this.lnkGenerateSimilar);
@@ -96,7 +136,7 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             // lnkGenerateArtists
             // 
             this.lnkGenerateArtists.AutoSize = true;
-            this.lnkGenerateArtists.Location = new System.Drawing.Point(266, 61);
+            this.lnkGenerateArtists.Location = new System.Drawing.Point(342, 61);
             this.lnkGenerateArtists.Name = "lnkGenerateArtists";
             this.lnkGenerateArtists.Size = new System.Drawing.Size(120, 13);
             this.lnkGenerateArtists.TabIndex = 11;
@@ -106,7 +146,7 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             // lnkGenerateObscure
             // 
             this.lnkGenerateObscure.AutoSize = true;
-            this.lnkGenerateObscure.Location = new System.Drawing.Point(168, 61);
+            this.lnkGenerateObscure.Location = new System.Drawing.Point(244, 61);
             this.lnkGenerateObscure.Name = "lnkGenerateObscure";
             this.lnkGenerateObscure.Size = new System.Drawing.Size(92, 13);
             this.lnkGenerateObscure.TabIndex = 10;
@@ -116,7 +156,7 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             // lnkGenerateSimilar
             // 
             this.lnkGenerateSimilar.AutoSize = true;
-            this.lnkGenerateSimilar.Location = new System.Drawing.Point(80, 61);
+            this.lnkGenerateSimilar.Location = new System.Drawing.Point(156, 61);
             this.lnkGenerateSimilar.Name = "lnkGenerateSimilar";
             this.lnkGenerateSimilar.Size = new System.Drawing.Size(82, 13);
             this.lnkGenerateSimilar.TabIndex = 9;
@@ -132,6 +172,7 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             this.lnkExportPlaylist.TabIndex = 8;
             this.lnkExportPlaylist.TabStop = true;
             this.lnkExportPlaylist.Text = "Export playlist";
+            this.lnkExportPlaylist.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkExportPlaylist_LinkClicked);
             // 
             // lblAuthor
             // 
@@ -219,41 +260,24 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             this.cmbPlaylistSelect.TabIndex = 0;
             this.cmbPlaylistSelect.SelectedIndexChanged += new System.EventHandler(this.cmbPlaylistSelect_SelectedIndexChanged);
             // 
-            // colSong
+            // fileDialogExportPlaylist
             // 
-            this.colSong.HeaderText = "Song name";
-            this.colSong.Name = "colSong";
-            this.colSong.ReadOnly = true;
-            this.colSong.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colSong.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.fileDialogExportPlaylist.DefaultExt = "playlist";
             // 
-            // colAddedOn
+            // lnkImportPlaylist
             // 
-            this.colAddedOn.HeaderText = "Added on";
-            this.colAddedOn.Name = "colAddedOn";
-            this.colAddedOn.ReadOnly = true;
+            this.lnkImportPlaylist.AutoSize = true;
+            this.lnkImportPlaylist.Location = new System.Drawing.Point(80, 61);
+            this.lnkImportPlaylist.Name = "lnkImportPlaylist";
+            this.lnkImportPlaylist.Size = new System.Drawing.Size(70, 13);
+            this.lnkImportPlaylist.TabIndex = 12;
+            this.lnkImportPlaylist.TabStop = true;
+            this.lnkImportPlaylist.Text = "Import playlist";
+            this.lnkImportPlaylist.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkImportPlaylist_LinkClicked);
             // 
-            // colAddedBy
+            // fileDialogImportPlaylist
             // 
-            this.colAddedBy.HeaderText = "Added by";
-            this.colAddedBy.Name = "colAddedBy";
-            this.colAddedBy.ReadOnly = true;
-            this.colAddedBy.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colAddedBy.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // colTrackId
-            // 
-            this.colTrackId.HeaderText = "trackId";
-            this.colTrackId.Name = "colTrackId";
-            this.colTrackId.ReadOnly = true;
-            this.colTrackId.Visible = false;
-            // 
-            // colAddedById
-            // 
-            this.colAddedById.HeaderText = "addedById";
-            this.colAddedById.Name = "colAddedById";
-            this.colAddedById.ReadOnly = true;
-            this.colAddedById.Visible = false;
+            this.fileDialogImportPlaylist.DefaultExt = "playlist";
             // 
             // PlaylistsTabForm
             // 
@@ -293,5 +317,8 @@ namespace SpotifyManager.Forms.MainForms.Tabs
         private System.Windows.Forms.DataGridViewLinkColumn colAddedBy;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTrackId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colAddedById;
+        private System.Windows.Forms.SaveFileDialog fileDialogExportPlaylist;
+        private System.Windows.Forms.LinkLabel lnkImportPlaylist;
+        private System.Windows.Forms.OpenFileDialog fileDialogImportPlaylist;
     }
 }

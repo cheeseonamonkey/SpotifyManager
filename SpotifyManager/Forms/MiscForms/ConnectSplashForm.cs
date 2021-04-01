@@ -23,9 +23,11 @@ namespace SpotifyManager.Forms
 
         private void btnConnect_Click(object sender, EventArgs e)
         {
+            //list of scopes - https://developer.spotify.com/documentation/general/guides/scopes/
+
             lblSplash.Text = "All credentials are handled only by Spotify's servers and are never visible to this application. Spotify will let you specify which information is released on the next page. All code is open source and available for review.";
 
-            string authorizationUrl = $"https://accounts.spotify.com/authorize?client_id={Globals.spotifyClient}&redirect_uri=http://localhost/&response_type=code&scope=user-read-recently-played%20playlist-read-private%20playlist-read-collaborative";
+            string authorizationUrl = $"https://accounts.spotify.com/authorize?client_id={Globals.spotifyClient}&redirect_uri=http://localhost/&response_type=code&scope=user-read-recently-played%20playlist-read-private%20playlist-read-collaborative%20playlist-modify-public%20playlist-modify-private";
 
             authBrowser.Navigate(authorizationUrl);
 
@@ -34,7 +36,7 @@ namespace SpotifyManager.Forms
         private async void authBrowser_Navigated(object sender, WebBrowserNavigatedEventArgs e)
         {
             //todo: access token bug
-            //to reprdouce, log out and back in
+            //to reprdouce, log out and back in in the same instance
             //console output shows access token not present
 
             string url = authBrowser.Url.AbsoluteUri.ToString() ;
@@ -104,6 +106,11 @@ namespace SpotifyManager.Forms
                 }
 
             }
+
+        }
+
+        private void ConnectSplashForm_Load(object sender, EventArgs e)
+        {
 
         }
     }

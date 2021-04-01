@@ -299,10 +299,10 @@ namespace SpotifyManager.Forms.MainForms.Tabs
 
             await PopulatePlaylistTracks(newPlaylist.id, uriPostContent);
 
-
-
-
-
+            //you are here!
+            //this is working
+            //maybe lets put this in a method with parameters so it can be used for the other generation methods
+            //if that won't work or is too time-consuming it can be easily done in each event also 
 
             newPlaylistForm.Dispose();
         }

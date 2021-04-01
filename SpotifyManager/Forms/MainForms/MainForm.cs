@@ -223,7 +223,10 @@ namespace SpotifyManager
 
         private async void boopToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            
+            /*
+            string content = "{\"uris\":[\r\n\t\"spotify:track:3Dy8QNZ77cre9ThUPRguy0\",\r\n\t\"spotify:track:1TSAV7rDKNEqH4ApQbJlzq\",\r\n\t\"spotify:track:0BqlU7mN83X4jQlfzM3Z3i\",\r\n\t\"spotify:track:2APaWLyP3drx0CIodMhKHd\",\r\n\t\"spotify:track:2Dv7PTwSoB17f3VFDIKw8m\",\r\n\t\"spotify:track:1Qdnvn4XlmZANCVy3XjrQo\",\r\n\t\"spotify:track:6mFkJmJqdDVQ1REhVfGgd1\",\r\n\t\"spotify:track:4sIPWACRol7zzc5RbRSt60\",\r\n\t\"spotify:track:3ZjiEk0ndl063kalc2stx9\",\r\n\t\"spotify:track:56Z7hbyMrndw1naxb6I5Oi\",\r\n\t\"spotify:track:6gSKswfcoWvaadqvuMF3Y7\",\r\n\t\"spotify:track:3clX2NMmjaAHmBjeTSa9vV\",\r\n\t\"spotify:track:3M8FzayQWtkvOhqMn2V4T2\",\r\n\t\"spotify:track:7vRdcsmD92oErIQDnmp60e\",\r\n\t\"spotify:track:61hJaUtcgY2buPeBZz4jq7\",\r\n\t\"spotify:track:6M0Ef3mfbK34lw9QxV1LFK\",\r\n\t\"spotify:track:3DYZKxjG8SZrWpVcoUilqQ\",\r\n\t\"spotify:track:3xTk4fMLcpoLkItpiI30vD\",\r\n\t\"spotify:track:4RXpgGM7A4Hg7cFBoH5KyF\",\r\n\t\"spotify:track:0a4agFmqHXxcZl1nho1BxM\",\r\n\t\"spotify:track:2AlhagDeOuRTZMRg89YQJl\",\r\n\t\"spotify:track:6Kn5yzAyOw3jf4Y5a6d1Oq\",\r\n\t\"spotify:track:0iYXDjcE2fOpJiy0ob1Kk3\",\r\n\t\"spotify:track:5mfA2CBzQeGiTk9wFItCsS\",\r\n\t\"spotify:track:01ga3tkz9Z5l2tE2DsvUO8\",\r\n\t\"spotify:track:05qauoa1cfrL4MNesfgilA\",\r\n\t\"spotify:track:0OrpW2p1jJj1qpsmevRIB2\",\r\n\t\"spotify:track:0lUlrI1sF4vFU9DpxTB1bV\",\r\n\t\"spotify:track:35ycG8vBnHjAfw1Q5WDl76\"\r\n\r\n]}";
+            Globals.Requester.PostAsync("https://api.spotify.com/v1/playlists/1XMrKphRQroVfO3t0vfXE9/tracks", content);
+            */
         }
     }
 

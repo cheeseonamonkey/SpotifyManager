@@ -159,7 +159,7 @@ namespace SpotifyManager.Forms.MainForms.Tabs
         public async void PopulatePlaylistTracks(string playlistId, string contentUris)
         {
             //response data is unnecessary spotify server stuff, we don't need it 
-            await Globals.Requester.PostAsync($"https://api.spotify.com/v1/playlists/{playlistId}", contentUris);
+            await Globals.Requester.PostAsync($"https://api.spotify.com/v1/playlists/{playlistId}/tracks", contentUris);
         }
 
         
@@ -184,7 +184,7 @@ namespace SpotifyManager.Forms.MainForms.Tabs
 
             string targetId = playlistCreated.id;
 
-            //error 405 method not allowed?
+            
             PopulatePlaylistTracks(targetId, fileDataJson);
 
             MessageBox.Show("Playlist imported!");

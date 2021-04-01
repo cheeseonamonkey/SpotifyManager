@@ -32,7 +32,7 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             {
                 picProfile.LoadAsync(profile.images.FirstOrDefault().url.ToString());
             }
-            catch (Exception miniE)
+            catch (Exception exce)
             {
                 picProfile.Image = null;
             }

@@ -35,12 +35,15 @@ namespace SpotifyManager.Forms.MiscForms
             this.label2 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.txtDescription = new System.Windows.Forms.TextBox();
+            this.nmbNumTracks = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.nmbNumTracks)).BeginInit();
             this.SuspendLayout();
             // 
             // btnOkay
             // 
             this.btnOkay.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOkay.Location = new System.Drawing.Point(217, 240);
+            this.btnOkay.Location = new System.Drawing.Point(217, 279);
             this.btnOkay.Name = "btnOkay";
             this.btnOkay.Size = new System.Drawing.Size(85, 37);
             this.btnOkay.TabIndex = 0;
@@ -51,7 +54,7 @@ namespace SpotifyManager.Forms.MiscForms
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(12, 240);
+            this.button1.Location = new System.Drawing.Point(12, 279);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(85, 37);
             this.button1.TabIndex = 1;
@@ -96,11 +99,32 @@ namespace SpotifyManager.Forms.MiscForms
             this.txtDescription.Size = new System.Drawing.Size(290, 131);
             this.txtDescription.TabIndex = 5;
             // 
+            // nmbNumTracks
+            // 
+            this.nmbNumTracks.Enabled = false;
+            this.nmbNumTracks.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nmbNumTracks.Location = new System.Drawing.Point(12, 242);
+            this.nmbNumTracks.Name = "nmbNumTracks";
+            this.nmbNumTracks.Size = new System.Drawing.Size(120, 23);
+            this.nmbNumTracks.TabIndex = 6;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(12, 223);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(109, 16);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Number of tracks";
+            // 
             // NewPlaylistForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(314, 289);
+            this.ClientSize = new System.Drawing.Size(314, 328);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.nmbNumTracks);
             this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.label2);
@@ -109,6 +133,8 @@ namespace SpotifyManager.Forms.MiscForms
             this.Controls.Add(this.btnOkay);
             this.Name = "NewPlaylistForm";
             this.Text = "NewPlaylistForm";
+            this.Load += new System.EventHandler(this.NewPlaylistForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.nmbNumTracks)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -122,5 +148,7 @@ namespace SpotifyManager.Forms.MiscForms
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.TextBox txtDescription;
+        private System.Windows.Forms.NumericUpDown nmbNumTracks;
+        private System.Windows.Forms.Label label3;
     }
 }

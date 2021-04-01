@@ -15,11 +15,15 @@ namespace SpotifyManager.Forms.MiscForms
         public bool Okay { get; set; }
         public string Name_ { get; set; }
         public string Description { get; set; }
+        public bool IsVarLength { get; set; }
+        public int NumTracks { get; set; }
         
 
-        public NewPlaylistForm()
+        public NewPlaylistForm(int numTracks, bool isVarLength = false)
         {
             InitializeComponent();
+            IsVarLength = isVarLength;
+            NumTracks = numTracks;
         }
 
         private void btnOkay_Click(object sender, EventArgs e)
@@ -28,7 +32,7 @@ namespace SpotifyManager.Forms.MiscForms
             this.DialogResult = DialogResult.OK;
             this.Name_ = txtName.Text;
             this.Description = txtDescription.Text;
-
+            this.NumTracks = Convert.ToInt32( nmbNumTracks.Value );
             this.Close();
         }
 
@@ -36,6 +40,15 @@ namespace SpotifyManager.Forms.MiscForms
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
+        }
+
+        private void NewPlaylistForm_Load(object sender, EventArgs e)
+        {
+            if(IsVarLength)
+            {
+                nmbNumTracks.Enabled = true;
+            }
+            nmbNumTracks.Value = NumTracks;
         }
     }
 }

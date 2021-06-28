@@ -38,7 +38,6 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             this.pnlPlaylist = new System.Windows.Forms.Panel();
             this.lnkLikeEveryTrack = new System.Windows.Forms.LinkLabel();
             this.lnkImportPlaylist = new System.Windows.Forms.LinkLabel();
-            this.lnkGenerateArtists = new System.Windows.Forms.LinkLabel();
             this.lnkGenerateObscure = new System.Windows.Forms.LinkLabel();
             this.lnkGenerateSimilar = new System.Windows.Forms.LinkLabel();
             this.lnkExportPlaylist = new System.Windows.Forms.LinkLabel();
@@ -118,7 +117,6 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             this.pnlPlaylist.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pnlPlaylist.Controls.Add(this.lnkLikeEveryTrack);
             this.pnlPlaylist.Controls.Add(this.lnkImportPlaylist);
-            this.pnlPlaylist.Controls.Add(this.lnkGenerateArtists);
             this.pnlPlaylist.Controls.Add(this.lnkGenerateObscure);
             this.pnlPlaylist.Controls.Add(this.lnkGenerateSimilar);
             this.pnlPlaylist.Controls.Add(this.lnkExportPlaylist);
@@ -140,7 +138,6 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             // lnkLikeEveryTrack
             // 
             this.lnkLikeEveryTrack.AutoSize = true;
-            this.lnkLikeEveryTrack.Enabled = false;
             this.lnkLikeEveryTrack.Location = new System.Drawing.Point(234, 94);
             this.lnkLikeEveryTrack.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lnkLikeEveryTrack.Name = "lnkLikeEveryTrack";
@@ -148,6 +145,7 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             this.lnkLikeEveryTrack.TabIndex = 13;
             this.lnkLikeEveryTrack.TabStop = true;
             this.lnkLikeEveryTrack.Text = "Save every track";
+            this.lnkLikeEveryTrack.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkLikeEveryTrack_LinkClicked);
             // 
             // lnkImportPlaylist
             // 
@@ -160,17 +158,6 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             this.lnkImportPlaylist.TabStop = true;
             this.lnkImportPlaylist.Text = "Import playlist";
             this.lnkImportPlaylist.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkImportPlaylist_LinkClicked);
-            // 
-            // lnkGenerateArtists
-            // 
-            this.lnkGenerateArtists.AutoSize = true;
-            this.lnkGenerateArtists.Location = new System.Drawing.Point(654, 94);
-            this.lnkGenerateArtists.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lnkGenerateArtists.Name = "lnkGenerateArtists";
-            this.lnkGenerateArtists.Size = new System.Drawing.Size(176, 20);
-            this.lnkGenerateArtists.TabIndex = 11;
-            this.lnkGenerateArtists.TabStop = true;
-            this.lnkGenerateArtists.Text = "Generate w/ artist swap";
             // 
             // lnkGenerateObscure
             // 
@@ -343,7 +330,6 @@ namespace SpotifyManager.Forms.MainForms.Tabs
         private System.Windows.Forms.LinkLabel lnkGenerateObscure;
         private System.Windows.Forms.LinkLabel lnkGenerateSimilar;
         private System.Windows.Forms.LinkLabel lnkExportPlaylist;
-        private System.Windows.Forms.LinkLabel lnkGenerateArtists;
         private System.Windows.Forms.DataGridViewLinkColumn colSong;
         private System.Windows.Forms.DataGridViewTextBoxColumn colAddedOn;
         private System.Windows.Forms.DataGridViewLinkColumn colAddedBy;

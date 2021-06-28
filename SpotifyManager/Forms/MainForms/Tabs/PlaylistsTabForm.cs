@@ -364,5 +364,21 @@ namespace SpotifyManager.Forms.MainForms.Tabs
 
             newPlaylistForm.Dispose();
         }
+
+        private async void lnkLikeEveryTrack_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            List<string> ids = GetPlaylistTrackIDs();
+
+            string url = "https://api.spotify.com/v1/me/tracks?ids=";
+            
+            foreach(string s in ids)
+            {
+                url += $"{s},";
+            }
+
+            url = url.Remove(url.LastIndexOf(','));
+
+            string returnedResult = await Globals.Requester.PutAsync(url, "");
+        }
     }
 }

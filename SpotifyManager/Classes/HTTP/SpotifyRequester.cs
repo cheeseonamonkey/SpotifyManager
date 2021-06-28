@@ -41,6 +41,39 @@ namespace SpotifyManager
             }
         }
 
+
+        public async Task<string> PutAsync(string url, string content, string parameters = "")
+        {
+
+
+            if (Globals.AccessToken != null && client.DefaultRequestHeaders.Authorization.Parameter != Globals.AccessToken.access_token)
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Globals.AccessToken.access_token);
+
+            //todo: access token bug
+
+            Console.WriteLine(url);
+            Console.WriteLine($"\tAuth:  {client.DefaultRequestHeaders.Authorization}");
+
+            HttpContent postContent = new StringContent(content);
+
+            HttpResponseMessage response = await client.PutAsync(url, postContent);
+
+            if (response.IsSuccessStatusCode)
+            {
+                //
+            }
+            else
+            {
+                MessageBox.Show($"HTTP error -  {response.StatusCode}");
+            }
+
+
+            string responseString = await response.Content.ReadAsStringAsync();
+
+            return responseString;
+
+        }
+
         public async Task<string> PostAsync(string url, string content, string parameters = "")
         {
 

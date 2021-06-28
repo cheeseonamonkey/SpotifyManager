@@ -123,7 +123,7 @@ namespace SpotifyManager.Forms.MainForms.Tabs
 
         }
 
-        
+
 
         public string GetUriListJson(object paramObject = null)
         {
@@ -141,9 +141,9 @@ namespace SpotifyManager.Forms.MainForms.Tabs
                 saveData = saveData.Remove(saveData.LastIndexOf(','), 1);
 
                 return saveData;
-                
+
             }
-            else if(paramObject is List<string>)
+            else if (paramObject is List<string>)
             {
                 List<string> uris = paramObject as List<string>;
 
@@ -162,7 +162,7 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             }
 
             return null;
-            
+
         }
 
         private async void lnkExportPlaylist_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -181,7 +181,7 @@ namespace SpotifyManager.Forms.MainForms.Tabs
 
         public async Task<Playlist> CreateNewPlaylist(string name, string description)
         {
-            string playlistPostContent = "{\r\n  \"name\": \"" + name    + "\",\r\n  \"description\": \"" + description + "\",\r\n  \"public\": true\r\n}";
+            string playlistPostContent = "{\r\n  \"name\": \"" + name + "\",\r\n  \"description\": \"" + description + "\",\r\n  \"public\": true\r\n}";
 
             string responseJson = await Globals.Requester.PostAsync("https://api.spotify.com/v1/users/1226203341/playlists", playlistPostContent);
 
@@ -196,7 +196,7 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             await Globals.Requester.PostAsync($"https://api.spotify.com/v1/playlists/{playlistId}/tracks", contentUris);
         }
 
-        
+
 
         private async void lnkImportPlaylist_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -205,7 +205,7 @@ namespace SpotifyManager.Forms.MainForms.Tabs
 
             string filePath = fileDialogImportPlaylist.FileName;
             string fileDataJson = File.ReadAllText(filePath);
-            
+
             //needed to count tracks:
             dynamic fileData = JsonConvert.DeserializeObject(fileDataJson);
 
@@ -266,12 +266,13 @@ namespace SpotifyManager.Forms.MainForms.Tabs
 
             List<string> seedTrackIDs = GetPlaylistTrackIDs();
             List<string> newTrackUris = new List<string>();
-
+            
             
             for (int i = 0; i < firstPlaylistCount; i+=5)
             {
                 
-                //you are here
+                //TODO: only seeding w/ first 5 tracks for now
+
                 string recomUrl = $"https://api.spotify.com/v1/recommendations?limit=5&seed_tracks=";
 
                 for (int ii = 0; ii < 5; ii += 1)
@@ -299,10 +300,67 @@ namespace SpotifyManager.Forms.MainForms.Tabs
 
             await PopulatePlaylistTracks(newPlaylist.id, uriPostContent);
 
-            //you are here!
+            /*
             //this is working
             //maybe lets put this in a method with parameters so it can be used for the other generation methods
             //if that won't work or is too time-consuming it can be easily done in each event also 
+            */
+
+            newPlaylistForm.Dispose();
+        }
+
+        private async void lnkGenerateObscure_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            int firstPlaylistCount = Globals.DataStore.SelectedPlaylist.tracks.total;
+
+            NewPlaylistForm newPlaylistForm = new NewPlaylistForm(firstPlaylistCount);
+            newPlaylistForm.ShowDialog();
+
+            string playlistName = newPlaylistForm.Name_;
+            string playlistDescription = newPlaylistForm.Description;
+            //int numTracks = newPlaylistForm.NumTracks;
+
+            PlaylistTracks playlistTracks = Globals.DataStore.SelectedPlaylistTracks;
+
+            List<string> seedTrackIDs = GetPlaylistTrackIDs();
+            List<string> newTrackUris = new List<string>();
+
+
+            for (int i = 0; i < firstPlaylistCount; i += 5)
+            {
+
+                
+
+                string recomUrl = $"https://api.spotify.com/v1/recommendations?limit=5&seed_tracks=";
+
+                for (int ii = 0; ii < 5; ii += 1)
+                {
+                    if (seedTrackIDs.Count > i + ii)
+                        recomUrl += $"{seedTrackIDs[i + ii]},";
+                }
+
+                if (recomUrl.Contains(','))
+                    recomUrl = recomUrl.Remove(recomUrl.LastIndexOf(','));
+
+                recomUrl += "&target_popularity=0";
+
+                string recommendationJson = await Globals.Requester.GetAsync(recomUrl);
+                Recommendation recommendation = JsonConvert.DeserializeObject<Recommendation>(recommendationJson);
+
+                foreach (Track t in recommendation.tracks)
+                {
+                    newTrackUris.Add(t.uri);
+                }
+
+            }
+
+            string uriPostContent = GetUriListJson(newTrackUris);
+
+            Playlist newPlaylist = await CreateNewPlaylist(playlistName, playlistDescription);
+
+            await PopulatePlaylistTracks(newPlaylist.id, uriPostContent);
+
+
 
             newPlaylistForm.Dispose();
         }

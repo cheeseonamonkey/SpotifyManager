@@ -36,6 +36,7 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             this.colTrackId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colAddedById = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlPlaylist = new System.Windows.Forms.Panel();
+            this.lnkLikeEveryTrack = new System.Windows.Forms.LinkLabel();
             this.lnkImportPlaylist = new System.Windows.Forms.LinkLabel();
             this.lnkGenerateArtists = new System.Windows.Forms.LinkLabel();
             this.lnkGenerateObscure = new System.Windows.Forms.LinkLabel();
@@ -51,7 +52,6 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             this.cmbPlaylistSelect = new System.Windows.Forms.ComboBox();
             this.fileDialogExportPlaylist = new System.Windows.Forms.SaveFileDialog();
             this.fileDialogImportPlaylist = new System.Windows.Forms.OpenFileDialog();
-            this.lnkLikeEveryTrack = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlaylist)).BeginInit();
             this.pnlPlaylist.SuspendLayout();
             this.SuspendLayout();
@@ -69,10 +69,11 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             this.colAddedBy,
             this.colTrackId,
             this.colAddedById});
-            this.dgvPlaylist.Location = new System.Drawing.Point(12, 106);
+            this.dgvPlaylist.Location = new System.Drawing.Point(18, 163);
+            this.dgvPlaylist.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvPlaylist.Name = "dgvPlaylist";
             this.dgvPlaylist.ReadOnly = true;
-            this.dgvPlaylist.Size = new System.Drawing.Size(705, 357);
+            this.dgvPlaylist.Size = new System.Drawing.Size(1058, 549);
             this.dgvPlaylist.TabIndex = 0;
             this.dgvPlaylist.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlaylist_CellContentClick);
             // 
@@ -129,18 +130,32 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             this.pnlPlaylist.Controls.Add(this.lblPlaylistName);
             this.pnlPlaylist.Controls.Add(this.label1);
             this.pnlPlaylist.Controls.Add(this.cmbPlaylistSelect);
-            this.pnlPlaylist.Location = new System.Drawing.Point(12, 13);
+            this.pnlPlaylist.Location = new System.Drawing.Point(18, 20);
+            this.pnlPlaylist.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlPlaylist.Name = "pnlPlaylist";
-            this.pnlPlaylist.Size = new System.Drawing.Size(705, 87);
+            this.pnlPlaylist.Size = new System.Drawing.Size(1056, 132);
             this.pnlPlaylist.TabIndex = 1;
             this.pnlPlaylist.Tag = "shade";
+            // 
+            // lnkLikeEveryTrack
+            // 
+            this.lnkLikeEveryTrack.AutoSize = true;
+            this.lnkLikeEveryTrack.Enabled = false;
+            this.lnkLikeEveryTrack.Location = new System.Drawing.Point(234, 94);
+            this.lnkLikeEveryTrack.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lnkLikeEveryTrack.Name = "lnkLikeEveryTrack";
+            this.lnkLikeEveryTrack.Size = new System.Drawing.Size(125, 20);
+            this.lnkLikeEveryTrack.TabIndex = 13;
+            this.lnkLikeEveryTrack.TabStop = true;
+            this.lnkLikeEveryTrack.Text = "Save every track";
             // 
             // lnkImportPlaylist
             // 
             this.lnkImportPlaylist.AutoSize = true;
-            this.lnkImportPlaylist.Location = new System.Drawing.Point(80, 61);
+            this.lnkImportPlaylist.Location = new System.Drawing.Point(120, 94);
+            this.lnkImportPlaylist.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lnkImportPlaylist.Name = "lnkImportPlaylist";
-            this.lnkImportPlaylist.Size = new System.Drawing.Size(70, 13);
+            this.lnkImportPlaylist.Size = new System.Drawing.Size(106, 20);
             this.lnkImportPlaylist.TabIndex = 12;
             this.lnkImportPlaylist.TabStop = true;
             this.lnkImportPlaylist.Text = "Import playlist";
@@ -149,9 +164,10 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             // lnkGenerateArtists
             // 
             this.lnkGenerateArtists.AutoSize = true;
-            this.lnkGenerateArtists.Location = new System.Drawing.Point(436, 61);
+            this.lnkGenerateArtists.Location = new System.Drawing.Point(654, 94);
+            this.lnkGenerateArtists.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lnkGenerateArtists.Name = "lnkGenerateArtists";
-            this.lnkGenerateArtists.Size = new System.Drawing.Size(120, 13);
+            this.lnkGenerateArtists.Size = new System.Drawing.Size(176, 20);
             this.lnkGenerateArtists.TabIndex = 11;
             this.lnkGenerateArtists.TabStop = true;
             this.lnkGenerateArtists.Text = "Generate w/ artist swap";
@@ -159,19 +175,22 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             // lnkGenerateObscure
             // 
             this.lnkGenerateObscure.AutoSize = true;
-            this.lnkGenerateObscure.Location = new System.Drawing.Point(338, 61);
+            this.lnkGenerateObscure.Location = new System.Drawing.Point(507, 94);
+            this.lnkGenerateObscure.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lnkGenerateObscure.Name = "lnkGenerateObscure";
-            this.lnkGenerateObscure.Size = new System.Drawing.Size(92, 13);
+            this.lnkGenerateObscure.Size = new System.Drawing.Size(138, 20);
             this.lnkGenerateObscure.TabIndex = 10;
             this.lnkGenerateObscure.TabStop = true;
             this.lnkGenerateObscure.Text = "Generate obscure";
+            this.lnkGenerateObscure.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkGenerateObscure_LinkClicked);
             // 
             // lnkGenerateSimilar
             // 
             this.lnkGenerateSimilar.AutoSize = true;
-            this.lnkGenerateSimilar.Location = new System.Drawing.Point(250, 61);
+            this.lnkGenerateSimilar.Location = new System.Drawing.Point(375, 94);
+            this.lnkGenerateSimilar.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lnkGenerateSimilar.Name = "lnkGenerateSimilar";
-            this.lnkGenerateSimilar.Size = new System.Drawing.Size(82, 13);
+            this.lnkGenerateSimilar.Size = new System.Drawing.Size(125, 20);
             this.lnkGenerateSimilar.TabIndex = 9;
             this.lnkGenerateSimilar.TabStop = true;
             this.lnkGenerateSimilar.Text = "Generate similar";
@@ -180,9 +199,10 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             // lnkExportPlaylist
             // 
             this.lnkExportPlaylist.AutoSize = true;
-            this.lnkExportPlaylist.Location = new System.Drawing.Point(3, 61);
+            this.lnkExportPlaylist.Location = new System.Drawing.Point(4, 94);
+            this.lnkExportPlaylist.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lnkExportPlaylist.Name = "lnkExportPlaylist";
-            this.lnkExportPlaylist.Size = new System.Drawing.Size(71, 13);
+            this.lnkExportPlaylist.Size = new System.Drawing.Size(106, 20);
             this.lnkExportPlaylist.TabIndex = 8;
             this.lnkExportPlaylist.TabStop = true;
             this.lnkExportPlaylist.Text = "Export playlist";
@@ -192,7 +212,8 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             // 
             this.lblAuthor.AutoSize = true;
             this.lblAuthor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAuthor.Location = new System.Drawing.Point(240, 26);
+            this.lblAuthor.Location = new System.Drawing.Point(360, 40);
+            this.lblAuthor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAuthor.Name = "lblAuthor";
             this.lblAuthor.Size = new System.Drawing.Size(25, 13);
             this.lblAuthor.TabIndex = 7;
@@ -202,7 +223,8 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             // 
             this.lblPlaylistFollowers.AutoSize = true;
             this.lblPlaylistFollowers.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPlaylistFollowers.Location = new System.Drawing.Point(419, 22);
+            this.lblPlaylistFollowers.Location = new System.Drawing.Point(628, 34);
+            this.lblPlaylistFollowers.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPlaylistFollowers.Name = "lblPlaylistFollowers";
             this.lblPlaylistFollowers.Size = new System.Drawing.Size(66, 15);
             this.lblPlaylistFollowers.TabIndex = 6;
@@ -213,7 +235,8 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             this.ckbPublic.AutoSize = true;
             this.ckbPublic.Enabled = false;
             this.ckbPublic.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ckbPublic.Location = new System.Drawing.Point(498, 3);
+            this.ckbPublic.Location = new System.Drawing.Point(747, 5);
+            this.ckbPublic.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ckbPublic.Name = "ckbPublic";
             this.ckbPublic.Size = new System.Drawing.Size(60, 19);
             this.ckbPublic.TabIndex = 5;
@@ -225,7 +248,8 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             this.ckbCollab.AutoSize = true;
             this.ckbCollab.Enabled = false;
             this.ckbCollab.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ckbCollab.Location = new System.Drawing.Point(498, 24);
+            this.ckbCollab.Location = new System.Drawing.Point(747, 37);
+            this.ckbCollab.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ckbCollab.Name = "ckbCollab";
             this.ckbCollab.Size = new System.Drawing.Size(97, 19);
             this.ckbCollab.TabIndex = 4;
@@ -236,7 +260,8 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             // 
             this.lblCreatedOn.AutoSize = true;
             this.lblCreatedOn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCreatedOn.Location = new System.Drawing.Point(419, 5);
+            this.lblCreatedOn.Location = new System.Drawing.Point(628, 8);
+            this.lblCreatedOn.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCreatedOn.Name = "lblCreatedOn";
             this.lblCreatedOn.Size = new System.Drawing.Size(73, 15);
             this.lblCreatedOn.TabIndex = 3;
@@ -246,7 +271,8 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             // 
             this.lblPlaylistName.AutoSize = true;
             this.lblPlaylistName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPlaylistName.Location = new System.Drawing.Point(268, 3);
+            this.lblPlaylistName.Location = new System.Drawing.Point(402, 5);
+            this.lblPlaylistName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPlaylistName.Name = "lblPlaylistName";
             this.lblPlaylistName.Size = new System.Drawing.Size(100, 17);
             this.lblPlaylistName.TabIndex = 2;
@@ -256,7 +282,8 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(4, 3);
+            this.label1.Location = new System.Drawing.Point(6, 5);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(84, 17);
             this.label1.TabIndex = 1;
@@ -268,9 +295,10 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             this.cmbPlaylistSelect.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbPlaylistSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPlaylistSelect.FormattingEnabled = true;
-            this.cmbPlaylistSelect.Location = new System.Drawing.Point(3, 22);
+            this.cmbPlaylistSelect.Location = new System.Drawing.Point(4, 34);
+            this.cmbPlaylistSelect.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmbPlaylistSelect.Name = "cmbPlaylistSelect";
-            this.cmbPlaylistSelect.Size = new System.Drawing.Size(219, 23);
+            this.cmbPlaylistSelect.Size = new System.Drawing.Size(326, 23);
             this.cmbPlaylistSelect.TabIndex = 0;
             this.cmbPlaylistSelect.SelectedIndexChanged += new System.EventHandler(this.cmbPlaylistSelect_SelectedIndexChanged);
             // 
@@ -282,24 +310,14 @@ namespace SpotifyManager.Forms.MainForms.Tabs
             // 
             this.fileDialogImportPlaylist.DefaultExt = "playlist";
             // 
-            // lnkLikeEveryTrack
-            // 
-            this.lnkLikeEveryTrack.AutoSize = true;
-            this.lnkLikeEveryTrack.Enabled = false;
-            this.lnkLikeEveryTrack.Location = new System.Drawing.Point(156, 61);
-            this.lnkLikeEveryTrack.Name = "lnkLikeEveryTrack";
-            this.lnkLikeEveryTrack.Size = new System.Drawing.Size(88, 13);
-            this.lnkLikeEveryTrack.TabIndex = 13;
-            this.lnkLikeEveryTrack.TabStop = true;
-            this.lnkLikeEveryTrack.Text = "Save every track";
-            // 
             // PlaylistsTabForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(726, 476);
+            this.ClientSize = new System.Drawing.Size(1089, 732);
             this.Controls.Add(this.pnlPlaylist);
             this.Controls.Add(this.dgvPlaylist);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "PlaylistsTabForm";
             this.Text = "PlaylistsTabForm";
             this.Load += new System.EventHandler(this.PlaylistsTabForm_Load);

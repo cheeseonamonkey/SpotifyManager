@@ -367,6 +367,9 @@ namespace SpotifyManager.Forms.MainForms.Tabs
 
         private async void lnkLikeEveryTrack_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            //you are here
+            //maxing out at 50 tracks
+
             List<string> ids = GetPlaylistTrackIDs();
 
             string url = "https://api.spotify.com/v1/me/tracks?ids=";

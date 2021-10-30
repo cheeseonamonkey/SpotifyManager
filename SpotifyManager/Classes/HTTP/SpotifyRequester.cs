@@ -22,6 +22,7 @@ namespace SpotifyManager
 
         public async Task<bool> TestGet()
         {
+            Console.WriteLine("Starting test get...");
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
@@ -32,6 +33,7 @@ namespace SpotifyManager
 
             if (response.IsSuccessStatusCode)
             {
+                Console.WriteLine("test get success");
                 return true;
             }
             else
@@ -51,8 +53,7 @@ namespace SpotifyManager
 
             //todo: access token bug
 
-            Console.WriteLine(url);
-            Console.WriteLine($"\tAuth:  {client.DefaultRequestHeaders.Authorization}");
+            Console.WriteLine("PUT\t-\t" + url + $"\n\t\t({client.DefaultRequestHeaders.Authorization})");
 
             HttpContent postContent = new StringContent(content);
 
@@ -83,8 +84,8 @@ namespace SpotifyManager
 
             //todo: access token bug
 
-            Console.WriteLine(url);
-            Console.WriteLine($"\tAuth:  {client.DefaultRequestHeaders.Authorization}");
+            Console.WriteLine("POST\t-\t" + url + $"\n\t\t({client.DefaultRequestHeaders.Authorization})");
+            Console.WriteLine("\t\t\t\tContent: \t" + content);
 
             HttpContent postContent = new StringContent(content);
 
@@ -115,8 +116,7 @@ namespace SpotifyManager
 
             //todo: access token bug debug output:
 
-            Console.WriteLine(url);
-            Console.WriteLine($"\tAuth:  {client.DefaultRequestHeaders.Authorization}");
+            Console.WriteLine("GET\t-\t" + url + $"\n\t\t({client.DefaultRequestHeaders.Authorization})");
 
 
 
@@ -143,6 +143,7 @@ namespace SpotifyManager
         public static async Task<AccessToken> GetAccessTokenAsync(string authCode)
         {
             HttpClient client = new HttpClient();
+            Console.WriteLine("Starting get access token...");
 
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -162,7 +163,14 @@ namespace SpotifyManager
 
             client.Dispose();
 
-            //Console.WriteLine(responseData);
+            Console.WriteLine("Posting to: \thttps://accounts.spotify.com/api/token");
+
+            Console.WriteLine("\tData:\n" +
+                "\n\t\tgrant_type: \t" +  "authorization_code" +
+                "\n\t\tCODE: \t" + authCode +
+                "\n\t\tredirect_uri: \t" + "http://localhost/");
+
+            Console.WriteLine("Done getting access token: " + responseData);
 
             return JsonConvert.DeserializeObject<AccessToken>(responseData);
         }
